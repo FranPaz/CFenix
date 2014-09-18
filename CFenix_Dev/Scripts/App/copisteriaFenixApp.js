@@ -47,7 +47,7 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                 },
                 'dashboard': {
                     templateUrl: '/Scripts/App/Insumos/Partials/forms_layouts.html',
-                    controller: '',
+                    controller: 'insumosCtrl',
                     resolve: {
                         user: 'User',
                         authenticationRequired: function (user) {
