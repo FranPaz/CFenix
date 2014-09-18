@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Home - Copisteria Fenix</title>
+
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/angular-route.min.js"></script>
+    <script src="~/Scripts/angular-resource.min.js"></script>
+
+    <script src="~/Scripts/angular-cookies.js"></script>
+    <script src="~/Scripts/angular-sanitize.js"></script>
+
+    <!-- js y css para Angular Loading bar  -->
+    <script src="~/Scripts/angular-animate.min.js"></script>
+    @*<script src="~/Scripts/loading-bar.js"></script>
+        <link href="~/Content/loading-bar.css" rel="stylesheet" />*@
+
+    @*js para ui-routing *@
+    <script src="~/Scripts/angular-ui-router.min.js"></script>
+
+    <script src="~/Scripts/App/copisteriaFenixApp.js"></script>
+
+    @* JS de Usuarios *@
+
+    <script src="~/Scripts/App/Usuarios/loginCtrl.js"></script>
+    <script src="~/Scripts/App/Usuarios/usuariosSvc.js"></script>
+    <script src="~/Scripts/App/Usuarios/usuariosCtrl.js"></script>
+    <script src="~/Scripts/App/Usuarios/usuariosDataFactory.js"></script>
+    <script src="~/Scripts/App/Usuarios/usuariosFilters.js"></script>
+
+
+    <meta name="description" content="description">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+    <link href="~/Scripts/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet" />
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Righteous' rel='stylesheet' type='text/css'>
+    <link href="~/Scripts/plugins/fancybox/jquery.fancybox.css" rel="stylesheet">
+    <link href="~/Scripts/plugins/fullcalendar/fullcalendar.css" rel="stylesheet">
+    <link href="~/Scripts/plugins/xcharts/xcharts.min.css" rel="stylesheet">
+    @*<link href="~/Scripts/plugins/select2/select2.css" rel="stylesheet">*@
+    <link href="~/Content/style.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="http://getbootstrap.com/docs-assets/js/html5shiv.js"></script>
+            <script src="http://getbootstrap.com/docs-assets/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body ng-app="copisteriaFenixApp">
+    <div ui-view>
+        @*fpaz: div para el area de trabajo y el menu lateral*@
+        <!--Start Header-->
+        <div ui-view="headerAdmin"></div>
+        <!--End Header-->
+        <!--Start Menu-->
+        <div ui-view="menuAdmin"></div>
+        <!--End Menu-->
+        <!--Start Container-->
+        <div id="main" class="container-fluid">
+            <div class="row">
+
+                <!--Start Content-->
+                <div id="content" class="col-xs-12 col-sm-10">
+                    @*<div class="preloader">
+                            <img src="~/img/devoops_getdata.gif" class="devoops-getdata" alt="preloader" />
+                        </div>*@
+                    @*<div id="ajax-content"></div>*@
+                    <div ui-view="dashboard"></div>
+                </div>
+                <!--End Content-->
+            </div>
+        </div>
+    </div>
+    <!--End Container-->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!--<script src="http://code.jquery.com/jquery.js"></script>-->
+    <script src="~/Scripts/jquery-2.1.1.min.js"></script>
+    <script src="~/Scripts/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/plugins/justified-gallery/jquery.justifiedgallery.min.js"></script>
+    <script src="~/Scripts/plugins/tinymce/tinymce.min.js"></script>
+    <script src="~/Scripts/plugins/tinymce/jquery.tinymce.min.js"></script>
+    <!-- All functions for this theme + document.ready processing -->
+    @*<script src="~/Scripts/devoops.js"></script>*@
+</body>
+</html>
+
+
