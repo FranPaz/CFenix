@@ -1,4 +1,4 @@
-var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngResource', 'ui.router', 'ngCookies',
+var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngResource', 'ui.router', 'ngCookies','ui.bootstrap',
   'ngSanitize']) //fpaz: defino el modulo con las librerias para routing (ui.router), usar apis rest y para interfaz de usuarios con angular(ui.bootstrap)
     .config(function ($stateProvider, $urlRouterProvider) { //fpaz: configuro el routing de los states usando los servicios $stateProvider y $urlRouteProvider
         
@@ -69,7 +69,7 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                     },
                     'menuAdmin': {
                         templateUrl: '/Scripts/App/Partials/Menu.html',
-                        controller: ''
+                        controller: 'clientesCtrl'
                     },
                     'dashboard': {
                         templateUrl: '/Scripts/App/Clientes/Partials/Clientes_List.html',
