@@ -1,5 +1,3 @@
-/// <reference path="Insumos/Partials/forms_layouts.html" />
-/// <reference path="Insumos/Partials/forms_layouts.html" />
 var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngResource', 'ui.router', 'ngCookies',
   'ngSanitize']) //fpaz: defino el modulo con las librerias para routing (ui.router), usar apis rest y para interfaz de usuarios con angular(ui.bootstrap)
     .config(function ($stateProvider, $urlRouterProvider) { //fpaz: configuro el routing de los states usando los servicios $stateProvider y $urlRouteProvider
@@ -33,52 +31,6 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                   }
               }
           })
-
-<<<<<<< HEAD
-            .state('Insumos', {
-                url: "/Tablas",
-                views: {
-                    'headerAdmin': {
-                        templateUrl: '/Scripts/App/Partials/Header.html',
-                        controller: ''
-                    },
-                    'menuAdmin': {
-                        templateUrl: '/Scripts/App/Partials/Menu.html',
-                        controller: ''
-                    },
-                    'dashboard': {
-                        templateUrl: '/Scripts/App/Insumos/Partials/forms_layouts.html',
-                        controller: '',
-                        resolve: {
-                            user: 'User',
-                            authenticationRequired: function (user) {
-                                user.isAuthenticated();
-                            }
-=======
-          .state('algo', {
-              url: "/Tablas",
-              views: {
-                  'headerAdmin': {
-                      templateUrl: '/Scripts/App/Partials/Header.html',
-                      controller: ''
-                  },
-                  'menuAdmin': {
-                      templateUrl: '/Scripts/App/Partials/Menu.html',
-                      controller: ''
-                  },
-                  'dashboard': {
-                      templateUrl: '/Scripts/App/CuentasCorrientes/Partials/tables_simple.html',
-                      controller: '',
-                      resolve: {
-                          user: 'User',
-                          authenticationRequired: function (user) {
-                              user.isAuthenticated();
-                          }
-                      }
-                  }
-              }
-          })
-
         //#endregion     
 
         //#region Trabajos e insumos
@@ -100,7 +52,6 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                         user: 'User',
                         authenticationRequired: function (user) {
                             user.isAuthenticated();
->>>>>>> 1f9abc3254300c0bebc33a22dd5951fa63c0c2a4
                         }
                     }
                 }
