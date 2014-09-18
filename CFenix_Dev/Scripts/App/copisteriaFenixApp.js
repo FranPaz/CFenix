@@ -34,30 +34,6 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
               }
           })
 
-          .state('algo', {
-              url: "/Tablas",
-              views: {
-                  'headerAdmin': {
-                      templateUrl: '/Scripts/App/Partials/Header.html',
-                      controller: ''
-                  },
-                  'menuAdmin': {
-                      templateUrl: '/Scripts/App/Partials/Menu.html',
-                      controller: ''
-                  },
-                  'dashboard': {
-                      templateUrl: '/Scripts/App/CuentasCorrientes/Partials/tables_simple.html',
-                      controller: '',
-                      resolve: {
-                          user: 'User',
-                          authenticationRequired: function (user) {
-                              user.isAuthenticated();
-                          }
-                      }
-                  }
-              }
-          })
-
             .state('Insumos', {
                 url: "/Tablas",
                 views: {
@@ -83,6 +59,34 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
             })
 
         //#endregion     
+
+        //#region Clientes
+            .state('Clientes', {
+                url: "/Clientes",
+                views: {
+                    'headerAdmin': {
+                        templateUrl: '/Scripts/App/Partials/Header.html',
+                        controller: ''
+                    },
+                    'menuAdmin': {
+                        templateUrl: '/Scripts/App/Partials/Menu.html',
+                        controller: ''
+                    },
+                    'dashboard': {
+                        templateUrl: '/Scripts/App/Clientes/Partials/Clientes_List.html',
+                        controller: '',
+                        resolve: {
+                            user: 'User',
+                            authenticationRequired: function (user) {
+                                user.isAuthenticated();
+                            }
+                        }
+                    }
+                }
+            })
+
+        //#endregion
+
 
         //#region Usuarios y Login
 

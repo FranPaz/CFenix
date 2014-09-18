@@ -302,6 +302,7 @@
     <Content Include="Scripts\angular-ui\ui-bootstrap.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\App\Clientes\Partials\Clientes_List.html" />
     <Content Include="Scripts\App\copisteriaFenixApp.js" />
     <Content Include="Scripts\App\CuentasCorrientes\Partials\tables_simple.html" />
     <Content Include="Scripts\App\Insumos\Partials\forms_layouts.html" />
