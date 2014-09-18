@@ -1,0 +1,30 @@
+﻿<div id="page-login" class="row">
+    <div class="col-xs-12 col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+        <div class="text-right">
+            <a ui-sref="signup" class="txt-default">registrar</a>
+        </div>
+        <div class="box">
+            <div class="box-content">
+                <form id="login-form" ng-submit="login()">
+                    <div class="row" ng-repeat="error in errors">
+                        <div class="alert alert-danger">
+                            {{error}}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" ng-model="username" placeholder="username" />
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" ng-model="password" placeholder="password" />
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" id="login-form-remember-me-checkbox" ng-model="persist" />
+                    </div>
+                    <div class="form-group">
+                        <input type="Submit" id="login-form-submit-button" class="btn btn-success btn-block" value="Submit">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
