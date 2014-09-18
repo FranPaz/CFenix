@@ -34,6 +34,7 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
               }
           })
 
+<<<<<<< HEAD
             .state('Insumos', {
                 url: "/Tablas",
                 views: {
@@ -53,12 +54,59 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                             authenticationRequired: function (user) {
                                 user.isAuthenticated();
                             }
+=======
+          .state('algo', {
+              url: "/Tablas",
+              views: {
+                  'headerAdmin': {
+                      templateUrl: '/Scripts/App/Partials/Header.html',
+                      controller: ''
+                  },
+                  'menuAdmin': {
+                      templateUrl: '/Scripts/App/Partials/Menu.html',
+                      controller: ''
+                  },
+                  'dashboard': {
+                      templateUrl: '/Scripts/App/CuentasCorrientes/Partials/tables_simple.html',
+                      controller: '',
+                      resolve: {
+                          user: 'User',
+                          authenticationRequired: function (user) {
+                              user.isAuthenticated();
+                          }
+                      }
+                  }
+              }
+          })
+
+        //#endregion     
+
+        //#region Trabajos e insumos
+        .state('Insumos', {
+            url: "/Insumos",
+            views: {
+                'headerAdmin': {
+                    templateUrl: '/Scripts/App/Partials/Header.html',
+                    controller: ''
+                },
+                'menuAdmin': {
+                    templateUrl: '/Scripts/App/Partials/Menu.html',
+                    controller: ''
+                },
+                'dashboard': {
+                    templateUrl: '/Scripts/App/Insumos/Partials/forms_layouts.html',
+                    controller: '',
+                    resolve: {
+                        user: 'User',
+                        authenticationRequired: function (user) {
+                            user.isAuthenticated();
+>>>>>>> 1f9abc3254300c0bebc33a22dd5951fa63c0c2a4
                         }
                     }
                 }
-            })
-
-        //#endregion     
+            }
+        })
+        //#endregion
 
         //#region Clientes
             .state('Clientes', {
