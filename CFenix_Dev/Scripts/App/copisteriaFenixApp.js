@@ -58,31 +58,33 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
               }
           })
 
-            .state('Insumos', {
-                url: "/Tablas",
-                views: {
-                    'headerAdmin': {
-                        templateUrl: '/Scripts/App/Partials/Header.html',
-                        controller: ''
-                    },
-                    'menuAdmin': {
-                        templateUrl: '/Scripts/App/Partials/Menu.html',
-                        controller: ''
-                    },
-                    'dashboard': {
-                        templateUrl: '/Scripts/App/Insumos/Partials/forms_layouts.html',
-                        controller: '',
-                        resolve: {
-                            user: 'User',
-                            authenticationRequired: function (user) {
-                                user.isAuthenticated();
-                            }
+        //#endregion     
+
+        //#region Trabajos e insumos
+        .state('Insumos', {
+            url: "/Insumos",
+            views: {
+                'headerAdmin': {
+                    templateUrl: '/Scripts/App/Partials/Header.html',
+                    controller: ''
+                },
+                'menuAdmin': {
+                    templateUrl: '/Scripts/App/Partials/Menu.html',
+                    controller: ''
+                },
+                'dashboard': {
+                    templateUrl: '/Scripts/App/Insumos/Partials/forms_layouts.html',
+                    controller: '',
+                    resolve: {
+                        user: 'User',
+                        authenticationRequired: function (user) {
+                            user.isAuthenticated();
                         }
                     }
                 }
-            })
-
-        //#endregion     
+            }
+        })
+        //#endregion
 
         //#region Usuarios y Login
 
