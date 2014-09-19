@@ -1,0 +1,542 @@
+﻿html, body, div,  applet, object, iframe,
+blockquote, pre, abbr, label, acronym, address, big,
+cite, code, del, dfn, em, font, img,
+ins, kbd, q, s, samp, small, strike,
+sub, sup, tt, var,dl, dt, dd, ol, ul, li, legend, caption, center, u, b, i {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+
+body{
+	font-size:12px;
+	margin: 0;
+  padding: 0;
+  background-color: #fff;
+	width:100%;
+	background:#BFC0C2;
+}
+html, body {
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+	width:100%;
+  height: 100%;
+} 
+.container{
+	height: 100%;
+	width:1000px;
+	margin:0em auto;
+}
+.contLeft{
+	float:left;
+	width:190px;
+	height:100%;
+}
+
+.contShortcuts{
+	float:left;
+	width:190px;
+}
+
+.productShortCut{
+	float:left;
+	width:100%;
+	margin-top:5px;
+	margin-bottom:.5em;
+}
+
+.productShortcutInfo{
+	width:183px;
+	height:2.5em;
+	float:left;
+	background:#EBEBEB;
+	border-radius: 3px 3px 3px 3px;
+	box-shadow: 1px 1px 2px #888888;
+	text-align:center;
+}
+.productShortcutInfo a{
+	display:block;
+	margin-top:5px;
+	font-weight:bold;
+	height:30px;
+}
+.shortCutCode{
+	width:25%;
+	float:left;
+	height:1em;
+}
+
+.shortCutName{
+	width:75%;
+	float:left;
+	height:1em;
+}
+
+.logo{
+	float:left;
+	width:100%;
+	text-align:center;
+	margin-bottom:.4em;
+}
+.contRight{	
+	position:relative;
+	float:left;
+	width:809px;
+	background:#FFFFFF;
+	border-left:1px solid gray;
+	min-height: 100%;
+}
+.contToggleSaleSession{
+	position:absolute;
+	top:.4em;
+	right:2.5em;
+}
+.contToggleSaleSession img{
+	border-radius: 3px 3px 3px 3px;
+	box-shadow: 1px 1px 2px #888888;
+}
+.borderStyle{
+	float:left;
+	width:100%;
+	background-image:url("../images/patternTop.png");
+	background-repeat:repeat-x;
+	height:100%;
+}
+.borderStyleTop{
+	float:left;
+	width:100%;
+}
+.borderStyle h3{
+	margin:-5px 0 0 0;
+	font-size:20px;
+}
+.marginOnTop{
+	margin-top:2em;
+}
+/*Menu*/
+
+.topLine{
+	margin:0em auto 0em auto;
+	width:850px;
+	height:40px;
+	border-top:1px solid #EBEBEB;
+	border-bottom:1px solid #EBEBEB;
+}
+
+nav{
+	width:770px;
+	height:30px;
+	margin:.5em auto 0em auto;
+}
+
+ul.mainTabs {
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+
+ul.mainTabs li{
+	margin:2px;
+	padding:0; 
+	float:left;
+	width:100%;
+}
+.subMenu{
+	float:left;
+	display:block;
+	margin:1em 0em .5em 0em;
+}
+.subMenu li{
+	display:inline;
+	font-size:14px;
+	margin:2px;
+	padding:0; 
+	float:left;
+	width:auto;
+	background:#EDEFF3;
+	border-radius: 3px 3px 3px 3px;
+	cursor:pointer;
+	box-shadow: 1px 1px 3px #888888;
+	padding:.5em .7em;
+	margin-right:.8em;
+}
+.subMenu li:hover{
+	text-decoration:underline;
+}
+ul.mainTabs li a{
+	display:block;
+	height:5px;
+	padding:.5em 0em 1.5em .3em;
+	text-decoration:none;
+	font-size:15px;
+	font-weight:bold;
+	color:#494949;
+	border-radius: 3px 3px 3px 3px;
+	background:#E7E7E8;
+}
+
+ul.mainTabs li a:hover {
+	background-color:#F5F6F6;
+	border-left-color:#99CC00; 
+}
+
+ul.mainTabs li a.shareLink{
+	background:#008751;
+	background-image:url('../images/sharethis.png');
+	background-repeat:no-repeat;
+	background-position:10px center;
+	color:#FFFFFF;
+	padding-left:39px;
+}
+#togleSaleSessionImg{
+	width:32px;
+	height:32px;
+}
+
+.subMenu{
+	font-size:1.5em;
+}
+
+/******************************************************/
+
+.appView{
+	width:750px;
+	margin:1em auto 1em auto;
+	display:none;
+}
+
+#saleContainerProducts{
+	height:100%;
+	overflow:auto;
+	padding-bottom:170px;
+}
+
+#ticketContainer{
+ display:none;
+}
+.appView form{
+	float:left;
+	padding:1em 0em;
+}
+.appView form select{
+	height:28px;
+}
+.appView form hr{
+	height:5px;
+}
+.appView form label{
+	height:23px;
+	
+}
+.appView form input{
+	height:23px;
+}
+.appView form input[type="button"]{
+	height:30px;
+	cursor:pointer;
+}
+	
+.datePicker{
+	cursor:pointer;
+	background: url("../images/pickdate.gif") no-repeat scroll right center #F3F3F3;
+}
+#saleContainerTotals{
+	position:absolute;
+	bottom:0;
+	right:0;
+	width:100%;
+	margin-bottom:2em;
+}
+a.triggerAccessKey{
+	display:inline;
+	position:relative;
+	font-size:14px;
+	margin:2px;
+	padding:0; 
+	float:left;
+	width:auto;
+	background:#EDEFF3;
+	border-radius: 3px 3px 3px 3px;
+	cursor:pointer;
+	font-size:16px;
+	box-shadow: 1px 1px 2px #888888;
+	margin-right:10px;
+	padding:.5em .7em;
+	text-decoration:none;
+	color:#000000;
+}
+a.blue{
+	background:#B0C5D9;
+}
+a.white{
+	background:#EBEBEB;
+}
+a.red{
+	background:#EE685C;
+	position:absolute;
+	bottom:0;
+	right:0;
+}
+a.green{
+	position:absolute;
+	top:0;
+	right:0;
+	background:#8EBD3A;
+}
+.contCenter750{
+	width:750px;
+	margin:0em auto;
+}
+.contCenter750 table{
+	float:right;
+}
+table.totals{
+	margin-top:10px;
+	width:270px;
+	border-collapse:collapse;
+}
+.totals th{
+	font-size:13px;	
+	font-weight:normal;
+	background:#FFFFFF;
+	text-align:left;
+}
+.totals td{
+	font-size:14px;	
+	font-weight:bold;
+	background:#FFFFFF;
+	text-align:right;
+}
+.totals td#saleProductTotal_Total{
+	font-size:19px;
+}
+/************Configuration Addlist ***********************/
+form.configuration{
+	width:100%;
+	float:left;
+	border: 1px solid #EBEBEB;
+	border-radius:3px;
+}
+
+form.configuration *{
+	float:left;
+	font-size:13px;
+}
+
+form.configuration label{
+	width:35%;
+	float:left;
+	text-align:right;
+	height:1.5em;
+	line-height:1.5em;
+}
+
+form.configuration label.language{
+	float:left;
+	display:block;
+	padding-top:1px;
+	background:url('../images/languages.png');
+	background-repeat:no-repeat;
+	background-position:193px top;
+	height:22px;
+}
+	form.configuration input,form.configuration select {
+	margin-left:1em;
+}
+
+form.noBorder{
+	border:0px;
+}
+
+hr{
+	width:100%;
+	margin:0px;
+	padding:0px;
+	border:0px;
+}
+
+div.formActionButtons{
+	margin-top:1em;
+	margin-left: auto ;
+	margin-right: auto ;
+	width:50%;
+	float:none;
+}
+/************Generics ******************************/
+.width50pct{
+	width:49%;
+}
+
+.width100pct{
+	width:100%;
+}
+.floatLeft{
+	float:left;
+}
+.textAlignRight{
+	text-align:right;
+}
+
+.displayNone{
+	display:none;
+}
+
+.pointer{
+cursor:pointer;
+}
+
+.textAlignLeft{
+	text-align:left;
+}
+
+table  > tbody > tr:first-child {
+	text-align:left;
+	font-size:1.2em;
+	background-color:#EFEFEF;
+}
+table th{
+	font-size:12px;
+}
+
+table th#saleDelete{
+	width:20px;
+	text-align:center;
+}
+table th#saleHeaderUnit, th#saleHeaderQuantity{
+	text-align:center;
+}
+table th.small{
+	width:40px;
+}
+table th.medium{
+	width:135px;
+}
+table th.big{
+	width:450px;
+}
+.zebra{
+		 border-collapse:collapse;
+}
+.zebra td{
+	border:1px solid #C4C4C4;
+	padding:.3em .3em;
+}
+.zebra td img{
+	text-align:center;
+	margin-top:.2em;
+	padding-top:.1em;
+}
+.zebra tr:nth-child(even) {
+	background-color: #FBFBFB;
+}
+.zebra tr:nth-child(odd) {	
+	background: #F3F3F3;
+}
+.zebra tr a{
+	color:#0000EE;
+	font-weight:bold;
+}
+.zebra tr:hover {
+	background:#ECF0FC;
+}
+.zebra tr:hover a{
+	text-decoration:underline;
+}
+.zebra tr.headers:hover{
+	background-color: #FFFFFF;
+}
+
+table.totals tr.trTotal th{
+	background:#ECF0FC;
+	padding:.4em 0em;
+}
+table.totals tr.trTotal td{
+	background:#ECF0FC;
+	padding:.4em 0em;
+}
+.contBtns{
+	float:left;
+	position:relative;
+	width:450px;
+}
+.contBtnsLeft{
+	position:relative;
+	float:left;
+	width:100px;
+	margin-top:1em;
+	text-align:left;
+}
+.contBtnsLeft a{
+	text-align:center;
+	width:100px;
+	margin:0em 5em .5em 0em;
+}
+#maincontShortcuts{
+	float:left;
+	overflow:auto;
+	height:95%;
+}
+.shortcutsLimit{
+	float:left;
+	width:190px;
+	height:10px;
+	background:url('../images/backgroundTop.png');
+	background-repeat:repeat-x;
+}
+
+.contBtnsLeft a.shortCut{
+	display:block;
+	margin-left:10em;
+	border-radius: 3px 3px 3px 3px;
+	    box-shadow: 1px 1px 2px #888888;
+	font-size:14px;
+	padding:0; 
+	float:left;
+	width:100px;
+	border-radius: 3px 3px 3px 3px;
+	cursor:pointer;
+	font-size:16px;
+	box-shadow: 1px 1px 2px #888888;
+	padding:.5em .7em;
+	margin:0em .5em .5em 0em;
+	text-decoration:none;
+	color:#000000;
+}
+.contBtnsRight{
+	float:right;
+	position:relative;
+	width:120px;
+	margin:1em .5em 0em 0em;
+	height:135px;
+	text-align:right;
+}
+.contBtnsRight a{
+	width:100px;
+	text-align:center;
+	float:right;
+	margin:0em .5em .5em 0em;
+}
+
+.appInfo{
+	bottom: 0;
+	margin-bottom: 2em;
+		text-align:left;
+	position: absolute;
+	width:190px;
+}
+.appInfo a{
+	width:100%;
+	display:block;
+	text-decoration:none;
+}
+.appInfo a:hover{
+	text-decoration:underline;
+}
+.helpLink{
+	font-size:3em;
+}

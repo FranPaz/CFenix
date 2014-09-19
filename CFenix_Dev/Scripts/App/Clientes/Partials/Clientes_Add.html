@@ -1,0 +1,42 @@
+﻿<div class="modal-header">
+    <h4 class="modal-title">Nuevo Cliente</h4>
+</div>
+<div class="modal-body">    
+    <form name="formAlta" novalidate>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Nombre / Razon Social</label>
+                    <input type="text" name="nombre/razon" ng-model="cliente.Nombre_RazonSocial" class="form-control" required />
+                </div>
+                <div class="form-group">
+                    <label>Cuit/Cuil</label>
+                    <input type="text" name="cuitCuil" ng-model="cliente.Cuit_Cuil" class="form-control" required />
+                </div>
+                <div class="form-group">
+                    <label>Direccion</label>
+                    <input type="text" name="direccion" ng-model="cliente.Direccion" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Telefono</label>
+                    <input type="text" name="telefono" ng-model="cliente.Telefono" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="text" name="mail" ng-model="cliente.Mail" class="form-control" />
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="ok(cliente)">Guardar</button>
+    <button class="btn btn-warning" ng-click="cancel()">Cancelar</button>
+</div>
+<div style="color:red;" ng-show="errors.length > 0" ng-repeat="error in errors">
+    <!--si la variable errors tiene  algun error que devolvio la web api entonces lo muestro en la pagina-->
+    {{error}}
+</div>
+
+
+
