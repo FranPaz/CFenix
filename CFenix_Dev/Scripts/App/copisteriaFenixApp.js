@@ -110,6 +110,82 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                 }
             })
 
+            .state('clientes_add', {
+                url: "/Clientes",
+                views: {
+                    'headerAdmin': {
+                        templateUrl: '/Scripts/App/Partials/Header.html',
+                        controller: ''
+                    },
+                    'menuAdmin': {
+                        templateUrl: '/Scripts/App/Partials/Menu.html',
+                        controller: 'clientesCtrl'
+                    },
+                    'dashboard': {
+                        templateUrl: '/Scripts/App/Clientes/Partials/Clientes_Add.html',
+                        controller: '',
+                        resolve: {
+                            user: 'User',
+                            authenticationRequired: function (user) {
+                                user.isAuthenticated();
+                            }
+                        }
+                    }
+                }
+            })
+
+        //#endregion
+
+        //#region Venta
+             .state('venta', {
+                 url: "/Venta",
+                 views: {
+                     'headerAdmin': {
+                         templateUrl: '/Scripts/App/Partials/Header.html',
+                         controller: ''
+                     },
+                     'menuAdmin': {
+                         templateUrl: '/Scripts/App/Partials/Menu.html',
+                         controller: ''
+                     },
+                     'dashboard': {
+                         templateUrl: '/Scripts/App/Venta/Partials/Venta.html',
+                         controller: '',
+                         resolve: {
+                             user: 'User',
+                             authenticationRequired: function (user) {
+                                 user.isAuthenticated();
+                             }
+                         }
+                     }
+                 }
+             })
+        //#endregion
+
+        //#region Notificaciones
+             .state('notificaciones', {
+                 url: "/Notificaciones",
+                 views: {
+                     'headerAdmin': {
+                         templateUrl: '/Scripts/App/Partials/Header.html',
+                         controller: ''
+                     },
+                     'menuAdmin': {
+                         templateUrl: '/Scripts/App/Partials/Menu.html',
+                         controller: ''
+                     },
+                     'dashboard': {
+                         templateUrl: '/Scripts/App/Notificaciones/Partials/page_messages.html',
+                         controller: '',
+                         resolve: {
+                             user: 'User',
+                             authenticationRequired: function (user) {
+                                 user.isAuthenticated();
+                             }
+                         }
+                     }
+                 }
+             })
         //#endregion
 
         //#region Usuarios y Login

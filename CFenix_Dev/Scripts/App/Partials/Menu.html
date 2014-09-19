@@ -7,11 +7,17 @@
             </a>
         </li>
         <li>
+            <a ui-sref="venta" class="dropdown-toggle">
+                <i class="fa fa-bar-chart-o"></i>
+                <span class="hidden-xs">Ventas</span>
+            </a>
+        </li>
+        <!--<li>
             <a ui-sref="usuarios" class="dropdown-toggle">
                 <i class="fa fa-bar-chart-o"></i>
                 <span class="hidden-xs">Usuarios</span>
             </a>
-        </li>
+        </li>-->
         <li>
             <a ui-sref="algo" class="dropdown-toggle">
                 <i class="fa fa-bar-chart-o"></i>
@@ -23,6 +29,14 @@
                 <i class="fa fa-bar-chart-o"></i>
                 <span class="hidden-xs">Clientes</span>
             </a>
+            <ul class="dropdown-menu" style="display: block;">
+                <li>
+                    <a ui-sref="cliente_add" class="dropdown-toggle">
+                        <i class="fa fa-bar-chart-o"></i>
+                        <span class="hidden-xs">Nuevo Cliente</span>
+                    </a>
+                </li>                
+            </ul>
         </li>
         <li>
         <li>
@@ -44,7 +58,12 @@
                     </a>
                 </li>
             </ul>
-        </li>
-        </li>
+        </li>      
+        <li>
+            <a ui-sref="notificaciones" class="dropdown-toggle">
+                <i class="fa fa-bar-chart-o"></i>
+                <span class="hidden-xs">Notificaciones</span>
+            </a>
+        </li>  
     </ul>
 </div>
