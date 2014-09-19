@@ -25,11 +25,26 @@
             </a>
         </li>
         <li>
-            <a ui-sref="Insumos" class="dropdown-toggle">
-                <i class="fa fa-dashboard"></i>
-                <span class="hidden-xs">Insumos</span>
-
+        <li>
+            <a href="#" class="dropdown-toggle active-parent active">
+                <i class="fa fa-table"></i>
+                <span class="hidden-xs">Stock</span>
             </a>
+            <ul class="dropdown-menu" style="display: block;">
+                <li>
+                    <a ui-sref="Insumos" class="dropdown-toggle">
+                        <i class="fa fa-bar-chart-o"></i>
+                        <span class="hidden-xs">Insumos</span>
+                    </a>
+                </li>
+                <li>
+                    <a ui-sref="Trabajos" class="dropdown-toggle">
+                        <i class="fa fa-bar-chart-o"></i>
+                        <span class="hidden-xs">Trabajos</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
         </li>
     </ul>
 </div>

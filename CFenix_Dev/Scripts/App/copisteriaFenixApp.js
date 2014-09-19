@@ -70,7 +70,7 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                         controller: ''
                     },
                     'dashboard': {
-                        templateUrl: '/Scripts/App/Insumos/Partials/AltaTrabajo.html',
+                        templateUrl: '/Scripts/App/Trabajos/Partials/AltaTrabajo.html',
                         controller: 'trabajosCtrl',
                         resolve: {
                             user: 'User',
