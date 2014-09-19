@@ -1,0 +1,119 @@
+﻿<div class="row">
+    <div id="breadcrumb" class="col-md-12">
+        <ol class="breadcrumb">
+            <li><a href="index.html">dashboard</a></li>
+            <li><a href="#">Venta</a></li>            
+        </ol>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-12">
+        <div class="box">
+            <div class="box-header">
+                <div class="box-name">
+                    <!--<i class="fa fa-search"></i>-->
+                    <span>Ventas - Copisteria Fenix</span>
+                </div>
+
+                <div class="no-move"></div>
+            </div>
+            <div class="box-content">
+                <h4 class="page-header">Nuevo</h4>
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Codigo del Producto</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" placeholder="Codigo" data-toggle="tooltip" data-placement="bottom" title="Ingrese el Codigo del Producto">
+                        </div>                        
+                        <div class="col-sm-4">                            
+                            <a href="#" class="col-sm-2 control-label">Busqueda Avanzada</a>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-2">
+                        </div>
+                        <div class="col-sm-2">
+                            <button type="submit" class="btn btn-primary btn-label-left">
+                                <span><i class="fa fa-search"></i></span>
+                                Buscar
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Area de tabla -->
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12">
+        <div class="box">
+            <div class="box-header">
+                <div class="box-name">
+                    <!--<i class="fa fa-table"></i>-->
+                    <span>Buscar Trabajos</span>
+                </div>
+                <div class="no-move"></div>
+            </div>
+            <div class="box-content">
+                <!-- Agregar interfaz de busqueda -->
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Codigo</th>
+                            <th>Nombre</th>
+                            <th>Tipo</th>
+                            <th>Precio $</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>A4/OFICIO FOTOCOP. B/N</td>
+                            <td>FOTOCOPIAS B/N</td>
+                            <td>0.75</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>A4 LINEA COLOR</td>
+                            <td>FOTOCOPIAS COLOR</td>
+                            <td>2.00</td>
+                        </tr>                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12">
+        <div class="box">
+            <div>
+                <div>
+                    <div>                        
+                        <div class="col-sm-4">
+                            <table>
+                                <tr><th class='' id='saleProductTotalLabel_SubTotal'>Subtotal</th><td class='' id='saleProductTotal_SubTotal'>0.00</td></tr>
+                                <tr><th id='saleProductTotalLabel_Tax'>Impuesto</th><td id='saleProductTotal_Tax'>0.00</td></tr>
+                                <tr class="trTotal"><th id='saleProductTotalLabel_Total'>Total</th><td id='saleProductTotal_Total'>0.00</td></tr>
+                                <tr><th id='saleProductTotalLabel_Payment'>Pago</th><td id='saleProductTotal_Payment'>0.00</td></tr>
+                                <tr><th id='saleProductTotalLabel_Change'>Cambio</th><td id='saleProductTotal_Change'>0.00</td></tr>
+                            </table>
+                        </div>
+                        <div class="col-sm-8 right">
+                            <button type="button" class="btn btn-success">Pagar</button>
+                            <button type="button" class="btn btn-danger">Candelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- saleContainerTotals -->
+        </div>
+    </div>
+</div>
+
+

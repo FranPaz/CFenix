@@ -349,6 +349,7 @@
     <Content Include="Scripts\App\Usuarios\usuariosDirective.js" />
     <Content Include="Scripts\App\Usuarios\usuariosFilters.js" />
     <Content Include="Scripts\App\Usuarios\usuariosSvc.js" />
+    <Content Include="Scripts\App\Venta\Partials\Venta_Main.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\angular-animate.min.js.map" />
@@ -1085,7 +1086,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Scripts\App\Venta\Partials\" />
     <Folder Include="Views\Shared\" />
   </ItemGroup>
   <ItemGroup>

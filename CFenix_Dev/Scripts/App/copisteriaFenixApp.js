@@ -3,7 +3,7 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
     .config(function ($stateProvider, $urlRouterProvider) { //fpaz: configuro el routing de los states usando los servicios $stateProvider y $urlRouteProvider
         
         // fpaz:para cualquier caso que no este definido se va al estado del home mostrando grupos
-        $urlRouterProvider.otherwise("/Usuarios")
+        $urlRouterProvider.otherwise("/Cuentas")
 
         $stateProvider //fpaz: defino los states que van a guiar el ruteo de las vistas parciales de la app
         
@@ -149,7 +149,7 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                          controller: ''
                      },
                      'dashboard': {
-                         templateUrl: '/Scripts/App/Venta/Partials/Venta.html',
+                         templateUrl: '/Scripts/App/Venta/Partials/Venta_Main.html',
                          controller: '',
                          resolve: {
                              user: 'User',
