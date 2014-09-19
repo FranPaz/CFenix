@@ -327,8 +327,8 @@
     <Content Include="Scripts\App\Clientes\Partials\Clientes_List.html" />
     <Content Include="Scripts\App\copisteriaFenixApp.js" />
     <Content Include="Scripts\App\CuentasCorrientes\Partials\tables_simple.html" />
-    <Content Include="Scripts\App\Insumos\Partials\forms_layouts.html" />
-    <Content Include="Scripts\App\Insumos\Temporal.js" />
+    <Content Include="Scripts\App\Insumos\Partials\AltaInsumo.html" />
+    <Content Include="Scripts\App\Trabajos\Partials\AltaTrabajo.html" />
     <Content Include="Scripts\App\Partials\Dashboard.html" />
     <Content Include="Scripts\App\Partials\Header.html" />
     <Content Include="Scripts\App\Insumos\insumosCtrl.js" />
@@ -338,6 +338,8 @@
     <Content Include="Scripts\App\Partials\Login.html" />
     <Content Include="Scripts\App\Partials\Menu.html" />
     <Content Include="Scripts\App\Partials\Signup.html" />
+    <Content Include="Scripts\App\Trabajos\trabajosCtrl.js" />
+    <Content Include="Scripts\App\Trabajos\trabajosDataFactory.js" />
     <Content Include="Scripts\App\Usuarios\Partials\List.html" />
     <Content Include="Scripts\App\Usuarios\loginCtrl.js" />
     <Content Include="Scripts\App\Usuarios\usuariosCtrl.js" />
@@ -1081,7 +1083,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Scripts\App\Trabajos\" />
     <Folder Include="Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
