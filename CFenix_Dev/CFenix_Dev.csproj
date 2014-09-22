@@ -325,6 +325,7 @@
     <Content Include="Scripts\App\Clientes\clientesCtrl.js" />
     <Content Include="Scripts\App\Clientes\clientesDataFactory.js" />
     <Content Include="Scripts\App\Clientes\Partials\Clientes_Add.html" />
+    <Content Include="Scripts\App\Clientes\Partials\Clientes_Detail.html" />
     <Content Include="Scripts\App\Clientes\Partials\Clientes_List.html" />
     <Content Include="Scripts\App\copisteriaFenixApp.js" />
     <Content Include="Scripts\App\CuentasCorrientes\Partials\tables_simple.html" />
@@ -350,8 +351,6 @@
     <Content Include="Scripts\App\Usuarios\usuariosFilters.js" />
     <Content Include="Scripts\App\Usuarios\usuariosSvc.js" />
     <Content Include="Scripts\App\Venta\Partials\Venta_Main.html" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\angular-animate.min.js.map" />
     <Content Include="Scripts\angular-cookies.min.js.map" />
     <Content Include="Scripts\angular-loader.min.js.map" />
@@ -360,14 +359,11 @@
     <Content Include="Scripts\angular-sanitize.min.js.map" />
     <Content Include="Scripts\angular-touch.min.js.map" />
     <Content Include="Scripts\angular.min.js.map" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\devoops.js" />
     <Content Include="Scripts\devoops.min.js" />
     <Content Include="Scripts\errors.json" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
     <Content Include="Areas\HelpPage\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\ResourceModel.cshtml" />
@@ -387,6 +383,11 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
     <None Include="Properties\PublishProfiles\cfenix.pubxml" />
     <None Include="Properties\PublishProfiles\remote.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
