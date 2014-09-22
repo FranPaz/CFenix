@@ -110,8 +110,8 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                 }
             })
 
-            .state('clientes_add', {
-                url: "/Clientes",
+            .state('cliente_detail', {
+                url: "/Cliente/Detail",
                 views: {
                     'headerAdmin': {
                         templateUrl: '/Scripts/App/Partials/Header.html',
@@ -122,7 +122,77 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                         controller: 'clientesCtrl'
                     },
                     'dashboard': {
-                        templateUrl: '/Scripts/App/Clientes/Partials/Clientes_Add.html',
+                        templateUrl: '/Scripts/App/Clientes/Partials/Clientes_Detail.html',
+                        controller: '',
+                        resolve: {
+                            user: 'User',
+                            authenticationRequired: function (user) {
+                                user.isAuthenticated();
+                            }
+                        }
+                    }
+                }
+            })
+                .state('cliente_detail.info', {
+                    url: "/Cliente/Detail/Info",
+                    views: {
+                        'headerAdmin': {
+                            templateUrl: '/Scripts/App/Partials/Header.html',
+                            controller: ''
+                        },
+                        'menuAdmin': {
+                            templateUrl: '/Scripts/App/Partials/Menu.html',
+                            controller: 'clientesCtrl'
+                        },
+                        'dashboard': {
+                            templateUrl: '/Scripts/App/Clientes/Partials/Clientes_InfoCuenta.html',
+                            controller: '',
+                            resolve: {
+                                user: 'User',
+                                authenticationRequired: function (user) {
+                                    user.isAuthenticated();
+                                }
+                            }
+                        }
+                    }
+                })
+
+            .state('cliente_detail.movimientos', {
+                url: "/Cliente/Detail/MovCC",
+                views: {
+                    'headerAdmin': {
+                        templateUrl: '/Scripts/App/Partials/Header.html',
+                        controller: ''
+                    },
+                    'menuAdmin': {
+                        templateUrl: '/Scripts/App/Partials/Menu.html',
+                        controller: 'clientesCtrl'
+                    },
+                    'dashboard': {
+                        templateUrl: '/Scripts/App/Clientes/Partials/Clientes_MovCuenta.html',
+                        controller: '',
+                        resolve: {
+                            user: 'User',
+                            authenticationRequired: function (user) {
+                                user.isAuthenticated();
+                            }
+                        }
+                    }
+                }
+            })
+            .state('cliente_detail.pagos', {
+                url: "/Cliente/Detail/Pagos",
+                views: {
+                    'headerAdmin': {
+                        templateUrl: '/Scripts/App/Partials/Header.html',
+                        controller: ''
+                    },
+                    'menuAdmin': {
+                        templateUrl: '/Scripts/App/Partials/Menu.html',
+                        controller: 'clientesCtrl'
+                    },
+                    'dashboard': {
+                        templateUrl: '/Scripts/App/Clientes/Partials/Clientes_PagosCuenta.html',
                         controller: '',
                         resolve: {
                             user: 'User',
