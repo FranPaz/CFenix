@@ -71,7 +71,7 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                     },
                     'dashboard': {
                         templateUrl: '/Scripts/App/Trabajos/Partials/AltaTrabajo.html',
-                        controller: 'trabajosCtrl',
+                        controller: '',
                         resolve: {
                             user: 'User',
                             authenticationRequired: function (user) {
@@ -95,11 +95,11 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                     },
                     'menuAdmin': {
                         templateUrl: '/Scripts/App/Partials/Menu.html',
-                        controller: 'clientesCtrl'
+                        controller: ''
                     },
                     'dashboard': {
                         templateUrl: '/Scripts/App/Clientes/Partials/Clientes_List.html',
-                        controller: '',
+                        controller: 'clientesCtrl',
                         resolve: {
                             user: 'User',
                             authenticationRequired: function (user) {
@@ -110,6 +110,7 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                 }
             })
 
+            //fpaz: routing para los Tabs de Detalle Clientes
             .state('cliente_detail', {
                 url: "/Cliente/Detail",
                 views: {
@@ -119,11 +120,11 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                     },
                     'menuAdmin': {
                         templateUrl: '/Scripts/App/Partials/Menu.html',
-                        controller: 'clientesCtrl'
+                        controller: ''
                     },
                     'dashboard': {
                         templateUrl: '/Scripts/App/Clientes/Partials/Clientes_Detail.html',
-                        controller: '',
+                        controller: 'clientesCtrl',
                         resolve: {
                             user: 'User',
                             authenticationRequired: function (user) {
@@ -134,19 +135,11 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                 }
             })
                 .state('cliente_detail.info', {
-                    url: "/Cliente/Detail/Info",
+                    url: "/Info",
                     views: {
-                        'headerAdmin': {
-                            templateUrl: '/Scripts/App/Partials/Header.html',
-                            controller: ''
-                        },
-                        'menuAdmin': {
-                            templateUrl: '/Scripts/App/Partials/Menu.html',
-                            controller: 'clientesCtrl'
-                        },
-                        'dashboard': {
+                        'infoCuenta': {
                             templateUrl: '/Scripts/App/Clientes/Partials/Clientes_InfoCuenta.html',
-                            controller: '',
+                            controller: 'clientesCtrl',
                             resolve: {
                                 user: 'User',
                                 authenticationRequired: function (user) {
@@ -154,23 +147,15 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                                 }
                             }
                         }
-                    }
+                    }                    
                 })
 
             .state('cliente_detail.movimientos', {
-                url: "/Cliente/Detail/MovCC",
+                url: "/MovCC",
                 views: {
-                    'headerAdmin': {
-                        templateUrl: '/Scripts/App/Partials/Header.html',
-                        controller: ''
-                    },
-                    'menuAdmin': {
-                        templateUrl: '/Scripts/App/Partials/Menu.html',
-                        controller: 'clientesCtrl'
-                    },
-                    'dashboard': {
+                    'movCuenta': {
                         templateUrl: '/Scripts/App/Clientes/Partials/Clientes_MovCuenta.html',
-                        controller: '',
+                        controller: 'clientesCtrl',
                         resolve: {
                             user: 'User',
                             authenticationRequired: function (user) {
@@ -178,22 +163,15 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                             }
                         }
                     }
-                }
+                }               
             })
+            
             .state('cliente_detail.pagos', {
-                url: "/Cliente/Detail/Pagos",
+                url: "/Pagos",
                 views: {
-                    'headerAdmin': {
-                        templateUrl: '/Scripts/App/Partials/Header.html',
-                        controller: ''
-                    },
-                    'menuAdmin': {
-                        templateUrl: '/Scripts/App/Partials/Menu.html',
-                        controller: 'clientesCtrl'
-                    },
-                    'dashboard': {
+                    'pagosCuenta': {
                         templateUrl: '/Scripts/App/Clientes/Partials/Clientes_PagosCuenta.html',
-                        controller: '',
+                        controller: 'clientesCtrl',
                         resolve: {
                             user: 'User',
                             authenticationRequired: function (user) {
@@ -201,8 +179,10 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                             }
                         }
                     }
-                }
+                }               
             })
+            
+            //fpaz: Fin routing para los Tabs de Detalle Clientes
 
         //#endregion
 

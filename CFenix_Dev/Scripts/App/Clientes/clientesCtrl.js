@@ -60,4 +60,13 @@
     };
     //Fin fpaz: funciones para ALTA en una ventana modal 
     
+    //#region llamadas a partials de tabs en detalle de cliente
+    $scope.alertMe = function () {
+        $state.go('cliente_detail.pagos');
+    };
+
+    $scope.infoCuenta = function () {
+        $state.go('cliente_detail.info');
+    };
+    //#endregion
 });
