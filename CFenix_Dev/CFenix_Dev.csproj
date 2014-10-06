@@ -339,11 +339,12 @@
     <Content Include="Scripts\App\Partials\Header.html" />
     <Content Include="Scripts\App\Insumos\insumosCtrl.js" />
     <Content Include="Scripts\App\Insumos\insumosDataFactory.js" />
-    <Content Include="Scripts\App\Insumos\insumosDirective.js" />
-    <Content Include="Scripts\App\Insumos\insumosFilters.js" />
     <Content Include="Scripts\App\Partials\Login.html" />
     <Content Include="Scripts\App\Partials\Menu.html" />
     <Content Include="Scripts\App\Partials\Signup.html" />
+    <Content Include="Scripts\App\Trabajos\Partials\Trabajos_Add.html" />
+    <Content Include="Scripts\App\Trabajos\Partials\Trabajos_Detail.html" />
+    <Content Include="Scripts\App\Trabajos\Partials\Trabajos_Mod.html" />
     <Content Include="Scripts\App\Trabajos\trabajosCtrl.js" />
     <Content Include="Scripts\App\Trabajos\trabajosDataFactory.js" />
     <Content Include="Scripts\App\Usuarios\Partials\List.html" />
