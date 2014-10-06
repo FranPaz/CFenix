@@ -1,11 +1,10 @@
-﻿copisteriaFenixApp.controller('clientesCtrl', function ($scope, clientesDataFactory, $modal, $stateParams, $state) {
+﻿copisteriaFenixApp.controller('clientesCtrl', function ($scope, clientesDataFactory, $modal, $stateParams, $state, listadoClientes, infoCliente) {
     
     //fpaz: trae todos los clientes
-    $scope.clientes = clientesDataFactory.query();
+    $scope.clientes = listadoClientes;
 
-    //fpaz: trae los datos de un cliente en particular
-    $scope.clienteId = $stateParams.Id;
-    $scope.cliente = clientesDataFactory.get({ id: $scope.clienteId });
+    //fpaz: trae los datos de un cliente en particular    
+    $scope.cliente = infoCliente;
 
     //funcion para agregar un nuevo Cliente y mostrarlo en el listado
     $scope.addCliente = function (cliente) {
@@ -18,55 +17,30 @@
         $scope.clientes.splice(i, 1);
     };
 
-    //fpaz: funciones para ALTA en una ventana modal 
-    $scope.open = function () {
-
-        var modalInstance = $modal.open({// $modal.open() sirve para abrir una ventana modal que seria modalInstance
-            templateUrl: '/Scripts/App/Clientes/Partials/Clientes_Add.html',
-            controller: ModalInstanceCtrl,
-            resolve: {
-                cliente: function () {
-                    return $scope.cliente;
-                }
-            }
-        });
-
-        modalInstance.result.then(function (cliente) {
-            $scope.resultado = 'Alta Correcta'; 
-            $scope.addCliente(cliente);
-        }, function () {
-            $scope.resultado = 'Alta Incorrecta';
-        });
-    };
-
-    var ModalInstanceCtrl = function ($scope, $modalInstance, clientesDataFactory, cliente) {
-        $scope.cliente = cliente;
-        $scope.errors = [];
-        $scope.alerts = [];
-        $scope.ok = function (cliente) {
-            //grupoEmpresario.IdHash = md5.createHash(grupoEmpresario.Cuit_Cuil);
-            clientesDataFactory.save(cliente).$promise.then(
-                function () {
-                    $modalInstance.close(cliente);
-                },
-                function (response) {
-                    $scope.errors = response.data;
-                });
-        };
-
-        $scope.cancel = function () {
-            $modalInstance.dismiss('cancel');
-        };
+    //fpaz: funciones para ALTA en una ventana modal     
+    $scope.altaCliente = function (cliente) {
+        //grupoEmpresario.IdHash = md5.createHash(grupoEmpresario.Cuit_Cuil);
+        clientesDataFactory.save(cliente).$promise.then(
+            function () {
+                $scope.addCliente(cliente);
+                alert('Nuevo Cliente Guardado');
+            },
+            function (response) {
+                $scope.errors = response.data;
+                alert('Error al guardar cliente Cliente');
+            });
     };
     //Fin fpaz: funciones para ALTA en una ventana modal 
     
     //#region llamadas a partials de tabs en detalle de cliente
-    $scope.alertMe = function () {
-        $state.go('cliente_detail.pagos');
-    };
-
     $scope.infoCuenta = function () {
         $state.go('cliente_detail.info');
+    };
+    $scope.movCuenta = function () {
+        $state.go('cliente_detail.movimientos');
+    };
+    $scope.pagosCuenta = function () {
+        $state.go('cliente_detail.pagos');
     };
     //#endregion
 });

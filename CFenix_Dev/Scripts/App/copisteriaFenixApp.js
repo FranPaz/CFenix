@@ -1,7 +1,8 @@
-var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngResource', 'ui.router', 'ngCookies','ui.bootstrap',
+var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngResource', 'ui.router', 'ngCookies','ui.bootstrap',,'chieffancypants.loadingBar', 'ngAnimate',
   'ngSanitize']) //fpaz: defino el modulo con las librerias para routing (ui.router), usar apis rest y para interfaz de usuarios con angular(ui.bootstrap)
-    .config(function ($stateProvider, $urlRouterProvider) { //fpaz: configuro el routing de los states usando los servicios $stateProvider y $urlRouteProvider
+    .config(function ($stateProvider, $urlRouterProvider, cfpLoadingBarProvider) { //fpaz: configuro el routing de los states usando los servicios $stateProvider y $urlRouteProvider
         
+        cfpLoadingBarProvider.includeSpinner = true;
         // fpaz:para cualquier caso que no este definido se va al estado del home mostrando grupos
         $urlRouterProvider.otherwise("/Cuentas")
 
@@ -106,7 +107,7 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                             },
                             clientesDataFactory: 'clientesDataFactory',
                             listadoClientes: function (clientesDataFactory) {
-                                return clientesDataFactory.query().$promise;
+                                return clientesDataFactory.query();
                             },
                             infoCliente: function () {
                                 return { value: [] };
@@ -159,7 +160,7 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                                     user.isAuthenticated();
                                 },
                                 listadoClientes: function () {
-                                  return { value: [] };
+                                    return { value: [] };
                                 },
                                 clientesDataFactory: 'clientesDataFactory',
                                 infoCliente: function (clientesDataFactory, $stateParams) {
@@ -173,36 +174,36 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                 })
 
                 .state('cliente_detail.movimientos', {
-                url: "/MovCC",
-                views: {
-                    'movCuenta': {
-                        templateUrl: '/Scripts/App/Clientes/Partials/Clientes_MovCuenta.html',
-                        controller: '',
-                        resolve: {
-                            user: 'User',
-                            authenticationRequired: function (user) {
-                                user.isAuthenticated();
+                    url: "/MovCC",
+                    views: {
+                        'movCuenta': {
+                            templateUrl: '/Scripts/App/Clientes/Partials/Clientes_MovCuenta.html',
+                            controller: '',
+                            resolve: {
+                                user: 'User',
+                                authenticationRequired: function (user) {
+                                    user.isAuthenticated();
+                                }
                             }
                         }
-                    }
-                }               
-            })
+                    }               
+                })
             
                 .state('cliente_detail.pagos', {
-                url: "/Pagos",
-                views: {
-                    'pagosCuenta': {
-                        templateUrl: '/Scripts/App/Clientes/Partials/Clientes_PagosCuenta.html',
-                        controller: '',
-                        resolve: {
-                            user: 'User',
-                            authenticationRequired: function (user) {
-                                user.isAuthenticated();
+                    url: "/Pagos",
+                    views: {
+                        'pagosCuenta': {
+                            templateUrl: '/Scripts/App/Clientes/Partials/Clientes_PagosCuenta.html',
+                            controller: 'deudasCtrl',
+                            resolve: {
+                                user: 'User',
+                                authenticationRequired: function (user) {
+                                    user.isAuthenticated();
+                                }
                             }
                         }
-                    }
-                }               
-            })
+                    }               
+                })
             
             //fpaz: Fin routing para los Tabs de Detalle Clientes
 
@@ -232,6 +233,21 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                      }
                  }
              })
+            .state('cliente_detail.pagos.deudaVenta', {
+                url: "/Detalle/Deuda",
+                views: {                    
+                    'detalleDeuda': {
+                        templateUrl: '/Scripts/App/Venta/Partials/Venta_Deuda.html',
+                        controller: '',
+                        resolve: {
+                            user: 'User',
+                            authenticationRequired: function (user) {
+                                user.isAuthenticated();
+                            }
+                        }
+                    }
+                }
+            })
         //#endregion
 
         //#region Notificaciones
@@ -311,17 +327,19 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
         //#endregion
     })
 
+   
+
     //rsanch Login antes de ver el state de ingresos.
-    .run(function ($rootScope, $state, User) {
-        try {
-            User.isAuthenticated();
-        } catch (e) {
-            // do nothing with this error
-        }
-        $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {
-            if (error.name === 'AuthenticationRequired') {
-                User.setNextState(toState.name, 'Debes Iniciar Sesion para ver esta pagina');
-                $state.go('login', {}, { reload: true });
-            }
-        });
-    });
+    //.run(function ($rootScope, $state, User) {
+    //    try {
+    //        User.isAuthenticated();
+    //    } catch (e) {
+    //        // do nothing with this error
+    //    }
+    //    $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {
+    //        if (error.name === 'AuthenticationRequired') {
+    //            User.setNextState(toState.name, 'Debes Iniciar Sesion para ver esta pagina');
+    //            $state.go('login', {}, { reload: true });
+    //        }
+    //    });
+    //});

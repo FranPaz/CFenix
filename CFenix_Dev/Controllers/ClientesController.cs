@@ -88,7 +88,7 @@ namespace CFenix_Dev.Controllers
             db.Clientes.Add(cliente);
             db.SaveChanges();
 
-            return Request.CreateResponse(HttpStatusCode.OK);
+            return  Request.CreateResponse(HttpStatusCode.OK);
         }
 
         // DELETE: api/Clientes/5
