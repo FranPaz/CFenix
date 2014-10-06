@@ -141,7 +141,7 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
         //#endregion
 
         //#region Clientes
-            .state('Clientes', {
+            .state('clientes', {
                 url: "/Clientes",
                 views: {
                     'headerAdmin': {
@@ -153,21 +153,28 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                         controller: ''
                     },
                     'dashboard': {
-                        templateUrl: '/Scripts/App/Clientes/Partials/Clientes_List.html',
-                        controller: 'clientesCtrl',
+                        templateUrl: '/Scripts/App/Clientes/Partials/Clientes_List.html',                        
                         resolve: {
-                            user: 'User',
+                            user: 'User',                            
                             authenticationRequired: function (user) {
                                 user.isAuthenticated();
+                            },
+                            clientesDataFactory: 'clientesDataFactory',
+                            listadoClientes: function (clientesDataFactory) {
+                                return clientesDataFactory.query().$promise;
+                            },
+                            infoCliente: function () {
+                                return { value: [] };
                             }
-                        }
+                        },
+                        controller: 'clientesCtrl'
                     }
                 }
             })
 
             //fpaz: routing para los Tabs de Detalle Clientes
             .state('cliente_detail', {
-                url: "/Cliente/Detail",
+                url: "/Cliente/:clienteId/Detail",                
                 views: {
                     'headerAdmin': {
                         templateUrl: '/Scripts/App/Partials/Header.html',
@@ -184,13 +191,19 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                             user: 'User',
                             authenticationRequired: function (user) {
                                 user.isAuthenticated();
+                            },
+                            listadoClientes: function () {
+                                return { value: [] };
+                            },
+                            infoCliente: function () {
+                                return { value: [] };
                             }
                         }
                     }
                 }
             })
                 .state('cliente_detail.info', {
-                    url: "/Info",
+                    url: "/Info",                    
                     views: {
                         'infoCuenta': {
                             templateUrl: '/Scripts/App/Clientes/Partials/Clientes_InfoCuenta.html',
@@ -199,18 +212,27 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                                 user: 'User',
                                 authenticationRequired: function (user) {
                                     user.isAuthenticated();
+                                },
+                                listadoClientes: function () {
+                                  return { value: [] };
+                                },
+                                clientesDataFactory: 'clientesDataFactory',
+                                infoCliente: function (clientesDataFactory, $stateParams) {
+                                    //fpaz: trae los datos de un cliente en particular
+                                    var clienteId = $stateParams.clienteId;
+                                    return clientesDataFactory.get({ id: clienteId }).$promise;
                                 }
                             }
                         }
                     }                    
                 })
 
-            .state('cliente_detail.movimientos', {
+                .state('cliente_detail.movimientos', {
                 url: "/MovCC",
                 views: {
                     'movCuenta': {
                         templateUrl: '/Scripts/App/Clientes/Partials/Clientes_MovCuenta.html',
-                        controller: 'clientesCtrl',
+                        controller: '',
                         resolve: {
                             user: 'User',
                             authenticationRequired: function (user) {
@@ -221,12 +243,12 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                 }               
             })
             
-            .state('cliente_detail.pagos', {
+                .state('cliente_detail.pagos', {
                 url: "/Pagos",
                 views: {
                     'pagosCuenta': {
                         templateUrl: '/Scripts/App/Clientes/Partials/Clientes_PagosCuenta.html',
-                        controller: 'clientesCtrl',
+                        controller: '',
                         resolve: {
                             user: 'User',
                             authenticationRequired: function (user) {

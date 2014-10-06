@@ -9,7 +9,7 @@ namespace CFenix_Dev.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(CFenix_Dev.Models.CFenix_Context context)

@@ -8,8 +8,7 @@ using System.Web;
 namespace CFenix_Dev.Models
 {
     public class Cliente
-    {
-        [Required]
+    {        
         public int Id { get; set; }
         public string Nombre_RazonSocial { get; set; }
         public string Cuit_Cuil { get; set; }
