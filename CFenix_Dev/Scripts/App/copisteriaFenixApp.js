@@ -34,6 +34,8 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
         //#endregion     
 
         //#region Trabajos e insumos
+
+            //Dashboard para insumos
         .state('Insumos', {
             url: "/Insumos",
             views: {
@@ -47,7 +49,7 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                 },
                 'dashboard': {
                     templateUrl: '/Scripts/App/Insumos/Partials/AltaInsumo.html',
-                    controller: 'insumosCtrl',
+                    controller: '',
                     resolve: {
                         user: 'User',
                         authenticationRequired: function (user) {
@@ -57,7 +59,7 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                 }
             }
         })
-
+            //Dashboard Para Trabajos
             .state('Trabajos', {
                 url: "/Trabajos",
                 views: {
@@ -71,7 +73,7 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                     },
                     'dashboard': {
                         templateUrl: '/Scripts/App/Trabajos/Partials/AltaTrabajo.html',
-                        controller: '',
+                        controller: 'trabajosCtrl',
                         resolve: {
                             user: 'User',
                             authenticationRequired: function (user) {
@@ -82,6 +84,59 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                 }
             })
 
+            //iafar:Routing para los tabs de Trabajo
+
+            //Alta de un nuevo trabajo
+            .state('Trabajos.add', {
+                url: "/Add",
+                views: {
+                    'AddTrabajos': {
+                        templateUrl: '/Scripts/App/Trabajos/Partials/Trabajos_Add.html',
+                        controller: 'trabajosCtrl',
+                        resolve: {
+                            user: 'User',
+                            authenticationRequired: function (user) {
+                                user.isAuthenticated();
+                            }
+                        }
+                    }
+                }
+            })
+
+            //Modificacion de un trabajo
+            .state('Trabajos.mod', {
+                url: "/Mod",
+                views: {
+                    'ModTrabajos': {
+                        templateUrl: '/Scripts/App/Trabajos/Partials/Trabajos_Mod.html',
+                        controller: 'trabajosCtrl',
+                        resolve: {
+                            user: 'User',
+                            authenticationRequired: function (user) {
+                                user.isAuthenticated();
+                            }
+                        }
+                    }
+                }
+            })
+
+            //Detalle de un trabajo
+            //.state('Trabajos.Detail', {
+            //    url: "/Trabajos/Detail",
+            //    views: {
+            //        'DetailTrabajos': {
+            //            templateUrl: '/Scripts/App/Trabajos/Partials/Trabajos_Detail.html',
+            //            controller: 'trabajosCtrl',
+            //            resolve: {
+            //                user: 'User',
+            //                authenticationRequired: function (user) {
+            //                    user.isAuthenticated();
+            //                }
+            //            }
+            //        }
+            //    }
+            //})
+            //Fin de routing de Tabs para Trabajo
 
         //#endregion
 
