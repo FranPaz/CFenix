@@ -18,8 +18,8 @@ namespace CFenix_Dev.Models
             this.Configuration.ProxyCreationEnabled = false;
 
             //fpaz: configuracion para la migracion automatica            
-            Database.SetInitializer<CFenix_Context>(new CFenixDBInitializer());
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<CFenix_Context, CFenix_Dev.Migrations.Configuration>("CFenix_Context"));
+            Database.SetInitializer<CFenix_Context>(new DropCreateDatabaseIfModelChanges<CFenix_Context>());
+            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<CFenix_Context, CFenix_Dev.Migrations.Configuration>("CFenix_Context"));
         }
 
         #region Definicion de Tablas DbSet
@@ -38,26 +38,28 @@ namespace CFenix_Dev.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
+            
             //fpaz: para relacion 1 a 1 entre cliente y cuenta corriente defino que ClienteId va a ser ka ForeingKey de la relacion 1 a 1 y asi poder usar el properti cliente para navegacion
             modelBuilder.Entity<CuentaCorriente>()
                         .HasRequired(a => a.Cliente)
                         .WithMany()
                         .HasForeignKey(u => u.ClienteId);
+
+            base.OnModelCreating(modelBuilder);
         }
 
         
 
     }
 
-    public class CFenixDBInitializer:DropCreateDatabaseIfModelChanges<CFenix_Context>
-    {
-        protected override void Seed(CFenix_Context context)
-        {
-            //fpaz: proveedor por defecto
-            context.Proveedores.Add(new Proveedor { Nombre = "Proveedor 1", Dir = "Calle Falsa 123", tel = "123456" });            
+    //public class CFenixDBInitializer:DropCreateDatabaseIfModelChanges<CFenix_Context>
+    //{
+    //    protected override void Seed(CFenix_Context context)
+    //    {
+    //        //fpaz: proveedor por defecto
+    //        context.Proveedores.Add(new Proveedor { Nombre = "Proveedor 1", Dir = "Calle Falsa 123", tel = "123456" });            
             
-            base.Seed(context);
-        }
-    }
+    //        base.Seed(context);
+    //    }
+    //}
 }

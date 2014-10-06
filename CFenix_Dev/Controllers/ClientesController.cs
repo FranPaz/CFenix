@@ -16,11 +16,17 @@ namespace CFenix_Dev.Controllers
     {
         private CFenix_Context db = new CFenix_Context();
 
-        // GET: api/Clientes
-        public IQueryable<Cliente> GetClientes()
+         //GET: api/Clientes
+        public IHttpActionResult GetClientes()
         {
-            return db.Clientes;
+            var clientes = db.Clientes.ToList();
+            if (clientes == null)
+            {
+                return NotFound();
+            }
+            return Ok(clientes);
         }
+        
 
         // GET: api/Clientes/5
         [ResponseType(typeof(Cliente))]
@@ -72,17 +78,17 @@ namespace CFenix_Dev.Controllers
 
         // POST: api/Clientes
         [ResponseType(typeof(Cliente))]
-        public IHttpActionResult PostCliente(Cliente cliente)
+        public HttpResponseMessage PostCliente(Cliente cliente)
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
             }
 
             db.Clientes.Add(cliente);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = cliente.Id }, cliente);
+            return Request.CreateResponse(HttpStatusCode.OK);
         }
 
         // DELETE: api/Clientes/5
