@@ -272,6 +272,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\cleanStyle.css" />
+    <Content Include="Content\loading-bar.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="img\8962691008_7f489395c9_m.jpg" />
     <Content Include="img\8985207189_01ea27882d_m.jpg" />
@@ -335,8 +336,11 @@
     <Content Include="Scripts\App\CuentasCorrientes\Partials\tables_simple.html" />
     <Content Include="Scripts\App\Insumos\Partials\Insumos_Add.html" />
     <Content Include="Scripts\App\Insumos\Partials\Insumos_Detail.html" />
+    <Content Include="Scripts\App\Deudas\deudasCtrl.js" />
+    <Content Include="Scripts\App\Venta\Partials\Venta_Deuda.html" />
     <Content Include="Scripts\App\Insumos\Partials\Insumos_Mod.html" />
     <Content Include="Scripts\App\Insumos\Partials\ListInsumos.html" />
+    <Content Include="Scripts\App\Insumos\Partials\AltaInsumo.html" />
     <Content Include="Scripts\App\Notificaciones\Partials\page_messages.html" />
     <Content Include="Scripts\App\Trabajos\Partials\ListTrabajos.html" />
     <Content Include="Scripts\App\Partials\Dashboard.html" />
@@ -1544,6 +1548,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Scripts\App\Deudas\Partials\" />
     <Folder Include="Views\Shared\" />
   </ItemGroup>
   <ItemGroup>

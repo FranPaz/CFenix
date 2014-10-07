@@ -7,33 +7,6 @@
         </ol>
     </div>
 </div>
-<div class="row">
-    <div class="col-xs-12 col-sm-12">
-        <div class="box">
-            <div class="box-header">
-                <div class="box-name">
-                    <!--<i class="fa fa-search"></i>-->
-                    <span>Detalle de Cliente</span>
-                </div>
-
-                <div class="no-move"></div>
-            </div>
-            <div class="box-content">
-                <h4 class="page-header">Nuevo</h4>
-                <form class="form-horizontal" role="form">
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">Nombre</label>
-                        <div class="col-sm-4">
-                            <input type="text" class="form-control" placeholder="Nombre de Producto" data-toggle="tooltip" data-placement="bottom" title="Ingrese el nombre del producto">
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-
 <!-- Area de Detalles de Cliente -->
 
 <div class="row">
@@ -49,25 +22,15 @@
 
             <div class="box-content">
                 <tabset justified="true">
-                    <tab heading="Informacion de Cuenta" select="infoCuenta()">
-                        Justified content
+                    <tab heading="Informacion de Cuenta" select="infoCuenta()">                        
                         <div ui-view="infoCuenta"></div>
                     </tab>
-                    <tab heading="Ultimos Movimientos">
-                        Short Labeled Justified content
+                    <tab heading="Ultimos Movimientos" select="movCuenta()">                        
                         <div ui-view="movCuenta"></div>
                     </tab>
-                    <tab heading="Pagos Pendientes">
-                        Long Labeled Justified content
+                    <tab heading="Pagos Pendientes" select="pagosCuenta()">                        
                         <div ui-view="pagosCuenta"></div>
-                    </tab>
-                    <tab select="alertMe()">
-                        <tab-heading>
-                            <i class="glyphicon glyphicon-usd"></i> Alert!
-                        </tab-heading>
-                        I've got an HTML heading, and a select callback. Pretty cool!
-                        <div ui-view="pagosCuenta"></div>
-                    </tab>
+                    </tab>                    
                 </tabset>
             </div>
         </div>

@@ -1,1 +1,50 @@
-﻿<h1>Pagos Pendientes</h1>
+﻿<!--Area Pagos Pendientes-->
+<div class="row-fluid">
+    <div class="col-xs-12 col-sm-5 pull-left">        
+        <div class="box-content no-padding">
+            <table class="table table-bordered table-striped table-hover table-heading table-datatable" id="datatable-1">
+                <thead>
+                    <tr>
+                        <th>Numero de Remito</th>
+                        <th>Fecha de Remito</th>
+                        <th>Monto</th>                        
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>                    
+                    <tr>
+                        <td>123</td>
+                        <td>01/03/2013</td>
+                        <td>$1075,75</td>                        
+                        <!--<td><a ui-sref="cliente_detail({clienteId:cliente.Id})" class="tab-link">Ver Detalle</a></td>-->                        
+                        <td><a ui-sref="cliente_detail.pagos.deudaVenta" class="tab-link">Ver Detalle</a></td>
+                    </tr>
+                    <tr>
+                        <td>111</td>
+                        <td>01/01/2013</td>
+                        <td>$300</td>
+                        <!--<td><a ui-sref="cliente_detail({clienteId:cliente.Id})" class="tab-link">Ver Detalle</a></td>-->
+                        <td><a ui-sref="cliente_detail.pagos.deudaVenta" class="tab-link">Ver Detalle</a></td>
+                    </tr>
+                    <tr>
+                        <td>222</td>
+                        <td>02/02/2013</td>
+                        <td>$300</td>
+                        <!--<td><a ui-sref="cliente_detail({clienteId:cliente.Id})" class="tab-link">Ver Detalle</a></td>-->
+                        <td><a ui-sref="cliente_detail.pagos.deudaVenta" class="tab-link">Ver Detalle</a></td>
+                    </tr>
+                    <!-- End: list_row -->
+                </tbody>
+                <tfoot>
+                    
+                </tfoot>
+            </table>
+        </div>
+    </div>
+    <div ui-view="detalleDeuda" class="col-xs-12 col-sm-7"></div>
+    <!--<div collapse="isCollapsed" class="col-xs-12 col-sm-7">
+        <div ui-view="detalleDeuda"></div>
+    </div>-->
+    <div class="clearfix"></div>
+</div>
+<!--Fin: Area Pagos Pendientes-->

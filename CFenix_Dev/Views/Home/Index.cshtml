@@ -22,8 +22,8 @@
 
     <!-- js y css para Angular Loading bar  -->
     <script src="~/Scripts/angular-animate.min.js"></script>
-    @*<script src="~/Scripts/loading-bar.js"></script>
-        <link href="~/Content/loading-bar.css" rel="stylesheet" />*@
+    <script src="~/Scripts/loading-bar.js"></script>
+    <link href="~/Content/loading-bar.css" rel="stylesheet" />
 
     @*js para ui-routing *@
     <script src="~/Scripts/angular-ui-router.min.js"></script>
@@ -56,6 +56,8 @@
     <script src="~/Scripts/App/Trabajos/trabajosDataFactory.js"></script>
     
     
+
+    <script src="~/Scripts/App/Deudas/deudasCtrl.js"></script>
     <meta name="description" content="description">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -92,7 +94,6 @@
                     @*<div class="preloader">
                             <img src="~/img/devoops_getdata.gif" class="devoops-getdata" alt="preloader" />
                         </div>*@
-                    @*<div id="ajax-content"></div>*@
                     <div ui-view="dashboard"></div>
                 </div>
                 <!--End Content-->
