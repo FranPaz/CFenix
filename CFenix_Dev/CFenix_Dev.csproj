@@ -333,9 +333,12 @@
     <Content Include="Scripts\App\Clientes\Partials\Clientes_PagosCuenta.html" />
     <Content Include="Scripts\App\copisteriaFenixApp.js" />
     <Content Include="Scripts\App\CuentasCorrientes\Partials\tables_simple.html" />
-    <Content Include="Scripts\App\Insumos\Partials\AltaInsumo.html" />
+    <Content Include="Scripts\App\Insumos\Partials\Insumos_Add.html" />
+    <Content Include="Scripts\App\Insumos\Partials\Insumos_Detail.html" />
+    <Content Include="Scripts\App\Insumos\Partials\Insumos_Mod.html" />
+    <Content Include="Scripts\App\Insumos\Partials\ListInsumos.html" />
     <Content Include="Scripts\App\Notificaciones\Partials\page_messages.html" />
-    <Content Include="Scripts\App\Trabajos\Partials\AltaTrabajo.html" />
+    <Content Include="Scripts\App\Trabajos\Partials\ListTrabajos.html" />
     <Content Include="Scripts\App\Partials\Dashboard.html" />
     <Content Include="Scripts\App\Partials\Header.html" />
     <Content Include="Scripts\App\Insumos\insumosCtrl.js" />

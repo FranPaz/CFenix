@@ -17,9 +17,14 @@ namespace CFenix_Dev.Controllers
         private CFenix_Context db = new CFenix_Context();
 
         // GET: api/Insumos
-        public IQueryable<Insumo> GetInsumos()
+        public IHttpActionResult GetInsumos()
         {
-            return db.Insumos;
+            var insumos = db.Insumos.ToList();
+            if (insumos == null)
+            {
+                return NotFound();
+            }
+            return Ok(insumos);
         }
 
         // GET: api/Insumos/5
@@ -76,13 +81,13 @@ namespace CFenix_Dev.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                return BadRequest();
             }
 
             db.Insumos.Add(insumo);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = insumo.Id }, insumo);
+            return Ok();
         }
 
         // DELETE: api/Insumos/5

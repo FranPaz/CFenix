@@ -17,19 +17,57 @@
 
                 <div class="no-move"></div>
             </div>
+            <!--iafar: Comienza box de carga de nuevo item de factura -->
+            
             <div class="box-content">
-                <h4 class="page-header">Nuevo</h4>
-                <form class="form-horizontal" role="form">
+                <h4 class="page-header">Detalles de Producto</h4>
+                <form class="form-horizontal ng-pristine ng-valid" role="form">
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Codigo del Producto</label>
-                        <div class="col-sm-4">
-                            <input type="text" class="form-control" placeholder="Codigo" data-toggle="tooltip" data-placement="bottom" title="Ingrese el Codigo del Producto">
-                        </div>                        
-                        <div class="col-sm-4">                            
-                            <a href="#" class="col-sm-2 control-label">Busqueda Avanzada</a>
+                        <a href="#" class="col-sm-1 control-label" title="Busqueda Avanzada">Codigo:</a>
+
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" placeholder="000" data-placement="bottom" title="Ingrese el Codigo del Producto">
+                        </div>
+
+                        <label class="col-sm-1 control-label">Nombre:</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" placeholder="" data-placement="bottom" readonly="">
                         </div>
                     </div>
-                    <div class="clearfix"></div>
+                    <div class="form-group">
+
+                        <label class="col-sm-1 control-label">Stock:</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" placeholder="100" data-placement="bottom" title="Cantidad en existencia" readonly="">
+                        </div>
+
+                        <label class="col-sm-1 control-label">Cantidad:</label>
+                        <div class="col-sm-1">
+                            <input type="text" class="form-control" placeholder="#" data-placement="bottom" title="Ingrese la cantidad del producto">
+                        </div>
+                        <div class="col-sm-1">
+                            <input type="text" class="form-control" placeholder="Un." data-placement="bottom" title="Unidad de Venta" readonly="">
+                        </div>
+
+                        <label class="col-sm-1 control-label">Precio$:</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" placeholder="0,00" data-placement="bottom">
+                        </div>
+                        <div class="col-sm-3">
+                            <button type="submit" class="btn btn-primary btn-label-left">
+                                <span><i class="fa fa-search"></i></span>
+                                Agregar
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!--<div class="col-sm-2">
+                        <button type="submit" class="btn btn-primary btn-label-left">
+                            <span><i class="fa fa-search"></i></span>
+                            Buscar
+                        </button>
+                    </div>-->
+                    <!--<div class="clearfix"></div>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-2">
                         </div>
@@ -39,9 +77,14 @@
                                 Buscar
                             </button>
                         </div>
-                    </div>
+                    </div>-->
                 </form>
             </div>
+
+            <!-- iafar: Fin de box de nuevo item -->
+
+
+        
         </div>
     </div>
 </div>
@@ -55,7 +98,7 @@
             <div class="box-header">
                 <div class="box-name">
                     <!--<i class="fa fa-table"></i>-->
-                    <span>Buscar Trabajos</span>
+                    <span>Detalle Factura</span>
                 </div>
                 <div class="no-move"></div>
             </div>

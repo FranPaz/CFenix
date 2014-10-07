@@ -48,7 +48,7 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                     controller: ''
                 },
                 'dashboard': {
-                    templateUrl: '/Scripts/App/Insumos/Partials/AltaInsumo.html',
+                    templateUrl: '/Scripts/App/Insumos/Partials/ListInsumos.html',
                     controller: '',
                     resolve: {
                         user: 'User',
@@ -59,6 +59,62 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                 }
             }
         })
+
+            //Alta de un nuevo Insumo
+            .state('Insumos.add', {
+                url: "/Add",
+                views: {
+                    'AddInsumos': {
+                        templateUrl: '/Scripts/App/Insumos/Partials/Insumos_Add.html',
+                        controller: 'insumosCtrl',
+                        resolve: {
+                            user: 'User',
+                            authenticationRequired: function (user) {
+                                user.isAuthenticated();
+                            }
+                        }
+                    }
+                }
+            })
+
+            //Modificacion de un insumo
+            .state('Insumos.mod', {
+                url: "/Mod",
+                views: {
+                    'ModInsumos': {
+                        templateUrl: '/Scripts/App/Insumos/Partials/Insumos_Mod.html',
+                        controller: 'insumosCtrl',
+                        resolve: {
+                            user: 'User',
+                            authenticationRequired: function (user) {
+                                user.isAuthenticated();
+                            }
+                        }
+                    }
+                }
+            })
+
+            //Detalle de un isumo
+        //"/Trabajos/Detail"
+            .state('Insumos.detail', {
+                url: "/Detail",
+                views: {
+                    'DetailInsumos': {
+                        templateUrl: '/Scripts/App/Insumos/Partials/Insumos_Detail.html',
+                        controller: 'insumosCtrl',
+                        resolve: {
+                            user: 'User',
+                            authenticationRequired: function (user) {
+                                user.isAuthenticated();
+                            }
+                        }
+                    }
+                }
+            })
+
+
+            //Fin Dashboard de insumos
+
             //Dashboard Para Trabajos
             .state('Trabajos', {
                 url: "/Trabajos",
@@ -72,7 +128,7 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                         controller: ''
                     },
                     'dashboard': {
-                        templateUrl: '/Scripts/App/Trabajos/Partials/AltaTrabajo.html',
+                        templateUrl: '/Scripts/App/Trabajos/Partials/ListTrabajos.html',
                         controller: 'trabajosCtrl',
                         resolve: {
                             user: 'User',
@@ -121,21 +177,22 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
             })
 
             //Detalle de un trabajo
-            //.state('Trabajos.Detail', {
-            //    url: "/Trabajos/Detail",
-            //    views: {
-            //        'DetailTrabajos': {
-            //            templateUrl: '/Scripts/App/Trabajos/Partials/Trabajos_Detail.html',
-            //            controller: 'trabajosCtrl',
-            //            resolve: {
-            //                user: 'User',
-            //                authenticationRequired: function (user) {
-            //                    user.isAuthenticated();
-            //                }
-            //            }
-            //        }
-            //    }
-            //})
+        //"/Trabajos/Detail"
+            .state('Trabajos.detail', {
+                url: "/Detail",
+                views: {
+                    'DetailTrabajos': {
+                        templateUrl: '/Scripts/App/Trabajos/Partials/Trabajos_Detail.html',
+                        controller: 'trabajosCtrl',
+                        resolve: {
+                            user: 'User',
+                            authenticationRequired: function (user) {
+                                user.isAuthenticated();
+                            }
+                        }
+                    }
+                }
+            })
             //Fin de routing de Tabs para Trabajo
 
         //#endregion
