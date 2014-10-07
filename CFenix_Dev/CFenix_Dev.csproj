@@ -325,7 +325,6 @@
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\App\Clientes\clientesCtrl.js" />
     <Content Include="Scripts\App\Clientes\clientesDataFactory.js" />
-    <Content Include="Scripts\App\Clientes\clientesDetailCtrl.js" />
     <Content Include="Scripts\App\Clientes\Partials\Clientes_Add.html" />
     <Content Include="Scripts\App\Clientes\Partials\Clientes_Detail.html" />
     <Content Include="Scripts\App\Clientes\Partials\Clientes_InfoCuenta.html" />

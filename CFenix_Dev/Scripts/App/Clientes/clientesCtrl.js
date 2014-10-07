@@ -1,10 +1,10 @@
-﻿copisteriaFenixApp.controller('clientesCtrl', function ($scope, clientesDataFactory, $modal, $stateParams, $state, listadoClientes, infoCliente) {
+﻿copisteriaFenixApp.controller('clientesCtrl', function ($scope, clientesDataFactory, $modal, $stateParams, $state, listadoClientes, cuentaCliente) {
     
     //fpaz: trae todos los clientes
     $scope.clientes = listadoClientes;
 
     //fpaz: trae los datos de un cliente en particular    
-    $scope.cliente = infoCliente;
+    $scope.cuentaCliente = cuentaCliente;
 
     //funcion para agregar un nuevo Cliente y mostrarlo en el listado
     $scope.addCliente = function (cliente) {
@@ -17,7 +17,7 @@
         $scope.clientes.splice(i, 1);
     };
 
-    //fpaz: funciones para ALTA en una ventana modal     
+    //#region fpaz: funciones para ALTA de Cliente   
     $scope.altaCliente = function (cliente) {
         //grupoEmpresario.IdHash = md5.createHash(grupoEmpresario.Cuit_Cuil);
         clientesDataFactory.save(cliente).$promise.then(
@@ -30,7 +30,7 @@
                 alert('Error al guardar cliente Cliente');
             });
     };
-    //Fin fpaz: funciones para ALTA en una ventana modal 
+    //#endregion
     
     //#region llamadas a partials de tabs en detalle de cliente
     $scope.infoCuenta = function () {

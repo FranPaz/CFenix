@@ -3,13 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
-
-
 namespace CFenix_Dev.Models
 {
     public class CuentaCorriente
-    {
-        [Required]
+    {        
         public int Id { get; set; }
         public double MontoTotal { get; set; }        
         public DateTime FechaAlta { get; set; }
@@ -22,8 +19,7 @@ namespace CFenix_Dev.Models
     }
 
     public class TipoEstado
-    {
-        [Required]
+    {        
         public int Id { get; set; }
         public string Descripcion { get; set; }
         public virtual ICollection<CuentaCorriente> CuentasCorrientes { get; set; }
