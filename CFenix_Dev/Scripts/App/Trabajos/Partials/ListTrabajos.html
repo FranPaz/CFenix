@@ -1,0 +1,115 @@
+﻿<div id="breadcrumb" class="col-md-12">
+    <ol class="breadcrumb">
+        <li><a href="index.html">dashboard</a></li>
+        <li><a href="#">Stock</a></li>
+        <li><a href="#">Trabajos</a></li>
+    </ol>
+
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-12">
+        <div class="box">
+            <div class="box-header">
+                <div class="box-name">
+                    <!--<i class="fa fa-search"></i>-->
+                    <span>Gestion de Trabajos</span>
+                </div>
+
+                <div class="no-move"></div>
+            </div>
+            <div class="box-content">
+                <!--<h4 class="page-header"></h4>-->
+
+                <div class="box-content">
+
+                    <!-- inicio zona TAB -->
+                    <tabset justified="true">
+                        <tab heading="Nuevo" select="TrabajosAdd()">
+                            Nuevo
+                            <div ui-view="AddTrabajos"></div>
+                        </tab>
+                        <tab heading="Modificar" select="TrabajosMod()">
+                            Modificar
+                            <div ui-view="ModTrabajos"></div>
+                        </tab>
+                        <tab heading="Detalle" select="TrabajosDetail()">
+                            Detalles
+                            <div ui-view="DetailTrabajos"></div>
+                        </tab>
+                    </tabset>
+                    <!-- Fin zona TAB -->
+
+
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Area de tabla -->
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-12">
+            <div class="box">
+                <div class="box-header">
+                    <div class="box-name">
+                        <!--<i class="fa fa-table"></i>-->
+                        <span>Buscar Trabajos</span>
+                    </div>
+                    <div class="no-move"></div>
+                </div>
+                <div class="box-content">
+
+                    <div class="form-group has-success has-feedback">
+                        <label class="col-sm-2 control-label">Buscar Producto</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" placeholder="Nombre">
+                        </div>
+
+                        <div class="col-sm-4">
+                            <button type="button" class="btn btn-default"><i class="fa fa-search"></i> Buscar</button>
+                        </div>
+                    </div>
+
+
+
+
+                    <!-- Agregar interfaz de busqueda -->
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Codigo</th>
+                                <th>Nombre</th>
+                                <th>Tipo</th>
+                                <th>Precio $</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>A4/OFICIO FOTOCOP. B/N</td>
+                                <td>FOTOCOPIAS B/N</td>
+                                <td>0.75</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>A4 LINEA COLOR</td>
+                                <td>FOTOCOPIAS COLOR</td>
+                                <td>2.00</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>PLOTEO OLN</td>
+                                <td>PLOTEO</td>
+                                <td>50.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+

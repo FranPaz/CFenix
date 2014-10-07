@@ -17,9 +17,14 @@ namespace CFenix_Dev.Controllers
         private CFenix_Context db = new CFenix_Context();
 
         // GET: api/Trabajos
-        public IQueryable<Trabajo> GetTrabajos()
+        public IHttpActionResult  GetTrabajos()
         {
-            return db.Trabajos;
+            var trabajos = db.Trabajos.ToList();
+            if (trabajos == null)
+            {
+                return NotFound();
+            }
+            return Ok(trabajos);
         }
 
         // GET: api/Trabajos/5
@@ -76,13 +81,13 @@ namespace CFenix_Dev.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                return BadRequest();
             }
 
             db.Trabajos.Add(trabajo);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = trabajo.Id }, trabajo);
+            return Ok();
         }
 
         // DELETE: api/Trabajos/5
