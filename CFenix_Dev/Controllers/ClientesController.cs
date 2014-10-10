@@ -19,7 +19,8 @@ namespace CFenix_Dev.Controllers
          //GET: api/Clientes
         public IHttpActionResult GetClientes()
         {
-            var clientes = db.Clientes.ToList();
+            var clientes = db.Clientes.ToList();            
+
             if (clientes == null)
             {
                 return NotFound();
@@ -32,13 +33,21 @@ namespace CFenix_Dev.Controllers
         [ResponseType(typeof(Cliente))]
         public IHttpActionResult GetCliente(int id)
         {
-            Cliente cliente = db.Clientes.Find(id);
-            if (cliente == null)
+            Cliente cliente = db.Clientes.Find(id); //fpaz: obtengo el los datos del cliente al que corresponde el id que recibo como parametro
+
+            //fpaz: en esta parte devuelo los datos de la cuenta corriente asociada al clientente
+            var cuentaClientes = db.Cuentas
+                .Where(cc => cc.ClienteId == cliente.Id) //fpaz: filtro por el id de cliente
+                .Include(cc => cc.Cliente)//incluyo la info del cliente asociado
+                .Include(cc => cc.TipoEstado)//incluyo la info del tipo de estado
+                .FirstOrDefault();
+
+            if (cuentaClientes == null)
             {
                 return NotFound();
             }
 
-            return Ok(cliente);
+            return Ok(cuentaClientes);
         }
 
         // PUT: api/Clientes/5
@@ -82,13 +91,35 @@ namespace CFenix_Dev.Controllers
         {
             if (!ModelState.IsValid)
             {
+                //fpaz: si el modelo enviado con los datos del cliente es incorrecto devuelve un error
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
             }
 
-            db.Clientes.Add(cliente);
-            db.SaveChanges();
+            try
+            {
+                //fpaz: agrego el nuevo cliente al contexto
+                db.Clientes.Add(cliente);
+                
+                //fpaz: instancio un obj del tipo cuenta corriente y asigno los valores correspondientes para cada campo
+                var cuentaCorriente = new CuentaCorriente() {
+                    MontoTotal=0,
+                    FechaAlta=DateTime.Now,
+                    //fpaz: el estado por defecto en la creacion de una cuenta corriente es Activado
+                    TipoEstado = (from te in db.TiposEstado
+                                 where te.Descripcion == "Activado"
+                                 select te).First(),
+                    Cliente = cliente //fpaz: asigo el cliente que agregue al contexto antes, en este punto ya deberia tener su id temporal
+                };                
 
-            return  Request.CreateResponse(HttpStatusCode.OK);
+                db.Cuentas.Add(cuentaCorriente); //fpaz: agrego la cc al contexto ya deberia tener incluido al cliente
+                db.SaveChanges();                 
+                return  Request.CreateResponse(HttpStatusCode.OK);
+            }
+            catch (Exception ex)
+            {
+                string errorMessage = ex.Message;
+                return Request.CreateResponse(HttpStatusCode.BadRequest,errorMessage);                
+            }
         }
 
         // DELETE: api/Clientes/5

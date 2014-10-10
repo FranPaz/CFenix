@@ -221,7 +221,7 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                             listadoClientes: function (clientesDataFactory) {
                                 return clientesDataFactory.query();
                             },
-                            infoCliente: function () {
+                            cuentaCliente: function () {
                                 return { value: [] };
                             }
                         },
@@ -253,7 +253,7 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                             listadoClientes: function () {
                                 return { value: [] };
                             },
-                            infoCliente: function () {
+                            cuentaCliente: function () {
                                 return { value: [] };
                             }
                         }
@@ -275,7 +275,7 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                                     return { value: [] };
                                 },
                                 clientesDataFactory: 'clientesDataFactory',
-                                infoCliente: function (clientesDataFactory, $stateParams) {
+                                cuentaCliente: function (clientesDataFactory, $stateParams) {
                                     //fpaz: trae los datos de un cliente en particular
                                     var clienteId = $stateParams.clienteId;
                                     return clientesDataFactory.get({ id: clienteId }).$promise;
