@@ -10,7 +10,11 @@ namespace CFenix_Dev.Models
 {
     public class Trabajo
     {
-        
+        public Trabajo()
+        {
+
+        }
+
         public int Id { get; set; }
         [Required]
         public string Nombre { get; set; }

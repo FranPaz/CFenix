@@ -75,19 +75,56 @@ namespace CFenix_Dev.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        public class parametrosTrabajo
+        {
+            public Trabajo trabajo { get; set; }
+            public ICollection<Insumo> listInsumo { get; set; }
+        }
+
         // POST: api/Trabajos
-        [ResponseType(typeof(Trabajo))]
-        public IHttpActionResult PostTrabajo(Trabajo trabajo)
+        //[ResponseType(typeof(Trabajo))]
+        public IHttpActionResult PostTrabajo(parametrosTrabajo paramTrabajo)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest();
             }
+            try
+            {
+                Trabajo trabajo = new Trabajo();
+                trabajo.Nombre = paramTrabajo.trabajo.Nombre;
 
-            db.Trabajos.Add(trabajo);
-            db.SaveChanges();
+                //iafar: esto es temporal para cargar el tipo trabajo 1 siempre, despues habra que cargar
+                //segun el id
+                var auxTipoTrab = db.TipoTrabajos.Find(1);
 
-            return Ok();
+                trabajo.TipoTrabajo = auxTipoTrab;
+
+                db.Trabajos.Add(trabajo);
+                
+                foreach (var insumo in paramTrabajo.listInsumo)
+                {
+                //Insumo ins = new Insumo();
+
+                    var auxInsumo = db.Insumos.Find(insumo.Id);
+
+                    auxInsumo.Trabajos.Add(trabajo); // el hashSet esta en el modelo de insumos, x eso la relacion es al reves
+                    //trabajo.Insumos.Add(auxInsumo);//esto solo seria si el hashSet esuviera en el modelo de trabajo
+
+                }
+
+                db.SaveChanges();
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+
+                ex.Message.ToString();
+                return BadRequest();
+            }
+            
+
+            
         }
 
         // DELETE: api/Trabajos/5

@@ -348,6 +348,7 @@
     <Content Include="Scripts\App\Venta\Partials\Venta_DetalleFactura.html" />
     <Content Include="Scripts\App\Insumos\Partials\Insumos_Mod.html" />
     <Content Include="Scripts\App\Insumos\Partials\ListInsumos.html" />
+    <Content Include="Scripts\App\Insumos\Partials\AltaInsumo.html" />
     <Content Include="Scripts\App\Notificaciones\Partials\page_messages.html" />
     <Content Include="Scripts\App\Trabajos\Partials\ListTrabajos.html" />
     <Content Include="Scripts\App\Partials\Dashboard.html" />
@@ -371,6 +372,7 @@
     <Content Include="Scripts\App\Usuarios\usuariosSvc.js" />
     <Content Include="Scripts\App\Venta\Partials\Venta_Main.html" />
     <Content Include="Scripts\angular-animate.min.js.map" />
+    <Content Include="Scripts\angular-cookies.min.js.map" />
     <Content Include="Scripts\angular-loader.min.js.map" />
     <Content Include="Scripts\angular-resource.min.js.map" />
     <Content Include="Scripts\angular-route.min.js.map" />
@@ -464,9 +466,16 @@
     <Content Include="Scripts\i18n\angular-locale_en-bb.js" />
     <Content Include="Scripts\i18n\angular-locale_en-be.js" />
     <Content Include="Scripts\i18n\angular-locale_en-bm.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-bs.js" />
     <Content Include="Scripts\i18n\angular-locale_en-bw.js" />
     <Content Include="Scripts\i18n\angular-locale_en-bz.js" />
     <Content Include="Scripts\i18n\angular-locale_en-ca.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-cc.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-ck.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-cm.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-cx.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-dg.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-dm.js" />
     <Content Include="Scripts\i18n\angular-locale_en-dsrt-us.js" />
     <Content Include="Scripts\i18n\angular-locale_en-dsrt.js" />
     <Content Include="Scripts\i18n\angular-locale_en-fm.js" />

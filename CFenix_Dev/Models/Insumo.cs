@@ -10,7 +10,12 @@ namespace CFenix_Dev.Models
 {
     public class Insumo
     {
-        
+
+        public Insumo()
+        {
+            this.Trabajos = new HashSet<Trabajo>();
+        }
+
         public int Id { get; set; }
         [Required]
         public string Nombre { get; set; }
@@ -21,14 +26,14 @@ namespace CFenix_Dev.Models
         public decimal PrecioVenta { get; set; }
         
         //iafar:relacion 1 a muchos con proveedor(1)
-        public int ProveedorId { get; set; }
-        public virtual Proveedor proveedores { get; set; }
+        //public int ProveedorId { get; set; }
+        //public virtual Proveedor proveedores { get; set; }
 
-        //iafar:relacion 1 a muchos con trabajo(1)
-        public int TrabajoId { get; set; }
-        public virtual Trabajo trabajos { get; set; }
+        //iafar:relacion muchos a muchos con trabajo(muchos)
+        public virtual ICollection <Trabajo> Trabajos { get; set; }
 
     }
+
 
     public class Proveedor
 
