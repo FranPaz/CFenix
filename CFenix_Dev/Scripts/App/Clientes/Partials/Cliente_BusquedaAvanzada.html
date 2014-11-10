@@ -1,0 +1,100 @@
+﻿<div class="row">
+    <div class="col-xs-12 col-sm-12">
+        <div class="box">
+            <div class="box-header">
+                <div class="box-name">                    
+                    <span>Busqueda Avanzada de Cliente</span>
+                </div>
+                <div class="no-move"></div>
+            </div>
+            <div class="box-content">
+                <!-- Area Para los Parametros de Busqueda-->
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <div class="col-sm-1"></div>                                                
+                        <label class="col-sm-2 control-label">Nombre/Razon Social del Cliente</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" placeholder="" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Nombre/Razon Social">
+                        </div>
+                    </div>                    
+                 </form>
+                 <!-- end -->
+                <!-- Area Para el Grid de Clientes-->
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="box">
+                            <div class="box-header">
+                                <div class="box-name">
+                                    <i class="fa fa-usd"></i>
+                                    <span>Listado de Clientes</span>
+                                </div>
+                                <div class="box-icons">
+                                    <a class="collapse-link">
+                                        <i class="fa fa-chevron-up"></i>
+                                    </a>
+                                    <a class="expand-link">
+                                        <i class="fa fa-expand"></i>
+                                    </a>
+                                    <a class="close-link">
+                                        <i class="fa fa-times"></i>
+                                    </a>
+                                </div>
+                                <div class="no-move"></div>
+                            </div>
+                            <div class="box-content no-padding">
+                                <table class="table table-bordered table-striped table-hover table-heading table-datatable" id="datatable-1">
+                                    <thead>
+                                        <tr>
+                                            <th>Id Cliente</th>
+                                            <th>Nombre o Razon Social</th>
+                                            <th>CUIT/CUIL</th>
+                                            <th>Direccion</th>
+                                            <th>Telefono</th>
+                                            <th>Email</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Start: list_row -->
+                                        <tr ng-repeat="cliente in clientes">
+                                            <td>{{cliente.Id}}</td>
+                                            <td><img class="img-rounded" src="http://i.forbesimg.com/media/lists/people/carlos-slim-helu_50x50.jpg" alt="">{{cliente.Nombre_RazonSocial}}</td>
+                                            <td>{{cliente.Cuit_Cuil}}</td>
+                                            <td>{{cliente.Direccion}}</td>
+                                            <td>{{cliente.Telefono}}</td>
+                                            <td>{{cliente.Mail}}</td>
+                                            <td><button type="button" class="btn btn-default">Seleccionar</button></td>
+                                        </tr>
+                                        <!-- End: list_row -->
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Id Cliente</th>
+                                            <th>Nombre o Razon Social</th>
+                                            <th>CUIT/CUIL</th>
+                                            <th>Direccion</th>
+                                            <th>Telefono</th>
+                                            <th>Email</th>
+                                            <th></th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end -->
+                <!-- Area Para los Parametros de Busqueda-->
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <div class="col-sm-8"></div>                        
+                        <div class="col-sm-4">
+                            <button type="button" class="btn btn-success" ng-click="Aceptar()">Aceptar</button>
+                        </div>
+                    </div>
+                </form>
+                <!-- end -->
+            </div>
+        </div>
+    </div>
+</div>

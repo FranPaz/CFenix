@@ -1,5 +1,5 @@
 var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngResource', 'ui.router', 'ngCookies','ui.bootstrap',,'chieffancypants.loadingBar', 'ngAnimate',
-  'ngSanitize']) //fpaz: defino el modulo con las librerias para routing (ui.router), usar apis rest y para interfaz de usuarios con angular(ui.bootstrap)
+  'ngSanitize', 'ui.select']) //fpaz: defino el modulo con las librerias para routing (ui.router), usar apis rest y para interfaz de usuarios con angular(ui.bootstrap)
     .config(function ($stateProvider, $urlRouterProvider, cfpLoadingBarProvider) { //fpaz: configuro el routing de los states usando los servicios $stateProvider y $urlRouteProvider
         
         cfpLoadingBarProvider.includeSpinner = true;
@@ -223,6 +223,9 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                             },
                             cuentaCliente: function () {
                                 return { value: [] };
+                            },
+                            listdeudascliente: function () {
+                                return { value: [] };
                             }
                         },
                         controller: 'clientesCtrl'
@@ -255,6 +258,9 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                             },
                             cuentaCliente: function () {
                                 return { value: [] };
+                            },
+                            listdeudascliente: function () {
+                                return { value: [] };
                             }
                         }
                     }
@@ -279,6 +285,9 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                                     //fpaz: trae los datos de un cliente en particular
                                     var clienteId = $stateParams.clienteId;
                                     return clientesDataFactory.get({ id: clienteId }).$promise;
+                                },
+                                listdeudascliente: function () {
+                                    return { value: [] };
                                 }
                             }
                         }
@@ -302,61 +311,93 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                 })
             
                 .state('cliente_detail.pagos', {
-                    url: "/Pagos",
+                    url: "/Deudas",
                     views: {
                         'pagosCuenta': {
                             templateUrl: '/Scripts/App/Clientes/Partials/Clientes_PagosCuenta.html',
-                            controller: 'deudasCtrl',
+                            controller: 'clientesCtrl',
+                            ////controller: 'deudasCtrl',
                             resolve: {
                                 user: 'User',
                                 authenticationRequired: function (user) {
                                     user.isAuthenticated();
+                                },
+                                listadoClientes: function () {
+                                    return { value: [] };
+                                },
+                                cuentaCliente: function () {
+                                    return { value: [] };
+                                },
+                                listdeudascliente: function () {
+                                    return { value: [] };
                                 }
+                                //deudasDataFactory: 'deudasDataFactory',
+                                //listdeudascliente: function (deudasDataFactory, $stateparams) {
+                                //    //fpaz: trae los datos de un cliente en particular
+                                //    var clienteid = $stateparams.clienteid;
+                                //    return deudasDataFactory.get({ id: clienteid }).$promise;
+                                //}
                             }
                         }
                     }               
-                })
-            
+                })            
             //fpaz: Fin routing para los Tabs de Detalle Clientes
-
+             
         //#endregion
 
-        //#region Venta
-             .state('venta', {
-                 url: "/Venta",
-                 views: {
-                     'headerAdmin': {
-                         templateUrl: '/Scripts/App/Partials/Header.html',
-                         controller: ''
-                     },
-                     'menuAdmin': {
-                         templateUrl: '/Scripts/App/Partials/Menu.html',
-                         controller: ''
-                     },
-                     'dashboard': {
-                         templateUrl: '/Scripts/App/Venta/Partials/Venta_Main.html',
-                         controller: '',
-                         resolve: {
-                             user: 'User',
-                             authenticationRequired: function (user) {
-                                 user.isAuthenticated();
-                             }
-                         }
-                     }
-                 }
-             })
-            .state('cliente_detail.pagos.deudaVenta', {
-                url: "/Detalle/Deuda",
-                views: {                    
-                    'detalleDeuda': {
-                        templateUrl: '/Scripts/App/Venta/Partials/Venta_Deuda.html',
-                        controller: '',
+        //#region Venta             
+            .state('ventaBase', {
+                abstract: true,                
+                templateUrl: '/Scripts/App/Venta/Partials/Venta_Main.html',
+                views: {
+                    'headerAdmin': {
+                        templateUrl: '/Scripts/App/Partials/Header.html',
+                        controller: ''
+                    },
+                    'menuAdmin': {
+                        templateUrl: '/Scripts/App/Partials/Menu.html',
+                        controller: ''
+                    },
+                    'dashboard': {
+                        templateUrl: '/Scripts/App/Venta/Partials/Venta_Main.html',
+                        controller: 'ventaCtrl',
                         resolve: {
                             user: 'User',
                             authenticationRequired: function (user) {
                                 user.isAuthenticated();
                             }
                         }
+                    }
+                }
+            })
+
+            .state('ventaBase.venta', {
+                url: "/Venta",
+                templateUrl: '/Scripts/App/Clientes/Partials/Cliente_Busqueda.html',
+                views: {
+                    'busquedaCliente': {
+                        templateUrl: '/Scripts/App/Clientes/Partials/Cliente_Busqueda.html',
+                        resolve: {
+                            user: 'User',
+                            authenticationRequired: function (user) {
+                                user.isAuthenticated();
+                            },
+                            clientesDataFactory: 'clientesDataFactory',
+                            listadoClientes: function (clientesDataFactory) {
+                                return clientesDataFactory.query();
+                            },
+                            cuentaCliente: function () {
+                                return { value: [] };
+                            },
+                            listdeudascliente: function () {
+                                return { value: [] };
+                            }
+                        },
+                        controller: 'clientesCtrl'
+                    },
+                    'tablaDetalle': {
+                        templateUrl: '/Scripts/App/Venta/Partials/Venta_DetalleFactura.html',                        
+                        controller: ''
                     }
                 }
             })
@@ -438,6 +479,7 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
 
         //#endregion
     })
+    
 
    
 

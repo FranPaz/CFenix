@@ -1,3 +1,4 @@
-﻿copisteriaFenixApp.controller('deudasCtrl', function ($scope, clientesDataFactory,$stateParams, $state) {
+﻿copisteriaFenixApp.controller('deudasCtrl', function ($scope, $stateParams, $state) {
     $scope.isCollapsed = false;
+    //$scope.deudasClientess = listDeudasCliente;
 });

@@ -1,0 +1,45 @@
+﻿<div class="row">
+    <div class="col-xs-12 col-sm-12">
+        <div class="box">
+            <div class="box-header">
+                <div class="box-name">
+                    <!--<i class="fa fa-search"></i>-->
+                    <span>Busqueda de Cliente</span>
+                </div>
+
+                <div class="no-move"></div>
+            </div>
+            <div class="box-content">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">  
+                        <label class="col-sm-3 control-label">Cod. Cliente</label>
+                        <div class="col-sm-4">                                                          
+                            <ui-select ng-model="clienteBuscado.selected" theme="select2" ng-disabled="disabled" on-select="addClienteVta($item, $model)" style="min-width: 300px;">
+                                <ui-select-match placeholder="Seleccione el cliente o Busque por Codigo/Numero">{{$select.selected.Nombre_RazonSocial}}</ui-select-match>
+                                <ui-select-choices repeat="cliente in clientes | propsFilter: {Nombre_RazonSocial: $select.search, Cuit_Cuil: $select.search}">
+                                    <small>
+                                        Codigo: <span ng-bind-html="cliente.Cuit_Cuil | highlight: $select.search"></span>
+                                        Razon Social: <span ng-bind-html="cliente.Nombre_RazonSocial | highlight: $select.search"></span>
+                                    </small>
+                                </ui-select-choices>
+                            </ui-select>                                      
+                        </div>
+
+                        <label class="col-sm-2 control-label">CUIT/CUIL</label>
+                        <div class="col-sm-2">
+                            <input type="text" ng-model="clienteBuscado.selected.Cuit_Cuil" class="form-control" placeholder="" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="CUIT/CUIL">
+                        </div>
+                    </div>
+                    <div class="form-group">                        
+                        <label class="col-sm-3 control-label">Nombre/Razon Social</label>
+                        <div class="col-sm-6">
+                            <input type="text" ng-model="clienteBuscado.selected.Nombre_RazonSocial" class="form-control" placeholder="" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Nombre/Razon Social">
+                        </div>                        
+                    </div>                                                                                               
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -6,7 +6,12 @@
         </ol>
     </div>
 </div>
-<div class="row">
+
+<!-- Area de Busqueda de Cliente-->
+<div ui-view="busquedaCliente"></div>
+<!-- end -->
+
+<div class="row">    
     <div class="col-xs-12 col-sm-12">
         <div class="box">
             <div class="box-header">
@@ -19,19 +24,19 @@
             </div>
             <!--iafar: Comienza box de carga de nuevo item de factura -->
             
-            <div class="box-content">
+            <div class="box-content">                
                 <h4 class="page-header">Detalles de Producto</h4>
                 <form class="form-horizontal ng-pristine ng-valid" role="form">
                     <div class="form-group">
                         <a href="#" class="col-sm-1 control-label" title="Busqueda Avanzada">Codigo:</a>
 
                         <div class="col-sm-2">
-                            <input type="text" class="form-control" placeholder="000" data-placement="bottom" title="Ingrese el Codigo del Producto">
+                            <input type="text" ng-model="productoVta.CodProducto" class="form-control" placeholder="000" data-placement="bottom" title="Ingrese el Codigo del Producto">
                         </div>
 
                         <label class="col-sm-1 control-label">Nombre:</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" placeholder="" data-placement="bottom" readonly="">
+                            <input type="text" ng-model="productoVta.Descripcion" class="form-control" placeholder="" data-placement="bottom">
                         </div>
                     </div>
                     <div class="form-group">
@@ -43,7 +48,7 @@
 
                         <label class="col-sm-1 control-label">Cantidad:</label>
                         <div class="col-sm-1">
-                            <input type="text" class="form-control" placeholder="#" data-placement="bottom" title="Ingrese la cantidad del producto">
+                            <input type="text" ng-model="productoVta.Cantidad" class="form-control" placeholder="#" data-placement="bottom" title="Ingrese la cantidad del producto">
                         </div>
                         <div class="col-sm-1">
                             <input type="text" class="form-control" placeholder="Un." data-placement="bottom" title="Unidad de Venta" readonly="">
@@ -51,87 +56,25 @@
 
                         <label class="col-sm-1 control-label">Precio$:</label>
                         <div class="col-sm-2">
-                            <input type="text" class="form-control" placeholder="0,00" data-placement="bottom">
+                            <input type="text" ng-model="productoVta.PrecioUnitario" class="form-control" placeholder="0,00" data-placement="bottom">
                         </div>
                         <div class="col-sm-3">
-                            <button type="submit" class="btn btn-primary btn-label-left">
+                            <button type="submit" class="btn btn-primary btn-label-left" ng-click="agregarProducto(productoVta)">
                                 <span><i class="fa fa-search"></i></span>
                                 Agregar
-                            </button>
+                            </button>                            
                         </div>
                     </div>
-                    
-                    <!--<div class="col-sm-2">
-                        <button type="submit" class="btn btn-primary btn-label-left">
-                            <span><i class="fa fa-search"></i></span>
-                            Buscar
-                        </button>
-                    </div>-->
-                    <!--<div class="clearfix"></div>
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-2">
-                        </div>
-                        <div class="col-sm-2">
-                            <button type="submit" class="btn btn-primary btn-label-left">
-                                <span><i class="fa fa-search"></i></span>
-                                Buscar
-                            </button>
-                        </div>
-                    </div>-->
                 </form>
             </div>
-
             <!-- iafar: Fin de box de nuevo item -->
-
-
-        
         </div>
     </div>
 </div>
-
 
 <!-- Area de tabla -->
-
-<div class="row">
-    <div class="col-xs-12 col-sm-12">
-        <div class="box">
-            <div class="box-header">
-                <div class="box-name">
-                    <!--<i class="fa fa-table"></i>-->
-                    <span>Detalle Factura</span>
-                </div>
-                <div class="no-move"></div>
-            </div>
-            <div class="box-content">
-                <!-- Agregar interfaz de busqueda -->
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Codigo</th>
-                            <th>Nombre</th>
-                            <th>Tipo</th>
-                            <th>Precio $</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>A4/OFICIO FOTOCOP. B/N</td>
-                            <td>FOTOCOPIAS B/N</td>
-                            <td>0.75</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>A4 LINEA COLOR</td>
-                            <td>FOTOCOPIAS COLOR</td>
-                            <td>2.00</td>
-                        </tr>                        
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
+<div ui-view="tablaDetalle"></div>
+<!-- end -->
 
 <div class="row">
     <div class="col-xs-12 col-sm-12">
@@ -147,10 +90,11 @@
                                 <tr><th id='saleProductTotalLabel_Payment'>Pago</th><td id='saleProductTotal_Payment'>0.00</td></tr>
                                 <tr><th id='saleProductTotalLabel_Change'>Cambio</th><td id='saleProductTotal_Change'>0.00</td></tr>
                             </table>
-                        </div>
+                        </div>                        
                         <div class="col-sm-8 right">
-                            <button type="button" class="btn btn-success">Pagar</button>
-                            <button type="button" class="btn btn-danger">Candelar</button>
+                            {{ventaGuardada}}
+                            <button type="button" class="btn btn-success" ng-click="addVenta()">Registrar Venta</button>
+                            <button type="button" class="btn btn-danger">Cancelar</button>
                         </div>
                     </div>
                 </div>
