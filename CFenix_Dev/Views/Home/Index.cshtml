@@ -3,20 +3,22 @@
 <head>
     <meta charset="utf-8">
     <title>Home - Copisteria Fenix</title>
-
-    <script src="~/Scripts/angular.min.js"></script>
+     
+    @*<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular-sanitize.js"></script>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.css">*@
+   
+    <script src="~/Scripts/angular.js"></script>
     <script src="~/Scripts/angular-route.min.js"></script>
     <script src="~/Scripts/angular-resource.min.js"></script>
 
     <script src="~/Scripts/angular-cookies.js"></script>
     <script src="~/Scripts/angular-sanitize.js"></script>
-
-    <link href="~/Content/cleanStyle.css" rel="stylesheet" />  
     
     @*Referencias para ui-bootstrap *@
     <script src="~/Scripts/jquery-2.1.1.min.js"></script>
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    <script src="~/Scripts/bootstrap.js"></script>
+    <link href="~/content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/scripts/bootstrap.js"></script>
     <script src="~/Scripts/angular-ui/ui-bootstrap.min.js"></script>
     <script src="~/Scripts/angular-ui/ui-bootstrap-tpls.min.js"></script>
 
@@ -28,10 +30,8 @@
     @*js para ui-routing *@
     <script src="~/Scripts/angular-ui-router.min.js"></script>
 
-    @*js para NG-Grid  *@
-    @*<script src="~/Scripts/ng-grid.min.js"></script>
-    <link href="~/Content/ng-grid.css" rel="stylesheet" />*@
-
+    
+    @* JS de Mofule copisteriaFenixApp *@
     <script src="~/Scripts/App/copisteriaFenixApp.js"></script>
 
     @* JS de Usuarios *@
@@ -45,7 +45,7 @@
     @* JS de Clientes *@
     <script src="~/Scripts/App/Clientes/clientesCtrl.js"></script>
     <script src="~/Scripts/App/Clientes/clientesDataFactory.js"></script>
-    <script src="~/Scripts/App/Clientes/clientesDetailCtrl.js"></script>
+    
 
     @* JS de Insumos *@
     <script src="~/Scripts/App/Insumos/insumosCtrl.js"></script>
@@ -54,13 +54,48 @@
     @* JS de Trabajos *@
     <script src="~/Scripts/App/Trabajos/trabajosCtrl.js"></script>
     <script src="~/Scripts/App/Trabajos/trabajosDataFactory.js"></script>
+
+    @* JS de Venta *@
+    <script src="~/Scripts/App/Venta/ventaCtrl.js"></script>
+    <script src="~/Scripts/App/Venta/ventaSvc.js"></script>
+    <script src="~/Scripts/App/Venta/ventaDataFactory.js"></script>
+
+    @* JS de Busqueda *@
+    <script src="~/Scripts/angular-ui-select/select.js"></script>
+    <link href="~/Scripts/angular-ui-select/select.css" rel="stylesheet" />
+    <script src="~/Scripts/App/Clientes/basicSearchClienteFilter.js"></script>
+
+    @* JS de Deudas *@
+    <script src="~/Scripts/App/Deudas/deudasCtrl.js"></script>
+    <script src="~/Scripts/App/Deudas/deudasDataFactory.js"></script>
+    
+    <!--
+    Select2 theme
+    Bootstrap 3 theme from https://github.com/fk/select2-bootstrap-css
+    -->
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/select2/3.4.5/select2.css">
+    <link rel="stylesheet" href="http://fk.github.io/select2-bootstrap-css/css/select2-bootstrap.css">
+    <style>
+        body {
+            padding: 15px;
+        }
+
+        .select2 > .select2-choice.ui-select-match {
+            /* Because of the inclusion of Bootstrap */
+            height: 29px;
+        }
+
+        .selectize-control > .selectize-dropdown {
+            top: 36px;
+        }
+    </style>
     
     @* JS de Ventas *@
     <script src="~/Scripts/App/Venta/ventasCtrl.js"></script>
     <script src="~/Scripts/App/Venta/ventasDataFactory.js"></script>
 
 
-    <script src="~/Scripts/App/Deudas/deudasCtrl.js"></script>
+    
     <meta name="description" content="description">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 

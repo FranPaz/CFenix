@@ -6,7 +6,12 @@
         </ol>
     </div>
 </div>
-<div class="row">
+
+<!-- Area de Busqueda de Cliente-->
+<div ui-view="busquedaCliente"></div>
+<!-- end -->
+
+<div class="row">    
     <div class="col-xs-12 col-sm-12">
         <div class="box">
             <div class="box-header">
@@ -21,7 +26,7 @@
            
           
 
-            <div class="box-content">
+            <div class="box-content">                
 
                 <form class="form-horizontal ng-pristine ng-invalid ng-invalid-required" role="form">
                     <!-- Anidamiento de columnas -->
@@ -36,12 +41,13 @@
                             <a href="#" class="col-sm-1 control-label" title="Busqueda Avanzada">Codigo:</a>
 
                             <div class="col-sm-2">
-                                <input type="text" name="txtCodigo" ng-model="producto.codigo" class="form-control" placeholder="000" data-placement="bottom" title="Ingrese el Codigo del Producto">
+                            <input type="text" ng-model="productoVta.CodProducto" class="form-control" placeholder="000" data-placement="bottom" title="Ingrese el Codigo del Producto">
                             </div>
+                        </div>
 
-                            <label class="col-sm-1 control-label">Nombre:</label>
-                            <div class="col-sm-6">
-                                <input type="text" class="form-control" name="txtNomProd" ng-model="producto.nombre" placeholder="Nombre del producto" data-placement="bottom" readonly="">
+                        <label class="col-sm-1 control-label">Nombre:</label>
+                        <div class="col-sm-7">
+                            <input type="text" ng-model="productoVta.Descripcion" class="form-control" placeholder="" data-placement="bottom">
                             </div>
                             <label class="col-sm-1 control-label">Stock:</label>
                             <div class="col-sm-1">
@@ -138,8 +144,9 @@
 
                                     <label class="col-sm-2 control-label">Precio$:</label>
                                     <div class="col-sm-3">
-                                        <input type="text" class="form-control" placeholder="0,00" data-placement="bottom">
-                                    </div>
+                            <input type="text" ng-model="productoVta.PrecioUnitario" class="form-control" placeholder="0,00" data-placement="bottom">
+                        </div>
+                        <div class="col-sm-3">
                                 </div>
                                     -->
                                 
@@ -202,58 +209,14 @@
 
             </div>
 
-
             <!-- iafar: Fin de box de nuevo item -->
-
-
-
         </div>
     </div>
 </div>
-
 
 <!-- Area de tabla -->
-
-<div class="row">
-    <div class="col-xs-12 col-sm-12">
-        <div class="box">
-            <div class="box-header">
-                <div class="box-name">
-                    <!--<i class="fa fa-table"></i>-->
-                    <span>Detalle Factura</span>
-                </div>
-                <div class="no-move"></div>
-            </div>
-            <div class="box-content">
-                <!-- Agregar interfaz de busqueda -->
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Codigo</th>
-                            <th>Nombre</th>
-                            <th>Tipo</th>
-                            <th>Precio $</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>A4/OFICIO FOTOCOP. B/N</td>
-                            <td>FOTOCOPIAS B/N</td>
-                            <td>0.75</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>A4 LINEA COLOR</td>
-                            <td>FOTOCOPIAS COLOR</td>
-                            <td>2.00</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
+<div ui-view="tablaDetalle"></div>
+<!-- end -->
 
 <div class="row">
     <div class="col-xs-12 col-sm-12">
@@ -269,10 +232,11 @@
                                 <tr><th id='saleProductTotalLabel_Payment'>Pago</th><td id='saleProductTotal_Payment'>0.00</td></tr>
                                 <tr><th id='saleProductTotalLabel_Change'>Cambio</th><td id='saleProductTotal_Change'>0.00</td></tr>
                             </table>
-                        </div>
+                        </div>                        
                         <div class="col-sm-8 right">
-                            <button type="button" class="btn btn-success">Pagar</button>
-                            <button type="button" class="btn btn-danger">Candelar</button>
+                            {{ventaGuardada}}
+                            <button type="button" class="btn btn-success" ng-click="addVenta()">Registrar Venta</button>
+                            <button type="button" class="btn btn-danger">Cancelar</button>
                         </div>
                     </div>
                 </div>

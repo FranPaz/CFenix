@@ -15,5 +15,7 @@ namespace CFenix_Dev.Models
         public string Direccion { get; set; }
         public string Telefono { get; set; }
         public string Mail { get; set; }
+
+        public virtual ICollection<Venta> Ventas { get; set; } // 1 a M con Ventas
     }
 }

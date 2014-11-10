@@ -34,6 +34,9 @@ namespace CFenix_Dev.Models
         public DbSet<TipoTrabajo> TipoTrabajos { get; set; }        
         public DbSet<CFenix_Dev.Models.Cliente> Clientes { get; set; }
 
+        public System.Data.Entity.DbSet<CFenix_Dev.Models.Venta> Ventas { get; set; }
+
+        public DbSet<DetalleVta> DetallesVta { get; set; }
         #endregion
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -47,6 +50,8 @@ namespace CFenix_Dev.Models
 
             base.OnModelCreating(modelBuilder);
         }
+
+        
 
         
 
