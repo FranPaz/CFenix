@@ -76,18 +76,29 @@ namespace CFenix_Dev.Controllers
         }
 
         // POST: api/Insumos
-        [ResponseType(typeof(Insumo))]
+        //[ResponseType(typeof(Insumo))]
         public IHttpActionResult PostInsumo(Insumo insumo)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest();
             }
+            try
+            {
+                db.Insumos.Add(insumo);
+                db.SaveChanges();
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                
+                ex.Message.ToString();
+                return BadRequest();
 
-            db.Insumos.Add(insumo);
-            db.SaveChanges();
+            }
+            
 
-            return Ok();
+            
         }
 
         // DELETE: api/Insumos/5

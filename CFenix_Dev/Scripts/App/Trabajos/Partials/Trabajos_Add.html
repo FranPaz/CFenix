@@ -1,67 +1,90 @@
-﻿<title>Alta de un Nuevo Trabajo</title>
+﻿<div class="row">
+    <form class="form-group">
+        <div class="col-sm-6">
+            <!-- div izquierdo -->
+            <div class=" col-sm-12">
+                <label class="col-sm-2">Nombre</label>
+                <div class="col-sm-10">
+                    <input type="text" ng-model="trabajo.nombre" class="form-control ng-pristine ng-valid" placeholder="Nombre de Producto" data-toggle="tooltip" data-placement="bottom" title="Ingrese el nombre del producto">
+                </div>
 
-
-<form class="form-horizontal" role="form">
-    <div class="form-group">
-        <label class="col-sm-2 control-label">Nombre</label>
-        <div class="col-sm-4">
-            <input type="text" class="form-control" placeholder="Nombre de Producto" data-toggle="tooltip" data-placement="bottom" title="Ingrese el nombre del producto">
-        </div>
-
-        <label class="col-sm-1 control-label">Insumo</label>
-        <div class="col-sm-4">
-            <select class="form-control" id="el2">
-                <option>Plot Adhesivo</option>
-                <option>Hojas A4</option>
-                <option>Hojas Legal</option>
-                <option>HoJas A3</option>
-            </select>
-        </div>
-
-
-
-
-
-    </div>
-
-    <div class="form-group">
-        <label class="col-sm-2 control-label">Tipo de Trabajo</label>
-        <div class="col-sm-4">
-            <select class="form-control" name="country" id="s2_country">
-                <option value="">Seleccione Tipo</option>
-                <option value="p1">Impresion</option>
-                <option value="p2">Anillado</option>
-                <option value="p3">Fotocopias</option>
-            </select>
-
-        </div>
-
-    </div>
-
-
-    <div class="form-group has-warning has-feedback">
-        <label class="col-sm-2 control-label">Precio Venta</label>
-
-        <div class="col-sm-4">
-            <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-money"></i></span>
-                <input type="text" class="form-control" placeholder="$0,00">
-                <span class="input-group-addon"><i class="fa fa-usd"></i></span>
             </div>
-        </div>
-    </div>
 
-    <div class="clearfix"></div>
-    <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-2">
+            <div class="col-sm-12">
+                <label class="col-sm-2 control-label">Tipo</label>
+                <div class="col-sm-9">
+                    <select class="form-control" name="country" id="s2_country">
+                        <option value="">Seleccione Tipo</option>
+                        <option value="p1">Impresion</option>
+                        <option value="p2">Anillado</option>
+                        <option value="p3">Fotocopias</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-sm-12 has-warning has-feedback ">
+                <label class="col-sm-2 control-label">Precio</label>
+                <div class="col-sm-6">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-money"></i></span>
+                        <input type="text" class="form-control" placeholder="$0,00">
+                        <span class="input-group-addon"><i class="fa fa-usd"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12">
+                <div class="col-sm-5"></div>
+                <div class="col-sm-2">
+                    <button type="submit" ng-click="altaTrabajo(trabajo)" class="btn btn-primary btn-label-left">
+                        <span><i class="fa fa-clock-o"></i></span>
+                        Guardar
+                    </button>
+                </div>
+            </div>
 
         </div>
 
-        <div class="col-sm-2">
-            <button type="submit" class="btn btn-primary btn-label-left">
-                <span><i class="fa fa-clock-o"></i></span>
-                Guardar
-            </button>
+        <div class="col-sm-6">
+            <!-- div derecho -->
+            <div class="col-sm-12">
+                <label class="col-sm-2 control-label">Insumo</label>
+                <div class="col-sm-10">
+                    <select class="form-control" id="ddlInsumo" ng-model="insumo" ng-options="i.Nombre for i in insumos">
+                        <option value="">Ninguno</option>
+                    </select>
+                    <button type="submit" ng-click="addInsumo(insumo)" class="btn btn-primary btn-label-left">
+                        Agregar a Lista
+                    </button>
+                </div>
+            </div>
+                <!--{{insumo}}-->
+                <div>
+                    <!--iafar: Lista de insumos a relacionar con el trabajo -->
+                    <h2>Insumos relacionados</h2>
+                    <table>
+                        <thead>
+                            <tr>
+
+                                <th>nombre</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="i in listaInsumos">
+                                <td>{{ i.Nombre }}</td>
+                                <td>
+                                    <!-- poner links para eliminar insumo de la lista -->
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
         </div>
-    </div>
-</form>
+
+
+    </form>
+</div>

@@ -50,7 +50,7 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                 },
                 'dashboard': {
                     templateUrl: '/Scripts/App/Insumos/Partials/ListInsumos.html',
-                    controller: '',
+                    controller: 'insumosCtrl',
                     resolve: {
                         user: 'User',
                         authenticationRequired: function (user) {
@@ -149,7 +149,7 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                 views: {
                     'AddTrabajos': {
                         templateUrl: '/Scripts/App/Trabajos/Partials/Trabajos_Add.html',
-                        controller: 'trabajosCtrl',
+                        controller: '',
                         resolve: {
                             user: 'User',
                             authenticationRequired: function (user) {
@@ -166,7 +166,7 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                 views: {
                     'ModTrabajos': {
                         templateUrl: '/Scripts/App/Trabajos/Partials/Trabajos_Mod.html',
-                        controller: 'trabajosCtrl',
+                        controller: '',
                         resolve: {
                             user: 'User',
                             authenticationRequired: function (user) {
@@ -184,7 +184,7 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                 views: {
                     'DetailTrabajos': {
                         templateUrl: '/Scripts/App/Trabajos/Partials/Trabajos_Detail.html',
-                        controller: 'trabajosCtrl',
+                        controller: '',
                         resolve: {
                             user: 'User',
                             authenticationRequired: function (user) {
@@ -335,7 +335,7 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                      },
                      'dashboard': {
                          templateUrl: '/Scripts/App/Venta/Partials/Venta_Main.html',
-                         controller: '',
+                         controller: 'ventasCtrl',
                          resolve: {
                              user: 'User',
                              authenticationRequired: function (user) {

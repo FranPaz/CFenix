@@ -7,9 +7,26 @@
     $scope.trabajo = insumosDataFactory.get({ id: $scope.insumoId });
 
     //funcion para agregar un nuevo insumo y mostrarlo en el listado
-    $scope.addinsumo = function (insumo) {
+    $scope.addInsumo = function (insumo) {
+        alert('Prueba')
         $scope.insumos.push(insumo);
     };
+
+    //#region iafar: funciones para ALTA de un insumo   
+    $scope.altaInsumo = function (insumo) {
+        
+        insumosDataFactory.save(insumo).$promise.then(
+            function () {
+                //$scope.addInsumo(insumo);
+                alert('Nuevo insumo Guardado');
+            },
+            function (response) {
+                $scope.errors = response.data;
+                alert('Error al guardar insumo Insumo');
+            });
+    };
+    //#endregion
+
 
 
 
