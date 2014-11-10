@@ -186,3 +186,5 @@ CFenix_Dev/Scripts/angular-touch.min.js.map
 CFenix_Dev/Scripts/errors.json
 CFenix_Dev/Scripts/i18n/*
 CFenix_Dev/Scripts/version.json
+CFenix_Dev/packages.config
+CFenix_Dev/Web.config
