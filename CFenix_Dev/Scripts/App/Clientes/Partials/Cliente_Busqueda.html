@@ -14,7 +14,7 @@
                     <div class="form-group">  
                         <label class="col-sm-3 control-label">Cod. Cliente</label>
                         <div class="col-sm-4">                                                          
-                            <ui-select ng-model="clienteBuscado.selected" theme="select2" ng-disabled="disabled" on-select="addClienteVta($item, $model)" style="min-width: 300px;">
+                            <ui-select ng-model="clienteBuscado.selected" theme="select2" on-select="addClienteVta($item, $model)" style="min-width: 300px;">
                                 <ui-select-match placeholder="Seleccione el cliente o Busque por Codigo/Numero">{{$select.selected.Nombre_RazonSocial}}</ui-select-match>
                                 <ui-select-choices repeat="cliente in clientes | propsFilter: {Nombre_RazonSocial: $select.search, Cuit_Cuil: $select.search}">
                                     <small>
