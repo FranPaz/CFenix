@@ -342,6 +342,7 @@
     <Content Include="Scripts\App\copisteriaFenixApp.js" />
     <Content Include="Scripts\App\CuentasCorrientes\Partials\tables_simple.html" />
     <Content Include="Scripts\App\Deudas\deudasDataFactory.js" />
+    <Content Include="Scripts\App\Insumos\insumosFilter.js" />
     <Content Include="Scripts\App\Deudas\Partials\Deuda_DetalleDeuda.html" />
     <Content Include="Scripts\App\Insumos\Partials\Insumos_Add.html" />
     <Content Include="Scripts\App\Insumos\Partials\Insumos_Detail.html" />

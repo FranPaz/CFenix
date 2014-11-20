@@ -129,11 +129,11 @@
                     <div class="no-move"></div>
                 </div>
                 <div class="box-content">
-
+                    <!-- iafar: cuadro de busqueda -->
                     <div class="form-group has-success has-feedback">
                         <label class="col-sm-2 control-label">Buscar Producto</label>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" placeholder="Nombre">
+                            <input type="text" ng-model="BusCadena.Nombre" class="form-control" placeholder="Nombre">
                         </div>
 
                         <div class="col-sm-4">
@@ -141,10 +141,7 @@
                         </div>
                     </div>
 
-
-
-
-                    <!-- Agregar interfaz de busqueda -->
+                   <!-- iafar: Tabla de resultados -->
                     <table class="table table-striped">
                         <thead>
                             <tr>
@@ -158,7 +155,8 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="i in insumos">
+                            <!-- iafar: Agregar filtro para buscar por nombre del insumo-->
+                            <tr ng-repeat="i in insumos| filter:BusCadena:strict">                               
                                 <td>{{i.Id}}</td>
                                 <td>{{i.Nombre}}</td>
                                 <td>{{i.Proveedores.Nombre}}</td>
@@ -176,33 +174,3 @@
 
     <!-- Fin Area de listado -->
 </div>
-
-<!--<script type="text/javascript" class="ng-scope">
-    // Run Select2 plugin on elements
-    function DemoSelect2() {
-        $('#s2_with_tag').select2({ placeholder: "Select OS" });
-        $('#s2_country').select2();
-    }
-    // Run timepicker
-    function DemoTimePicker() {
-        $('#input_time').timepicker({ setDate: new Date() });
-    }
-    $(document).ready(function () {
-        // Create Wysiwig editor for textare
-        TinyMCEStart('#wysiwig_simple', null);
-        TinyMCEStart('#wysiwig_full', 'extreme');
-        // Add slider for change test input length
-        FormLayoutExampleInputLength($(".slider-style"));
-        // Initialize datepicker
-        $('#input_date').datepicker({ setDate: new Date() });
-        // Load Timepicker plugin
-        LoadTimePickerScript(DemoTimePicker);
-        // Add tooltip to form-controls
-        $('.form-control').tooltip();
-        LoadSelect2Script(DemoSelect2);
-        // Load example of form validation
-        LoadBootstrapValidatorScript(DemoFormValidator);
-        // Add drag-n-drop feature to boxes
-        WinMove();
-    });
-</script>-->
