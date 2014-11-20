@@ -266,6 +266,7 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                     }
                 }
             })
+
                 .state('cliente_detail.info', {
                     url: "/Info",                    
                     views: {
@@ -312,37 +313,55 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
             
                 .state('cliente_detail.pagos', {
                     url: "/Deudas",
-                    views: {
+                    views: {                        
                         'pagosCuenta': {
-                            templateUrl: '/Scripts/App/Clientes/Partials/Clientes_PagosCuenta.html',
-                            controller: 'clientesCtrl',
-                            ////controller: 'deudasCtrl',
+                            templateUrl: '/Scripts/App/Clientes/Partials/Clientes_PagosCuenta.html',                            
+                            controller: 'deudasCtrl',
                             resolve: {
                                 user: 'User',
                                 authenticationRequired: function (user) {
                                     user.isAuthenticated();
+                                },                                
+                                deudasDataFactory: 'deudasDataFactory',
+                                listDeudasCliente: function (deudasDataFactory, $stateParams) {
+                                    //fpaz: trae los datos de un cliente en particular
+                                    var clienteId = $stateParams.clienteId;
+                                    return deudasDataFactory.query({ id: clienteId });
                                 },
-                                listadoClientes: function () {
-                                    return { value: [] };
-                                },
-                                cuentaCliente: function () {
-                                    return { value: [] };
-                                },
-                                listdeudascliente: function () {
+                                listDetalleDeuda: function () {
                                     return { value: [] };
                                 }
-                                //deudasDataFactory: 'deudasDataFactory',
-                                //listdeudascliente: function (deudasDataFactory, $stateparams) {
-                                //    //fpaz: trae los datos de un cliente en particular
-                                //    var clienteid = $stateparams.clienteid;
-                                //    return deudasDataFactory.get({ id: clienteid }).$promise;
-                                //}
                             }
                         }
                     }               
-                })            
-            //fpaz: Fin routing para los Tabs de Detalle Clientes
-             
+                })
+
+                    .state('cliente_detail.pagos.deudaVenta', {
+                        url: "/Factura/:ventaId",
+                        views: {
+                            'detalleDeuda': {
+                                templateUrl: '/Scripts/App/Deudas/Partials/Deuda_DetalleDeuda.html',
+                                controller: 'deudasCtrl',
+                                resolve: {
+                                    user: 'User',
+                                    authenticationRequired: function (user) {
+                                        user.isAuthenticated();
+                                    },
+                                    deudasDataFactory: 'deudasDataFactory',
+                                    listDetalleDeuda: function (deudasDataFactory, $stateParams) {
+                                        //fpaz: trae los detalles de una deuda en particular
+                                        var clienteId = $stateParams.clienteId;
+                                        var ventaId = $stateParams.ventaId;
+                                        return deudasDataFactory.query({ prmIdCliente: clienteId, prmIdVenta: ventaId });
+                                    },
+                                    listDeudasCliente: function () {                                        
+                                        return { value: [] };
+                                    }
+                                }
+                            }
+                        }
+                    })
+            //fpaz: Fin routing para los Tabs de Detalle Clientes             
         //#endregion
 
         //#region Venta             

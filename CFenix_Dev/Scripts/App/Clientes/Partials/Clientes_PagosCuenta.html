@@ -16,9 +16,8 @@
                         <td>{{deuda.Id}}</td>
                         <td>{{deuda.Fecha}}</td>
                         <td>{{deuda.MontoVta}}</td>                        
-                        <!--<td><a ui-sref="cliente_detail.pagos.deudaVenta" class="tab-link">Ver Detalle</a></td>-->
-                    </tr>
-                    <!-- End: list_row -->
+                        <td><a ui-sref="cliente_detail.pagos.deudaVenta({ventaId:deuda.Id})" class="tab-link">Ver Detalle</a></td>
+                    </tr>                    
                 </tbody>
                 <tfoot>
                     
@@ -26,10 +25,7 @@
             </table>
         </div>
     </div>
-    <div ui-view="detalleDeuda" class="col-xs-12 col-sm-7"></div>
-    <!--<div collapse="isCollapsed" class="col-xs-12 col-sm-7">
-        <div ui-view="detalleDeuda"></div>
-    </div>-->
+    <div ui-view="detalleDeuda" class="col-xs-12 col-sm-7"></div>    
     <div class="clearfix"></div>
 </div>
 <!--Fin: Area Pagos Pendientes-->

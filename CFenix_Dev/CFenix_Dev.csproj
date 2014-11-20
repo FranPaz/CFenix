@@ -343,6 +343,7 @@
     <Content Include="Scripts\App\CuentasCorrientes\Partials\tables_simple.html" />
     <Content Include="Scripts\App\Deudas\deudasDataFactory.js" />
     <Content Include="Scripts\App\Insumos\insumosFilter.js" />
+    <Content Include="Scripts\App\Deudas\Partials\Deuda_DetalleDeuda.html" />
     <Content Include="Scripts\App\Insumos\Partials\Insumos_Add.html" />
     <Content Include="Scripts\App\Insumos\Partials\Insumos_Detail.html" />
     <Content Include="Scripts\App\Deudas\deudasCtrl.js" />
@@ -1121,7 +1122,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Scripts\App\Deudas\Partials\" />
     <Folder Include="Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
