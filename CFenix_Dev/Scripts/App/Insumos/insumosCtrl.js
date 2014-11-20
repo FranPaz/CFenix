@@ -1,4 +1,4 @@
-﻿copisteriaFenixApp.controller('insumosCtrl', function ($scope, insumosDataFactory, $modal, $stateParams, $state) {
+﻿copisteriaFenixApp.controller('insumosCtrl', function ($scope, insumosDataFactory,  $modal, $stateParams, $state) {
     //iafar: trae todos los insumos
     $scope.insumos = insumosDataFactory.query();
 
