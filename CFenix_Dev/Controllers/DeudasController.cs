@@ -24,7 +24,7 @@ namespace CFenix_Dev.Controllers
 
         // GET: api/Deudas/5
         [ResponseType(typeof(Venta))]
-        public IHttpActionResult GetDeuda(int id)
+        public IHttpActionResult GetDeuda(int id) //devuelve todas las compras de un cliente
         {
 
             var listaDeudas = (from v in db.Ventas
@@ -37,6 +37,22 @@ namespace CFenix_Dev.Controllers
             }
 
             return Ok(listaDeudas);
+        }
+
+        public IHttpActionResult GetDetalleDeuda(int prmIdCliente, int prmIdVenta) //devuelve todas las compras de un cliente
+        {
+
+            var listaDetalleDeudas = (from dv in db.DetallesVta
+                                      where dv.VentaId == prmIdVenta
+                                      select dv).ToList();
+                
+
+            if (listaDetalleDeudas == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(listaDetalleDeudas);
         }
 
         // PUT: api/Deudas/5
