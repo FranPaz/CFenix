@@ -1,21 +1,23 @@
-﻿/// <reference path="../Insumos/Partials/Insumos_Seek.html" />
-/// <reference path="../Insumos/Partials/Insumos_Seek.html" />
-copisteriaFenixApp.controller('ventaCtrl', function ($scope, ventasDataFactory, insumosDataFactory, $stateParams, $state, $modal, ventaSvc) {
+﻿copisteriaFenixApp.controller('ventaCtrl', function ($scope, ventasDataFactory, insumosDataFactory, $stateParams, $state, $modal, ventaSvc) {
 
     var detalles = [];
     $scope.detallesFactura = detalles; //lleno el scope de detallesFactura con los detalles que se van cargando o los que ya me devuelve al llamar a la pantalla
+    $scope.totalVta = 0;
+    $scope.edicionDetallesVta = true;//habilita o no las opciones de edicion de la fila del detalle de la venta
 
     //#region Agregar producto al listado de Detalle de Factura y Registrar Venta
     $scope.agregarProducto = function (productoVta) {
 
         productoVta.Subtotal = productoVta.Cantidad * productoVta.PrecioUnitario;
-        //ventaSvc.addDetallesFacturaVta(productoVta);
+        $scope.totalVta += parseFloat(productoVta.Subtotal);
+        ventaSvc.addTotalVta($scope.totalVta);
+        ventaSvc.addDetallesFacturaVta(productoVta);
         detalles.push(productoVta);
 
         $scope.productoVta = null;
     };
     $scope.addVenta = function () { // registra la venta
-        ventaSvc.addDetallesFacturaVta(detalles);
+        ventaSvc.addDetallesFacturaVta(detalles);        
         var venta = new Object;
         venta.Cliente = ventaSvc.getCliente();
         venta.DetallesVta = ventaSvc.listaDetallesFacturaVta();

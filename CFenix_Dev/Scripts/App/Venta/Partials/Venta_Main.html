@@ -159,19 +159,10 @@
         <div > <!-- class="box" -->
             <div>
                 <div>
-                    <div>
-                        <div class="col-sm-4">
-                            <table>
-                                <tr><th class='' id='saleProductTotalLabel_SubTotal'>Subtotal</th><td class='' id='saleProductTotal_SubTotal'>0.00</td></tr>
-                                <tr><th id='saleProductTotalLabel_Tax'>Impuesto</th><td id='saleProductTotal_Tax'>0.00</td></tr>
-                                <tr class="trTotal"><th id='saleProductTotalLabel_Total'>Total</th><td id='saleProductTotal_Total'>0.00</td></tr>
-                                <tr><th id='saleProductTotalLabel_Payment'>Pago</th><td id='saleProductTotal_Payment'>0.00</td></tr>
-                                <tr><th id='saleProductTotalLabel_Change'>Cambio</th><td id='saleProductTotal_Change'>0.00</td></tr>
-                            </table>
-                        </div>
-                        <div class="col-sm-8 right">
-                            {{ventaGuardada}}
-                            <button type="button" class="btn btn-success" ng-click="addVenta()">Registrar Venta</button>
+                    <div>                        
+                        <div class="col-sm-8 right">                            
+                            <!--<button type="button" class="btn btn-success" ng-click="addVenta()">Registrar Venta</button>-->
+                            <a class="btn btn-success" ui-sref="pagosBase.registracionVenta()">Registrar Venta</a>                            
                             <button type="button" class="btn btn-danger">Cancelar</button>
                         </div>
                     </div>

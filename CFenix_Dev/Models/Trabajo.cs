@@ -9,21 +9,17 @@ using System.Web;
 namespace CFenix_Dev.Models
 {
     public class Trabajo
-    {
-        public Trabajo()
-        {
-
-        }
-
-        public int Id { get; set; }
-        [Required]
+    {        
+        public int Id { get; set; }        
         public string Nombre { get; set; }
         public decimal PrecioUnitario { get; set; }
+        public string UMedida { get; set; }
         //iafar: relacion 1 a muchos con TipoTrabajo(1)
         public int TipoTrabajoId { get; set; }
         public virtual TipoTrabajo TipoTrabajo {get;set;}
         //iafar:relacion 1 a muchos con insumos(muchos)
         public virtual ICollection<Insumo> Insumos { get; set; }
+        public virtual ICollection<DetalleVta> DetallesVta { get; set; } //fpaz: 1 a M con Detalle Venta
     }
 
     public class TipoTrabajo

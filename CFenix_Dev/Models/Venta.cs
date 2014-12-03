@@ -17,12 +17,12 @@ namespace CFenix_Dev.Models
         public int ClienteId { get; set; }
         public virtual Cliente Cliente { get; set; }
 
+        public virtual ICollection<Pago> Pagos { get; set; } // 1 a M con Pagos (muchos)
     }
 
     public class DetalleVta
     {    
-        public int Id { get; set; }
-        public int CodProducto { get; set; }
+        public int Id { get; set; }        
         public string Descripcion { get; set; }
         public int Cantidad { get; set; }
         public decimal PrecioUnitario { get; set; }
@@ -31,6 +31,10 @@ namespace CFenix_Dev.Models
         //1 a M con Venta (uno)
         public int VentaId { get; set; }
         public virtual Venta Venta { get; set; }
+
+        // 1 a M con Trabajo (uno)
+        public int TrabajoId { get; set; }
+        public virtual Trabajo Trabajo { get; set; }
 
     }
 }
