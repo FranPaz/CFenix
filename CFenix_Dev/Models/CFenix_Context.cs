@@ -37,6 +37,21 @@ namespace CFenix_Dev.Models
         public System.Data.Entity.DbSet<CFenix_Dev.Models.Venta> Ventas { get; set; }
 
         public DbSet<DetalleVta> DetallesVta { get; set; }
+
+        public System.Data.Entity.DbSet<CFenix_Dev.Models.Pago> Pagos { get; set; }
+        public DbSet<DetallePago> DetallesPagos { get; set; }        
+
+        public System.Data.Entity.DbSet<CFenix_Dev.Models.Caja> Cajas { get; set; }
+
+        public System.Data.Entity.DbSet<CFenix_Dev.Models.TipoMovCaja> TipoMovCajas { get; set; }
+
+        public System.Data.Entity.DbSet<CFenix_Dev.Models.PagoEfectivo> PagosEfectivo { get; set; }
+
+        public System.Data.Entity.DbSet<CFenix_Dev.Models.PagoCC> PagosCC { get; set; }
+
+        public System.Data.Entity.DbSet<CFenix_Dev.Models.Cheque> Cheques { get; set; }
+
+        public System.Data.Entity.DbSet<CFenix_Dev.Models.TipoMovCC> TipoMovCCs { get; set; }
         #endregion
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -49,22 +64,7 @@ namespace CFenix_Dev.Models
                         .HasForeignKey(u => u.ClienteId);
 
             base.OnModelCreating(modelBuilder);
-        }
-
-        
-
-        
-
+        }     
     }
-
-    //public class CFenixDBInitializer:DropCreateDatabaseIfModelChanges<CFenix_Context>
-    //{
-    //    protected override void Seed(CFenix_Context context)
-    //    {
-    //        //fpaz: proveedor por defecto
-    //        context.Proveedores.Add(new Proveedor { Nombre = "Proveedor 1", Dir = "Calle Falsa 123", tel = "123456" });            
-            
-    //        base.Seed(context);
-    //    }
-    //}
+   
 }

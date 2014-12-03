@@ -1,0 +1,163 @@
+﻿<div class="row">
+    <div class="col-xs-12 col-sm-12">
+        <div class="box">
+            <div class="box-header">
+                <div class="box-name">                    
+                    <span>Formas de Pago</span>
+                </div>                
+            </div>
+            <div class="box-content">
+                <h4 class="page-header">Seleccione la Forma de Pago</h4>
+                <div class="row">
+                    <form class="form-inline" role="form">
+                        <!-- Area de Pagos en Efectivo-->
+                        <div class="form-group col-sm-3">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" ng-model="formasPago[0].seleccionado" checked>
+                                    {{formasPago[0].forma}}
+                                    {{formasPago[0].seleccionado}}
+                                </label>
+                            </div>
+                            <div class="panel panel-default" ng-show="formasPago[0].seleccionado">
+                                <div class="panel-body">
+                                    <div class="row form-group">
+                                        <div>
+                                            <div class="radio col-lg-12">
+                                                <label>
+                                                    <input type="radio" name="radioEfect" ng-model="pagoEfectivo.Monto" ng-value="totalVta"> Total de la compra: ${{totalVta}}
+                                                </label>
+                                            </div>
+                                            <div class="radio col-lg-12">
+                                                <label>
+                                                    <input type="radio" name="radioEfect"> Otro importe a pagar:
+                                                </label>
+                                                <input type="text" ng-model="pagoEfectivo.Monto" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End - Area de Pagos en Efectivo-->
+                        <!-- Area de Pagos con Cuenta Corriente-->
+                        <div class="form-group col-sm-3">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" ng-model="formasPago[1].seleccionado">
+                                    {{formasPago[1].forma}}
+                                    {{formasPago[1].seleccionado}}
+                                </label>
+                            </div>
+                            <div class="panel panel-default" ng-show="formasPago[1].seleccionado">
+                                <div class="panel-body">
+                                    <div class="row form-group">
+                                        <div>
+                                            <div class="col-lg-12">
+                                                <label>
+                                                    N° de Cuenta Corriente:
+                                                </label>
+                                                12412412
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <label>
+                                                    Saldo de la Cuenta:
+                                                </label>
+                                                $2324,00
+                                            </div>
+                                            <div class="radio col-lg-12">
+                                                <label>
+                                                    <input type="radio" name="radioCC"> Total de la compra: ${{totalVta}}
+                                                </label>
+                                            </div>
+                                            <div class="radio col-lg-12">
+                                                <label>
+                                                    <input type="radio" name="radioCC"> Otro importe a pagar:
+                                                </label>
+                                                <input type="text" ng-model="pagoCC.Monto" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End - Area de Pagos con Cuenta Corriente-->
+                        <!-- Area de Pagos con Area de Pagos con Cheque-->
+                        <div class="form-group col-sm-6">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" ng-model="formasPago[2].seleccionado">
+                                    {{formasPago[2].forma}}
+                                    {{formasPago[2].seleccionado}}
+                                </label>
+                            </div>
+                            <div class="panel panel-default" ng-show="formasPago[2].seleccionado">
+                                <div class="panel-body">
+                                    <div class="row form-group">
+                                        <div>
+                                            <div class="radio col-lg-12">
+                                                <label>
+                                                    Numero de Cheque:
+                                                </label>
+                                                <input type="text" ng-model="pagoCheque.NroCheque" class="form-control" />
+                                            </div>
+                                            <div class="radio col-lg-12">
+                                                <label>
+                                                    Fecha de Emision:
+                                                </label>
+                                                <input type="text" ng-model="pagoCheque.FechaEmision" class="form-control" />
+                                            </div>
+                                            <div class="radio col-lg-12">
+                                                <label>
+                                                    Fecha de Pago:
+                                                </label>
+                                                <input type="text" ng-model="pagoCheque.Pago" class="form-control" />
+                                            </div>
+                                            <div class="radio col-lg-12">
+                                                <label>
+                                                    Emitido Por:
+                                                </label>
+                                                <input type="text" ng-model="pagoCheque.Librador" class="form-control" />
+                                            </div>
+                                            <div class="radio col-lg-12">
+                                                <label>
+                                                    Banco:
+                                                </label>
+                                                <input type="text" ng-model="pagoCheque.Banco" class="form-control" />
+                                            </div>
+                                            <div class="radio col-lg-12">
+                                                <label>
+                                                    Observaciones:
+                                                </label>
+                                                <input type="text" ng-model="pagoCheque.Observaciones" class="form-control" />
+                                            </div>
+                                            <div class="radio col-lg-12">
+                                                <label>
+                                                    <input type="radio" name="radioCheques" checked=""> Total de la compra: ${{totalVta}}
+                                                </label>
+                                            </div>
+                                            <div class="radio col-lg-12">
+                                                <label>
+                                                    <input type="radio" name="radio"> Otro importe a pagar:
+                                                </label>
+                                                <input type="text" ng-model="pagoCheque.Monto" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End - Area de Pagos con Cheque-->
+                    </form>                
+                </div>                
+            </div>
+        </div>
+    </div>    
+</div>
+<div class="col-sm-8 right">
+    <!--<button type="button" class="btn btn-success" ng-click="registrar(ventaId)">Confirmar Compra</button>-->    
+    <button type="button" class="btn btn-success" ng-click="addVenta()">Confirmar Compra</button>    
+    <button type="button" class="btn btn-danger">Cancelar</button>
+</div>
+<!--{{ventaId}}
+{{resultPago}}-->

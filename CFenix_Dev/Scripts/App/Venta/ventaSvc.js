@@ -7,29 +7,38 @@
           } 
     //#endregion
 
-    //#region Productos Venta
+    var totalVta = 0;
+    var addTotalVta = function (prmSubTotal) {
+        totalVta = prmSubTotal;
+    }
+
+    //#region Productos Venta    
     var detallesFacturaVta = []; //variable global donde voy a guardar los detalles de la factura de la venta
-    var addDetallesFacturaVta = function (newObj) {
-        detallesFacturaVta = newObj;
-    }; //variable global donde voy a guardar el cliente que encuentre en la busqueda y al que le estoy haciendo la venta
+    var addDetallesFacturaVta = function (newObj) {        
+        detallesFacturaVta.push(newObj);
+    };
     
     var limpiarVta = function () {
         clienteVta = [];
         detallesFacturaVta = [];
+        totalVta = 0;
     }
 
     return {
         getCliente: function () {
             return clienteVta[0];
         },
-        first: function () {
-            return clienteVta[0];
+        getTotalVta: function () {
+            return totalVta;
         },
-        addClienteVta: addClienteVta,
-        addDetallesFacturaVta: addDetallesFacturaVta, //llama a la funcion de agregar un producto al array de detalle de factura
         listaDetallesFacturaVta: function () {//devuelve el array de detalles de factura de la venta
             return detallesFacturaVta;
         },
-        limpiarVta: limpiarVta
+        limpiarVta: limpiarVta,
+
+        addClienteVta: addClienteVta,
+        addTotalVta:addTotalVta,
+        addDetallesFacturaVta: addDetallesFacturaVta, //llama a la funcion de agregar un producto al array de detalle de factura
+        
     };
 });

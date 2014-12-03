@@ -97,7 +97,7 @@ namespace CFenix_Dev.Controllers
                 DetalleVta detalle = new DetalleVta();
                 
                     detalle.PrecioUnitario = item.PrecioUnitario;
-                    detalle.CodProducto = item.CodProducto;
+                    //detalle.CodProducto = item.CodProducto;
                     detalle.Cantidad = item.Cantidad;
                     detalle.Descripcion = item.Descripcion;
                     detalle.Subtotal = item.Subtotal;
@@ -111,7 +111,7 @@ namespace CFenix_Dev.Controllers
             db.Ventas.Add(venta);
             db.SaveChanges();
 
-            return Ok();
+            return Ok(venta);
         }
 
         // DELETE: api/Ventas/5

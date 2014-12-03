@@ -420,6 +420,68 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                     }
                 }
             })
+
+            .state('pagosBase.registracionVenta', { // estado donde se registra la venta y se hace el pago de la misma
+                url: "/Venta/Registracion/:detalles",                
+                views: {                    
+                    'clienteVta': {
+                        templateUrl: '/Scripts/App/Pagos/Partials/Pagos_InfoCliente.html',
+                        controller: 'pagosCtrl',
+                        resolve: {
+                                user: 'User',
+                                authenticationRequired: function (user) {
+                                    user.isAuthenticated();
+                                }                                
+                            }                        
+                    },
+                    'tablaDetalle': {
+                        templateUrl: '/Scripts/App/Venta/Partials/Venta_DetalleFactura.html',
+                        controller: 'pagosCtrl',
+                        resolve: {
+                                user: 'User',
+                                authenticationRequired: function (user) {
+                                    user.isAuthenticated();
+                                }                                
+                            }                        
+                    },
+                    'formasPago': {
+                        templateUrl: '/Scripts/App/Pagos/Partials/Pagos_FormaPago.html',
+                        controller: 'pagosCtrl',
+                        resolve: {
+                                user: 'User',
+                                authenticationRequired: function (user) {
+                                    user.isAuthenticated();
+                                }                                
+                            }                        
+                    }
+                }
+            })
+        //#endregion
+
+        //#region Pagos
+            .state('pagosBase', {
+                abstract: true,                
+                views: {
+                    'headerAdmin': {
+                        templateUrl: '/Scripts/App/Partials/Header.html',
+                        controller: ''
+                    },
+                    'menuAdmin': {
+                        templateUrl: '/Scripts/App/Partials/Menu.html',
+                        controller: ''
+                    },
+                    'dashboard': {
+                        templateUrl: '/Scripts/App/Pagos/Partials/Pagos_ProcVenta.html',
+                        controller: '',
+                        resolve: {
+                            user: 'User',
+                            authenticationRequired: function (user) {
+                                user.isAuthenticated();
+                            }
+                        }
+                    }
+                }
+            })
         //#endregion
 
         //#region Notificaciones
