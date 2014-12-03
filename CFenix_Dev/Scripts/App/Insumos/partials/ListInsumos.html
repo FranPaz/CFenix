@@ -1,4 +1,4 @@
-        <!--<div class="row">-->
+
 <div id="breadcrumb" class="col-md-12">
     <ol class="breadcrumb">
         <li><a href="index.html">dashboard</a></li>
@@ -6,127 +6,42 @@
         <li><a href="#">Insumos</a></li>
     </ol>
 </div>
-<!--</div>-->
+
 <div class="row">
-    <div class="col-xs-12 col-sm-12">
-        <div class="box">
-            <div class="box-header">
-                <div class="box-name">
-                    <!--<i class="fa fa-search"></i>-->
-                    <span>Carga de Producto</span>
-                </div>
-
-                <div class="no-move"></div>
-            </div>
-            <!-- Zona de Tabs -->
-
-            <!-- Tempo:Cambiar por tabs -->
+    <div class="box">
+        <div class="col-lg-12">
             <div class="box-content">
-                <h4 class="page-header">Nuevo</h4>
-                <form class="form-horizontal" role="form">
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">Nombre</label>
-                        <div class="col-sm-4">
-                            <input type="text" ng-model="insumo.Nombre" class="form-control" placeholder="Nombre de Producto" data-toggle="tooltip" data-placement="bottom" title="Ingrese el nombre del producto">
-                        </div>
+                <tabset justified="true">
+                    <tab heading="Nuevo" select="InsumosAdd()">
+                        <div ui-view="AddInsumos"></div>
+                    </tab>
+                    <tab heading="Modificar" select="InsumosMod()">
+                        <div ui-view="ModInsumos"></div>
+                    </tab>
+                    <tab heading="Detalle" select="InsumosDetail()">
+                        <div ui-view="DetailInsumos"></div>
+                    </tab>
+                </tabset>
+                <!-- Fin Zona Tabs -->
 
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">Proveedor</label>
-                        <div class="col-sm-4">
-                            <select class="form-control" name="country" id="s2_country">
-                                <option value="">Seleccione un Proveedor</option>
-                                <option value="1">Proveedor 1</option>
-                                <option value="2">Proveedor 2</option>
-                                <option value="3">Proveedor 3</option>
-                            </select>
-                        </div>
-
-                    </div>
-                    <div class="form-group has-success has-feedback">
-                        <label class="col-sm-2 control-label">Stock</label>
-                        <div class="col-sm-4">
-                            <input type="text" ng-model="insumo.CantStock" class="form-control" placeholder="Cantidad">
-                        </div>
-
-                        <div class="col-sm-4">
-                            <input type="text" ng-model="insumo.UMedida" class="form-control" placeholder="Unidad de Medida">
-
-                        </div>
-                    </div>
-
-                    <div class="form-group has-error has-feedback">
-                        <label class="col-sm-2 control-label">Reposicion</label>
-                        <div class="col-sm-4">
-                            <input type="text" ng-model="insumo.PtoRepo" class="form-control" placeholder="Punto de Reposicion" data-toggle="tooltip" data-placement="bottom" title="Punto de Reposicion">
-                        </div>
-                    </div>
-
-                    <div class="form-group has-warning has-feedback">
-                        <label class="col-sm-2 control-label">Precio</label>
-                        <div class="col-sm-4">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-money"></i></span>
-                                <input type="text" ng-model="insumo.PrecioCompra" class="form-control" placeholder="Compra">
-                                <span class="input-group-addon"><i class="fa fa-usd"></i></span>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-4">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-money"></i></span>
-                                <input type="text" ng-model="insumo.PrecioVenta" class="form-control" placeholder="Venta">
-                                <span class="input-group-addon"><i class="fa fa-usd"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                    <!--{{insumo}}-->
-                    <div class="clearfix"></div>
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-2">
-
-                        </div>
-
-                        <div class="col-sm-2">
-                            <button type="submit" ng-click="altaInsumo(insumo)" class="btn btn-primary btn-label-left">
-                                <span><i class="fa fa-clock-o"></i></span>
-                                Guardar
-                            </button>
-                        </div>
-                    </div>
-                </form>
             </div>
-            <!-- Tempo: Cambiar -->
-
-            <!--<tabset justified="true">
-                <tab heading="Nuevo" select="InsumosAdd()">
-                    Nuevo
-                    <div ui-view="AddInsumos"></div>
-                </tab>
-                <tab heading="Modificar" select="InsumosMod()">
-                    Modificar
-                    <div ui-view="ModInsumos"></div>
-                </tab>
-                <tab heading="Detalle" select="InsumosDetail()">
-                    Detalles
-                    <div ui-view="DetailInsumos"></div>
-                </tab>
-            </tabset>-->
-
-            <!-- Fin Zona Tabs -->
+            
         </div>
+        <!-- Tempo: Cambiar -->
+        
     </div>
-    <!-- Area de listado de Insumos -->
+    
+</div>
+
 
     <div class="row">
         <div class="col-xs-12 col-sm-12">
             <div class="box">
+               <!-- iafar: Listar y buscar Insumos -->
                 <div class="box-header">
                     <div class="box-name">
-                        <!--<i class="fa fa-table"></i>-->
                         <span>Buscar Insumo</span>
                     </div>
-                    <div class="no-move"></div>
                 </div>
                 <div class="box-content">
                     <!-- iafar: cuadro de busqueda -->
@@ -141,7 +56,7 @@
                         </div>
                     </div>
 
-                   <!-- iafar: Tabla de resultados -->
+                    <!-- iafar: Tabla de resultados -->
                     <table class="table table-striped">
                         <thead>
                             <tr>
@@ -156,7 +71,7 @@
                         </thead>
                         <tbody>
                             <!-- iafar: Agregar filtro para buscar por nombre del insumo-->
-                            <tr ng-repeat="i in insumos| filter:BusCadena:strict">                               
+                            <tr ng-repeat="i in insumos| filter:BusCadena:strict">
                                 <td>{{i.Id}}</td>
                                 <td>{{i.Nombre}}</td>
                                 <td>{{i.Proveedores.Nombre}}</td>
@@ -164,11 +79,19 @@
                                 <td>{{i.UMedida}}</td>
                                 <td>{{i.PrecioCompra}}</td>
                                 <td>{{i.PrecioVenta}}</td>
+                                <td><button ng-click="seleccionar(i)">seleccionar</button></td>
                             </tr>
                         </tbody>
                     </table>
+                    <div class="box-content">
+                        <div>
+                            <button class="btn btn-primary" ng-click="modificar()">Modificar</button>
+                            <button class="btn btn-warning" ng-click="eliminar()">Eliminar</button>
+                        </div>
+                    </div>
+
+                    <!-- iafar: fin de Lista -->
                 </div>
-            </div>
         </div>
     </div>
 

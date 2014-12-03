@@ -1,3 +1,4 @@
+/// <reference path="Cajas/Partials/Cajas_List.html" />
 var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngResource', 'ui.router', 'ngCookies','ui.bootstrap',,'chieffancypants.loadingBar', 'ngAnimate',
   'ngSanitize', 'ui.select']) //fpaz: defino el modulo con las librerias para routing (ui.router), usar apis rest y para interfaz de usuarios con angular(ui.bootstrap)
     .config(function ($stateProvider, $urlRouterProvider, cfpLoadingBarProvider) { //fpaz: configuro el routing de los states usando los servicios $stateProvider y $urlRouteProvider
@@ -67,7 +68,7 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                 views: {
                     'AddInsumos': {
                         templateUrl: '/Scripts/App/Insumos/Partials/Insumos_Add.html',
-                        controller: 'insumosCtrl',
+                        controller: '',
                         resolve: {
                             user: 'User',
                             authenticationRequired: function (user) {
@@ -84,7 +85,7 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                 views: {
                     'ModInsumos': {
                         templateUrl: '/Scripts/App/Insumos/Partials/Insumos_Mod.html',
-                        controller: 'insumosCtrl',
+                        controller: '',
                         resolve: {
                             user: 'User',
                             authenticationRequired: function (user) {
@@ -95,14 +96,13 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                 }
             })
 
-            //Detalle de un isumo
-        //"/Trabajos/Detail"
+            //Detalle de un insumo
             .state('Insumos.detail', {
                 url: "/Detail",
                 views: {
                     'DetailInsumos': {
                         templateUrl: '/Scripts/App/Insumos/Partials/Insumos_Detail.html',
-                        controller: 'insumosCtrl',
+                        controller: '',
                         resolve: {
                             user: 'User',
                             authenticationRequired: function (user) {
@@ -112,7 +112,6 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                     }
                 }
             })
-
 
             //Fin Dashboard de insumos
 
@@ -436,6 +435,32 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                      },
                      'dashboard': {
                          templateUrl: '/Scripts/App/Notificaciones/Partials/page_messages.html',
+                         controller: '',
+                         resolve: {
+                             user: 'User',
+                             authenticationRequired: function (user) {
+                                 user.isAuthenticated();
+                             }
+                         }
+                     }
+                 }
+             })
+        //#endregion
+
+        //#region Cajas
+             .state('Cajas', {
+                 url: "/Cajas",
+                 views: {
+                     'headerAdmin': {
+                         templateUrl: '/Scripts/App/Partials/Header.html',
+                         controller: ''
+                     },
+                     'menuAdmin': {
+                         templateUrl: '/Scripts/App/Partials/Menu.html',
+                         controller: ''
+                     },
+                     'dashboard': {
+                         templateUrl: '/Scripts/App/Cajas/Partials/Cajas_List.html',
                          controller: '',
                          resolve: {
                              user: 'User',

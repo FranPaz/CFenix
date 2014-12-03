@@ -1,0 +1,53 @@
+﻿<div class="modal-header box"> <!-- class="box-header" -->
+    <div class="modal-title"><!-- class="box-name" -->
+        <!--<i class="fa fa-table"></i>-->
+        <span>Buscar Insumo</span>
+    </div>
+</div>
+<div class="modal-body"><!-- class="box-content" -->
+    <!-- iafar: cuadro de busqueda -->
+    <div class="form-group has-success has-feedback">
+        <label class="col-sm-2 control-label">Buscar Producto</label>
+        <div class="col-sm-4">
+            <input type="text" ng-model="BusCadena.Nombre" class="form-control" placeholder="Nombre">
+        </div>
+
+        <div class="col-sm-4">
+            <button type="button" class="btn btn-default"><i class="fa fa-search"></i> Buscar</button>
+        </div>
+    </div>
+
+    <!-- iafar: Tabla de resultados -->
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Codigo</th>
+                <th>Nombre</th>
+                <th>Proveedor</th>
+                <th>Cantidad en Stock</th>
+                <th>U. de Medida</th>
+                <th>Precio de compra $</th>
+                <th>Precio de venta $</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- iafar: Agregar filtro para buscar por nombre del insumo-->
+            <tr ng-repeat="i in insumos| filter:BusCadena:strict">
+                <td>{{i.Id}}</td>
+                <td>{{i.Nombre}}</td>
+                <td>{{i.Proveedores.Nombre}}</td>
+                <td>{{i.CantStock}}</td>
+                <td>{{i.UMedida}}</td>
+                <td>{{i.PrecioCompra}}</td>
+                <td>{{i.PrecioVenta}}</td>
+                <td><button ng-click="seleccionar(i)">seleccionar</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="modal-footer" >
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok(productoVta)">OK</button>
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div>
+    </div>
+</div>

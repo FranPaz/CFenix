@@ -1,24 +1,26 @@
-﻿copisteriaFenixApp.controller('insumosCtrl', function ($scope, insumosDataFactory,  $modal, $stateParams, $state) {
+﻿copisteriaFenixApp.controller('insumosCtrl', function ($scope, insumosDataFactory, $modal, $stateParams, $state) {
     //iafar: trae todos los insumos
     $scope.insumos = insumosDataFactory.query();
 
     //iafar: trae los datos de un insumo en particular
     $scope.insumoId = $stateParams.Id;
-    $scope.trabajo = insumosDataFactory.get({ id: $scope.insumoId });
+    $scope.trabajo = insumosDataFactory.get({ id: $scope.insumoId });//iafar:es necesario esto aqui?
 
-    //funcion para agregar un nuevo insumo y mostrarlo en el listado
+    //iafar:funcion para agregar un nuevo insumo al listado mostrado
     $scope.addInsumo = function (insumo) {
-        alert('Prueba')
         $scope.insumos.push(insumo);
+        $scope.insumo = null;
     };
 
     //#region iafar: funciones para ALTA de un insumo   
+
     $scope.altaInsumo = function (insumo) {
         
         insumosDataFactory.save(insumo).$promise.then(
             function () {
                 //$scope.addInsumo(insumo);
                 alert('Nuevo insumo Guardado');
+                $scope.addInsumo(insumo);
             },
             function (response) {
                 $scope.errors = response.data;
@@ -27,14 +29,26 @@
     };
     //#endregion
 
+    //#region iafar: funciones modales para aceptar o cancelar
+    $scope.seleccionar = function (insumo) {
+        $scope.insumoMod = insumo;
+    };
 
+    $scope.Mod = function () {
+       
+    };
 
-
+    $scope.cancel = function () {
+        $modalInstance.dismiss('cancel');
+    };
+    //#endregion
 
     //#region llamadas a partials de tabs en Dashboard de Insumos
     $scope.InsumosAdd = function () {
         $state.go('Insumos.add');
+        $scope.insumoMod = null;
     };
+
     //deberia pasar como parametro el id?
     $scope.InsumosMod = function () {
         $state.go('Insumos.mod');

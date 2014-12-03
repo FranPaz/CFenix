@@ -1,75 +1,90 @@
-﻿<div class="box-content">
-    <h4 class="page-header">Nuevo</h4>
-    <form class="form-horizontal" role="form">
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Nombre</label>
-            <div class="col-sm-4">
-                <input type="text" class="form-control" placeholder="Nombre de Producto" data-toggle="tooltip" data-placement="bottom" title="Ingrese el nombre del producto">
-            </div>
-
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Proveedor</label>
-            <div class="col-sm-4">
-                <select class="form-control" name="country" id="s2_country">
-                    <option value="">Seleccione un Proveedor</option>
-                    <option value="p1">Proveedor 1</option>
-                    <option value="p2">Proveedor 2</option>
-                    <option value="p3">Proveedor 3</option>
-                </select>
-            </div>
-
-        </div>
-        <div class="form-group has-success has-feedback">
-            <label class="col-sm-2 control-label">Stock</label>
-            <div class="col-sm-4">
-                <input type="text" class="form-control" placeholder="Cantidad">
-            </div>
-
-            <div class="col-sm-4">
-                <input type="text" class="form-control" placeholder="Unidad de Medida">
-
-            </div>
-        </div>
-
-        <div class="form-group has-error has-feedback">
-            <label class="col-sm-2 control-label">Reposicion</label>
-            <div class="col-sm-4">
-                <input type="text" class="form-control" placeholder="Punto de Reposicion" data-toggle="tooltip" data-placement="bottom" title="Punto de Reposicion">
-            </div>
-        </div>
-
-        <div class="form-group has-warning has-feedback">
-            <label class="col-sm-2 control-label">Precio</label>
-            <div class="col-sm-4">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-money"></i></span>
-                    <input type="text" class="form-control" placeholder="Compra">
-                    <span class="input-group-addon"><i class="fa fa-usd"></i></span>
+﻿
+    <!-- class="row" -->
+    <div class="row"> <!-- class="col-xs-12 col-sm-12" -->
+        <div> <!--  class="box" -->
+            <div class="box-header">
+                <div class="box-name">
+                    <!--<i class="fa fa-search"></i>-->
+                    <!--<span>Carga de Producto</span>-->
                 </div>
-            </div>
 
-            <div class="col-sm-4">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-money"></i></span>
-                    <input type="text" class="form-control" placeholder="Venta">
-                    <span class="input-group-addon"><i class="fa fa-usd"></i></span>
-                </div>
+                <div class="no-move"></div>
+            </div>
+            <!-- Zona de Tabs -->
+            <!-- Tempo:Cambiar por tabs -->
+            <div class="box-content">
+                <h4 class="page-header">Carga de Producto</h4>
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Nombre</label>
+                        <div class="col-sm-4">
+                            <input type="text" ng-model="insumo.Nombre" class="form-control" placeholder="Nombre de Producto" data-toggle="tooltip" data-placement="bottom" title="Ingrese el nombre del producto">
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Proveedor</label>
+                        <div class="col-sm-4">
+                            <select class="form-control" name="country" id="s2_country">
+                                <option value="">Seleccione un Proveedor</option>
+                                <option value="1">Proveedor 1</option>
+                                <option value="2">Proveedor 2</option>
+                                <option value="3">Proveedor 3</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group has-success has-feedback">
+                        <label class="col-sm-2 control-label">Stock</label>
+                        <div class="col-sm-4">
+                            <input type="text" ng-model="insumo.CantStock" class="form-control" placeholder="Cantidad">
+                        </div>
+
+                        <div class="col-sm-4">
+                            <input type="text" ng-model="insumo.UMedida" class="form-control" placeholder="Unidad de Medida">
+
+                        </div>
+                    </div>
+
+                    <div class="form-group has-error has-feedback">
+                        <label class="col-sm-2 control-label">Reposicion</label>
+                        <div class="col-sm-4">
+                            <input type="text" ng-model="insumo.PtoRepo" class="form-control" placeholder="Punto de Reposicion" data-toggle="tooltip" data-placement="bottom" title="Punto de Reposicion">
+                        </div>
+                    </div>
+
+                    <div class="form-group has-warning has-feedback">
+                        <label class="col-sm-2 control-label">Precio</label>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-money"></i></span>
+                                <input type="text" ng-model="insumo.PrecioCompra" class="form-control" placeholder="Compra">
+                                <span class="input-group-addon"><i class="fa fa-usd"></i></span>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-money"></i></span>
+                                <input type="text" ng-model="insumo.PrecioVenta" class="form-control" placeholder="Venta">
+                                <span class="input-group-addon"><i class="fa fa-usd"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <!--{{insumo}}-->
+                    <div class="clearfix"></div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-2">
+
+                        </div>
+
+                        <div class="col-sm-2">
+                            <button type="submit" ng-click="altaInsumo(insumo)" class="btn btn-primary btn-label-left">
+                                <span><i class="fa fa-clock-o"></i></span>
+                                Guardar
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
-
-        <div class="clearfix"></div>
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-2">
-
-            </div>
-
-            <div class="col-sm-2">
-                <button type="submit" class="btn btn-primary btn-label-left">
-                    <span><i class="fa fa-clock-o"></i></span>
-                    Guardar
-                </button>
-            </div>
-        </div>
-    </form>
-</div>
+    </div>

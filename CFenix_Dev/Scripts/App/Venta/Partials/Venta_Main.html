@@ -1,26 +1,24 @@
 ﻿<div class="row">
-    <div id="breadcrumb" class="col-md-12">
-        <ol class="breadcrumb">
-            <li><a href="index.html">dashboard</a></li>
-            <li><a href="#">Venta</a></li>
-        </ol>
-    </div>
+        <div id="breadcrumb" class="col-lg-12">
+            <ol class="breadcrumb">
+                <li><a href="index.html">dashboard</a></li>
+                <li><a href="#">Venta</a></li>
+            </ol>
+        </div>
 </div>
 
 <!-- Area de Busqueda de Cliente-->
 <div ui-view="busquedaCliente"></div>
 <!-- end -->
 
-<div class="row">
-    <div class="col-xs-12 col-sm-12">
-        <div class="box">
+<div class="row"> <!-- este no debe ser de clase box sino siempre estara encima de todo -->
+    <div class="col-xs-12 col-lg-12">
+        <div > <!-- class="box" -->
+            <!-- Este si puede ser de esta clase, xq solo se sobrepondria a los elementos dentro de su div -->
             <div class="box-header">
                 <div class="box-name">
-                    <!--<i class="fa fa-search"></i>-->
                     <span>Detalles de Producto</span>
                 </div>
-
-                <div class="no-move"></div>
             </div>
             <!--iafar: Comienza box de carga de nuevo item de factura -->
             <div class="box-content">
@@ -30,19 +28,25 @@
                         <!-- Fila1 -->
                         <div class="form-group col-sm-12">
                             <!--iafar: 01.Busqueda del producto y detalle -->
-                            <a href="#" class="col-sm-1 control-label" title="Busqueda Avanzada">Codigo:</a>
+                            <button ng-click="openBusProducto()" class="col-sm-1 control-label" title="Busqueda Avanzada">
+                                Codigo:
+
+                            </button>
 
                             <div class="col-sm-2">
+                                <!-- productoVta.CodProducto -->
                                 <input type="text" ng-model="productoVta.CodProducto" class="form-control" placeholder="000" data-placement="bottom" title="Ingrese el Codigo del Producto">
+                                
+                                <!--iafar: ng-blur="busInsumoId(productoVta.CodProducto)"  --> 
                             </div>
-
+                           
                             <label class="col-sm-1 control-label">Nombre:</label>
                             <div class="col-sm-6">
                                 <input type="text" ng-model="productoVta.Descripcion" class="form-control" placeholder="" data-placement="bottom">
                             </div>
                             <label class="col-sm-1 control-label">Stock:</label>
                             <div class="col-sm-1">
-                                <input type="text" class="form-control" name="txtStock" ng-model="producto.stock" placeholder="100" data-placement="bottom" readonly="" style="width:60px">
+                                <input type="text" class="form-control" name="txtStock" ng-model="productoVta.stock" placeholder="100" data-placement="bottom" readonly="" style="width:60px">
                             </div>
                             <!-- fin 01 -->
                         </div>
@@ -57,7 +61,7 @@
                                         <input type="text" class="form-control" name="txtCant" ng-model="productoVta.Cantidad" placeholder="#" data-placement="bottom" title="Ingrese la cantidad del producto">
                                     </div>
                                     <div class="col-sm-2">
-                                        <input type="text" class="form-control" name="txtUnidad" ng-model="producto.unidad" placeholder="Un." data-placement="bottom" title="Unidad de Venta" readonly="">
+                                        <input type="text" class="form-control" name="txtUnidad" ng-model="productoVta.unidad" placeholder="Un." data-placement="bottom" title="Unidad de Venta" readonly="">
                                     </div>
 
                                     <label class="col-sm-2 control-label">Precio$:</label>
@@ -141,7 +145,6 @@
                 </form>
             </div>
             <!-- iafar: Fin anidamiento -->
-            
         </div>
         <!-- iafar: Fin de box de nuevo item -->
     </div>
@@ -153,7 +156,7 @@
 
 <div class="row">
     <div class="col-xs-12 col-sm-12">
-        <div class="box">
+        <div > <!-- class="box" -->
             <div>
                 <div>
                     <div>
@@ -178,18 +181,3 @@
     </div>
 </div>
 
-<script type="text/javascript">
-
-    function DemoTimePicker() {
-        $('#input_time').timepicker({ setDate: new Date() });
-    }
-
-    $(document).ready(function () {
-        // Initialize datepicker
-        $('#input_date').datepicker({ setDate: new Date() });
-        // Load Timepicker plugin
-        LoadTimePickerScript(DemoTimePicker);
-    });
-
-
-</script>
