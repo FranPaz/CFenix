@@ -105,13 +105,13 @@
                                                 <label>
                                                     Fecha de Emision:
                                                 </label>
-                                                <input type="text" ng-model="pagoCheque.FechaEmision" class="form-control" />
+                                                <input type="date" ng-model="pagoCheque.FechaEmision" class="form-control" />
                                             </div>
                                             <div class="radio col-lg-12">
                                                 <label>
                                                     Fecha de Pago:
                                                 </label>
-                                                <input type="text" ng-model="pagoCheque.Pago" class="form-control" />
+                                                <input type="date" ng-model="pagoCheque.Pago" class="form-control" />
                                             </div>
                                             <div class="radio col-lg-12">
                                                 <label>
@@ -154,6 +154,7 @@
         </div>
     </div>    
 </div>
+
 <div class="col-sm-8 right">
     <!--<button type="button" class="btn btn-success" ng-click="registrar(ventaId)">Confirmar Compra</button>-->    
     <button type="button" class="btn btn-success" ng-click="addVenta()">Confirmar Compra</button>    

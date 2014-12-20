@@ -4,15 +4,17 @@
     $scope.detallesFactura = detalles; //lleno el scope de detallesFactura con los detalles que se van cargando o los que ya me devuelve al llamar a la pantalla
     $scope.totalVta = 0;
     $scope.edicionDetallesVta = true;//habilita o no las opciones de edicion de la fila del detalle de la venta
+    $scope.productoVta={};
 
     //#region Agregar producto al listado de Detalle de Factura y Registrar Venta
-    $scope.agregarProducto = function (productoVta) {
-
-        productoVta.Subtotal = productoVta.Cantidad * productoVta.PrecioUnitario;
-        $scope.totalVta += parseFloat(productoVta.Subtotal);
+    $scope.agregarProducto = function (prmProductoVta) {
+        
+        $scope.productoVta.Subtotal = $scope.productoVta.Cantidad * $scope.productoVta.PrecioUnitario;
+        $scope.productoVta.TrabajoId = $scope.productoVta.CodProducto; //fpaz: agregado para vincular el trabajo con el detalle de la venta
+        $scope.totalVta += parseFloat($scope.productoVta.Subtotal);
         ventaSvc.addTotalVta($scope.totalVta);
-        ventaSvc.addDetallesFacturaVta(productoVta);
-        detalles.push(productoVta);
+        ventaSvc.addDetallesFacturaVta($scope.productoVta);
+        detalles.push($scope.productoVta);
 
         $scope.productoVta = null;
     };
@@ -74,8 +76,7 @@
 
     //#endregion
 
-    //#region ventana modal de Busqueda de insumos
-    $scope.productoVta = [];
+    //#region ventana modal de Busqueda de insumos    
    
     $scope.openBusProducto = function () {
 

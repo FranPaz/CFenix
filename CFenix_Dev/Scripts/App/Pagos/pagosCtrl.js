@@ -19,7 +19,7 @@
     $scope.addVenta = function () { // registra la venta        
         var venta = new Object;
         venta.Cliente = ventaSvc.getCliente();
-        venta.DetallesVta = ventaSvc.listaDetallesFacturaVta();
+        venta.DetallesVta = $scope.detallesFactura;
         ventasDataFactory.save(venta).$promise.then(
             function (response) {
                 ventaSvc.limpiarVta();

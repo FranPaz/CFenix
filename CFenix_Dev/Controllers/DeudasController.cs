@@ -24,12 +24,14 @@ namespace CFenix_Dev.Controllers
 
         // GET: api/Deudas/5
         [ResponseType(typeof(Venta))]
-        public IHttpActionResult GetDeuda(int id) //devuelve todas las compras de un cliente
+        public IHttpActionResult GetDeuda(int id) //devuelve todas las compras de un cliente con pagos adeudados
         {
-
-            var listaDeudas = (from v in db.Ventas
-                               where v.ClienteId == id
-                               select v).ToList();
+            var listaDeudas = (from v in db.Ventas                               
+                               where v.ClienteId == id &&
+                               v.MontoVta > (db.Pagos.Where(pa => pa.VentaId == v.Id)
+                                                .Select(pa => pa.MontoPago).Sum())                               
+                                select v
+                               ).ToList();
 
             if (listaDeudas == null)
             {

@@ -19,7 +19,6 @@ namespace CFenix_Dev.Models
 
             //fpaz: configuracion para la migracion automatica            
             Database.SetInitializer<CFenix_Context>(new DropCreateDatabaseIfModelChanges<CFenix_Context>());
-            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<CFenix_Context, CFenix_Dev.Migrations.Configuration>("CFenix_Context"));
         }
 
         #region Definicion de Tablas DbSet
@@ -66,5 +65,4 @@ namespace CFenix_Dev.Models
             base.OnModelCreating(modelBuilder);
         }     
     }
-   
 }

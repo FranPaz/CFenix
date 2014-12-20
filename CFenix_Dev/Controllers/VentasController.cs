@@ -84,34 +84,43 @@ namespace CFenix_Dev.Controllers
                 return BadRequest(ModelState);
             }
 
-            Venta venta = new Venta();
-            venta.Cliente = db.Clientes.Find(prmVenta.Cliente.Id);
-            venta.Fecha = DateTime.Now;
-            venta.MontoVta = prmVenta.DetallesVta
-                            .Sum(x => x.Subtotal);
-
-            
-
-            foreach (var item in prmVenta.DetallesVta)
+            try
             {
-                DetalleVta detalle = new DetalleVta();
-                
+                Venta venta = new Venta();
+                venta.ClienteId =prmVenta.Cliente.Id;
+                venta.Fecha = DateTime.Now;
+                venta.MontoVta = prmVenta.DetallesVta
+                                .Sum(x => x.Subtotal);
+
+                db.Ventas.Add(venta);
+
+                foreach (var item in prmVenta.DetallesVta)
+                {
+                    DetalleVta detalle = new DetalleVta();
+
                     detalle.PrecioUnitario = item.PrecioUnitario;
-                    //detalle.CodProducto = item.CodProducto;
+                    detalle.TrabajoId = item.TrabajoId;
                     detalle.Cantidad = item.Cantidad;
                     detalle.Descripcion = item.Descripcion;
                     detalle.Subtotal = item.Subtotal;
+                    detalle.VentaId = venta.Id;
 
-                    detalle.Venta = venta;
+                    //detalle.Venta = venta;
                     db.DetallesVta.Add(detalle);
-                
-                venta.DetallesVta.Add(detalle);
+
+                   //venta.DetallesVta.Add(detalle);
+                }
+
+                //db.Ventas.Add(venta);
+                db.SaveChanges();
+
+                return Ok(venta);
             }
-
-            db.Ventas.Add(venta);
-            db.SaveChanges();
-
-            return Ok(venta);
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message.ToString());
+            }
+            
         }
 
         // DELETE: api/Ventas/5
