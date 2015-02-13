@@ -20,7 +20,7 @@
     
     var limpiarVta = function () {
         clienteVta = [];
-        detallesFacturaVta = [];
+        detallesFacturaVta = null;
         totalVta = 0;
     }
 

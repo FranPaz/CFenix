@@ -12,9 +12,11 @@ namespace CFenix_Dev.Models
         public DateTime FechaCierre { get; set; }
         public decimal MontoApertura { get; set; }
         public decimal MontoCierre { get; set; }
+        public bool Abierto { get; set; } // true = abierto, false = cerrado
+
         // falta id del operador que abre y del que cierra la caja
         public virtual ICollection<MovimientosCaja> MovimientosCajas { get; set; } // 1 a M con MovimientosCaja (muchos)
-        public virtual ICollection<Pago> Pagos { get; set; } // 1 a M con Pagos
+        public virtual ICollection<DetallePago> DetallesPagos { get; set; } // 1 a M con DetallesPagos
     }
 
     public class MovimientosCaja
@@ -31,6 +33,11 @@ namespace CFenix_Dev.Models
         // 1 a M con Cajas (uno)
         public int CajaId { get; set; }
         public virtual Caja Caja { get; set; }
+
+        // 1 a M con PagoEfectivo (uno)
+        public int PagoEfectivoId { get; set; }
+        public virtual PagoEfectivo PagoEfectivo { get; set; }
+        
     }
 
     public class TipoMovCaja
@@ -39,7 +46,8 @@ namespace CFenix_Dev.Models
         public string Nombre { get; set; }
         public bool Egreso { get; set; } // Egreso = true, Ingreso=False
         public virtual ICollection<MovimientosCaja> MovimientosCajas { get; set; } // 1 a M con Movimientos Cajas (muchos)
-        public virtual ICollection<DetallePago> DetallesPagos { get; set; } // 1 a M con DetallePago (muchos)
+        //public virtual ICollection<PagoEfectivo> PagosEfectivo { get; set; } // 1 a M con PagosEfectivo (muchos)
+        public virtual ICollection<MovimientoCC> MovimientosCC { get; set; } // 1 a M con MovimentoCC
         
     }
 }

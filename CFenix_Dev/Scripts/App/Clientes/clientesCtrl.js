@@ -32,20 +32,8 @@
                 alert('Error al guardar cliente Cliente');
             });
     };
-    //#endregion
+    //#endregion    
     
-    //#region llamadas a partials de tabs en detalle de cliente
-    $scope.infoCuenta = function () {
-        $state.go('cliente_detail.info');
-    };
-    $scope.movCuenta = function () {
-        $state.go('cliente_detail.movimientos');
-    };
-    $scope.pagosCuenta = function () {
-        $state.go('cliente_detail.pagos');
-    };
-    //#endregion
-
     //#region Busqueda Cliente Venta
 
     //fpaz: variable donde se va a guardar el clientes seleccionado en el dropdown de busqueda de cliente, todo se hace con los tags select del paquete select-ui

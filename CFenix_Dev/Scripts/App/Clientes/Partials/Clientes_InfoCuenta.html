@@ -1,7 +1,7 @@
 ﻿<div class="container">
     <div class="row"> 
         <div class="box">        
-        <div class="col-xs-12 col-md-6">
+        <div class="col-lg-11">
             <div class="panel panel-info">
                 <div class="panel-heading">
                     <h3 class="panel-title">{{cuentaCliente.Cliente.Nombre_RazonSocial}}</h3>
@@ -15,28 +15,21 @@
                                     <tr>
                                         <td>Cuit/Cuil:</td>
                                         <td>{{cuentaCliente.Cliente.Cuit_Cuil}}</td>
-                                    </tr>
-                                    <tr>
                                         <td>Direccion:</td>
                                         <td>{{cuentaCliente.Cliente.Direccion}}</td>
-                                    </tr>
+                                    </tr>                                    
                                     <tr>
                                         <td>Telefono</td>
                                         <td>{{cuentaCliente.Cliente.Telefono}}</td>
-                                    </tr>
-                                    <tr>                                                                        
-                                    <tr>
                                         <td>Email</td>
                                         <td><a href="mailto:{{cliente.Mail}}">{{cuentaCliente.Cliente.Mail}}</a></td>
-                                    </tr>
+                                    </tr>                                    
                                     <tr>
                                         <td>Numero de Cuenta Corriente</td>
                                         <td>{{cuentaCliente.Id}}</td>
-                                    </tr>
-                                    <tr>
                                         <td>Fecha de Alta de Cuenta Corriente</td>
                                         <td>{{cuentaCliente.FechaAlta}}</td>
-                                    </tr>
+                                    </tr>                                    
                                     <tr>
                                         <td>Estado de Cuenta Corriente</td>
                                         <td>{{cuentaCliente.TipoEstado.Descripcion}}</td>

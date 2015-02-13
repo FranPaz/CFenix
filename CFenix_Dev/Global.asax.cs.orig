@@ -7,6 +7,10 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+<<<<<<< HEAD
+using System.Data.Entity;
+=======
+>>>>>>> c108d12ddd949406452005d5b0681d839c68bd63
 using CFenix_Dev.Models;
 
 namespace CFenix_Dev
@@ -19,7 +23,11 @@ namespace CFenix_Dev
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+<<<<<<< HEAD
+            BundleConfig.RegisterBundles(BundleTable.Bundles);        
+=======
             BundleConfig.RegisterBundles(BundleTable.Bundles);            
+>>>>>>> c108d12ddd949406452005d5b0681d839c68bd63
         }
     }
 }

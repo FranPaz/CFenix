@@ -1,5 +1,4 @@
-/// <reference path="Cajas/Partials/Cajas_List.html" />
-var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngResource', 'ui.router', 'ngCookies','ui.bootstrap',,'chieffancypants.loadingBar', 'ngAnimate',
+var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngResource', 'ui.router', 'ngCookies','ui.bootstrap',,'chieffancypants.loadingBar', 'ngAnimate', 'ngTable',
   'ngSanitize', 'ui.select']) //fpaz: defino el modulo con las librerias para routing (ui.router), usar apis rest y para interfaz de usuarios con angular(ui.bootstrap)
     .config(function ($stateProvider, $urlRouterProvider, cfpLoadingBarProvider) { //fpaz: configuro el routing de los states usando los servicios $stateProvider y $urlRouteProvider
         
@@ -272,6 +271,28 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                 .state('cliente_detail.movimientos', {
                     url: "/MovCC",
                     views: {
+                        'infoCuenta': {
+                            templateUrl: '/Scripts/App/Clientes/Partials/Clientes_InfoCuenta.html',
+                            controller: 'clientesCtrl',
+                            resolve: {
+                                user: 'User',
+                                authenticationRequired: function (user) {
+                                    user.isAuthenticated();
+                                },
+                                listadoClientes: function () {
+                                    return { value: [] };
+                                },
+                                clientesDataFactory: 'clientesDataFactory',
+                                cuentaCliente: function (clientesDataFactory, $stateParams) {
+                                    //fpaz: trae los datos de un cliente en particular
+                                    var clienteId = $stateParams.clienteId;
+                                    return clientesDataFactory.get({ id: clienteId }).$promise;
+                                },
+                                listdeudascliente: function () {
+                                    return { value: [] };
+                                }
+                            }
+                        },
                         'movCuenta': {
                             templateUrl: '/Scripts/App/Clientes/Partials/Clientes_MovCuenta.html',
                             controller: '',
@@ -284,10 +305,124 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                         }
                     }               
                 })
+
+                .state('cliente_detail.historial', {
+                    url: "/HistorialCompras",
+                    views: {
+                        'infoCuenta': {
+                            templateUrl: '/Scripts/App/Clientes/Partials/Clientes_InfoCuenta.html',
+                            controller: 'clientesCtrl',
+                            resolve: {
+                                user: 'User',
+                                authenticationRequired: function (user) {
+                                    user.isAuthenticated();
+                                },
+                                listadoClientes: function () {
+                                    return { value: [] };
+                                },
+                                clientesDataFactory: 'clientesDataFactory',
+                                cuentaCliente: function (clientesDataFactory, $stateParams) {
+                                    //fpaz: trae los datos de un cliente en particular
+                                    var clienteId = $stateParams.clienteId;
+                                    return clientesDataFactory.get({ id: clienteId }).$promise;
+                                },
+                                listdeudascliente: function () {
+                                    return { value: [] };
+                                }
+                            }
+                        },
+                        'historial': {
+                            templateUrl: '/Scripts/App/Clientes/Partials/Cliente_HistorialCompras.html',
+                            controller: 'comprasCtrl',
+                            resolve: {
+                                user: 'User',
+                                authenticationRequired: function (user) {
+                                    user.isAuthenticated();
+                                },
+                                comprasDataFactory: 'comprasDataFactory',
+                                listComprasCliente: function (comprasDataFactory, $stateParams) {
+                                    //fpaz: trae las compras de un cliente en particular
+                                    var clienteId = $stateParams.clienteId;
+                                    return comprasDataFactory.query({ id: clienteId });
+                                }
+                            }
+                        }
+                    }
+                })
+                    .state('cliente_detail.historial.detalleCompra', {
+                        url: "/Factura/:ventaId/Detalle",
+                        views: {
+                            'detalleCompra': {
+                                templateUrl: '/Scripts/App/Deudas/Partials/Deuda_DetalleDeuda.html',
+                                controller: 'deudasCtrl',
+                                resolve: {
+                                    user: 'User',
+                                    authenticationRequired: function (user) {
+                                        user.isAuthenticated();
+                                    },
+                                    deudasDataFactory: 'deudasDataFactory',
+                                    listDetalleDeuda: function (deudasDataFactory, $stateParams) {
+                                        //fpaz: trae los detalles de una deuda en particular
+                                        var clienteId = $stateParams.clienteId;
+                                        var ventaId = $stateParams.ventaId;
+                                        return deudasDataFactory.query({ prmIdCliente: clienteId, prmIdVenta: ventaId });
+                                    },
+                                    listDeudasCliente: function () {
+                                        return { value: [] };
+                                    }
+                                }
+                            }
+                        }
+                    })
+                    .state('cliente_detail.historial.detallePagosCompra', {
+                        url: "/Factura/:ventaId/Pagos",
+                        views: {
+                            'detallePagosCompra': {
+                                templateUrl: '/Scripts/App/Compras/Partials/Compra_DetallePagos.html',
+                                controller: 'pagosCtrl',
+                                resolve: {
+                                    user: 'User',
+                                    authenticationRequired: function (user) {
+                                        user.isAuthenticated();
+                                    },
+                                    pagosDataFactory: 'pagosDataFactory',
+                                    listPagosCompra: function (pagosDataFactory, $stateParams) {
+                                        //fpaz: trae los detalles de una deuda en particular
+                                        var clienteId = $stateParams.clienteId;
+                                        var ventaId = $stateParams.ventaId;
+                                        return pagosDataFactory.query({id: ventaId });
+                                    }
+                                }
+                            }
+                        }
+                    })
             
+                // routing para pagos pendientes del cliente
                 .state('cliente_detail.pagos', {
                     url: "/Deudas",
-                    views: {                        
+                    views: {
+                        'infoCuenta': {
+                            templateUrl: '/Scripts/App/Clientes/Partials/Clientes_InfoCuenta.html',
+                            controller: 'clientesCtrl',
+                            resolve: {
+                                user: 'User',
+                                authenticationRequired: function (user) {
+                                    user.isAuthenticated();
+                                },
+                                listadoClientes: function () {
+                                    return { value: [] };
+                                },
+                                clientesDataFactory: 'clientesDataFactory',
+                                cuentaCliente: function (clientesDataFactory, $stateParams) {
+                                    //fpaz: trae los datos de un cliente en particular
+                                    var clienteId = $stateParams.clienteId;
+                                    return clientesDataFactory.get({ id: clienteId }).$promise;
+                                },
+                                listdeudascliente: function () {
+                                    return { value: [] };
+                                }
+                            }
+                        },
                         'pagosCuenta': {
                             templateUrl: '/Scripts/App/Clientes/Partials/Clientes_PagosCuenta.html',                            
                             controller: 'deudasCtrl',
@@ -309,7 +444,6 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                         }
                     }               
                 })
-
                     .state('cliente_detail.pagos.deudaVenta', {
                         url: "/Factura/:ventaId",
                         views: {
@@ -405,7 +539,10 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                                 user: 'User',
                                 authenticationRequired: function (user) {
                                     user.isAuthenticated();
-                                }                                
+                                },
+                                listPagosCompra: function () {
+                                    return { value: [] };
+                                }
                             }                        
                     },
                     'tablaDetalle': {
@@ -415,7 +552,10 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                                 user: 'User',
                                 authenticationRequired: function (user) {
                                     user.isAuthenticated();
-                                }                                
+                                },
+                                listPagosCompra: function () {
+                                    return { value: [] };
+                                }
                             }                        
                     },
                     'formasPago': {
@@ -425,7 +565,10 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                                 user: 'User',
                                 authenticationRequired: function (user) {
                                     user.isAuthenticated();
-                                }                                
+                                },
+                                listPagosCompra: function () {
+                                    return { value: [] };
+                                }
                             }                        
                     }
                 }

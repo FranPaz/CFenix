@@ -43,6 +43,10 @@ namespace CFenix_Dev.Models
         // 1 a M con Cuenta Corriente (uno)
         public int CuentaCorrienteId { get; set; }
         public virtual CuentaCorriente CuentaCorriente { get; set; }
+
+        //Relacion 1 a M con TipoMovCaja (uno)
+        public int TipoMovCajaId { get; set; }
+        public virtual TipoMovCaja TipoMovCaja { get; set; }
         
     }
 
