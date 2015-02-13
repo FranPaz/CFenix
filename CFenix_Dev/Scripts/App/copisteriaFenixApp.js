@@ -57,15 +57,25 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                             user.isAuthenticated();
                         }
                     }
-                }
+                }//iafar:Esto inserta la vista parcial(insumos_add) en un marco(datosInsumo) dentro de un estado(Insumos)
+                //'datosInsumo@Insumos': {
+                //    templateUrl: '/Scripts/App/Insumos/Partials/Insumos_Add.html',
+                //    controller: '',
+                //    resolve: {
+                //        user: 'User',
+                //        authenticationRequired: function (user) {
+                //            user.isAuthenticated();
+                //        }
+                //    }
+                //}
+
             }
         })
-
             //Alta de un nuevo Insumo
             .state('Insumos.add', {
-                url: "/Add",
+                url: "/Insumos",
                 views: {
-                    'AddInsumos': {
+                    'datosInsumo@Insumos': {
                         templateUrl: '/Scripts/App/Insumos/Partials/Insumos_Add.html',
                         controller: '',
                         resolve: {
@@ -77,42 +87,7 @@ var copisteriaFenixApp = angular.module('copisteriaFenixApp', ['ngRoute', 'ngRes
                     }
                 }
             })
-
-            //Modificacion de un insumo
-            .state('Insumos.mod', {
-                url: "/Mod",
-                views: {
-                    'ModInsumos': {
-                        templateUrl: '/Scripts/App/Insumos/Partials/Insumos_Mod.html',
-                        controller: '',
-                        resolve: {
-                            user: 'User',
-                            authenticationRequired: function (user) {
-                                user.isAuthenticated();
-                            }
-                        }
-                    }
-                }
-            })
-
-            //Detalle de un insumo
-            .state('Insumos.detail', {
-                url: "/Detail",
-                views: {
-                    'DetailInsumos': {
-                        templateUrl: '/Scripts/App/Insumos/Partials/Insumos_Detail.html',
-                        controller: '',
-                        resolve: {
-                            user: 'User',
-                            authenticationRequired: function (user) {
-                                user.isAuthenticated();
-                            }
-                        }
-                    }
-                }
-            })
-
-            //Fin Dashboard de insumos
+             //Fin Dashboard de insumos
 
             //Dashboard Para Trabajos
             .state('Trabajos', {

@@ -1,16 +1,15 @@
 ﻿copisteriaFenixApp.controller('trabajosCtrl', function ($scope, trabajosDataFactory, insumosDataFactory, $modal, $stateParams, $state) {
+
     //iafar: trae todos los trabajos
     $scope.trabajos = trabajosDataFactory.query();
-
     $scope.insumos = insumosDataFactory.query();
-
-
     $scope.listaInsumos = [];
+
     //iafar: trae los datos de un trabajo en particular
     $scope.trabajoId = $stateParams.Id;
     $scope.trabajo = trabajosDataFactory.get({ id: $scope.trabajoId });
 
-    //funcion para agregar un nuevo trabajo y mostrarlo en el listado
+    //#region iafar: funcion para agregar un nuevo trabajo y mostrarlo en el listado
     $scope.addTrabajo = function (trabajo) {
         $scope.trabajos.push(trabajo);
     };
@@ -19,6 +18,7 @@
         $scope.listaInsumos.push(insumo);
         insumo = {};
     };
+    //#endregion
 
     //#region iafar: funciones para ALTA de un insumo   
     $scope.altaTrabajo = function (trabajo) {
@@ -38,10 +38,7 @@
     };
     //#endregion
     
-
-
-
-    //#region llamadas a partials de tabs en Dashboard de Trabajos
+    //#region iafar: llamadas a partials de tabs en Dashboard de Trabajos
     $scope.TrabajosAdd = function () {
         $state.go('Trabajos.add');
     };

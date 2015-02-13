@@ -335,6 +335,8 @@
     <Content Include="Scripts\angular-ui\ui-bootstrap.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\App\Cajas\cajasCtrl.js" />
+    <Content Include="Scripts\App\Cajas\Partials\Cajas_List.html" />
     <Content Include="Scripts\App\Clientes\basicSearchClienteFilter.js" />
     <Content Include="Scripts\App\Clientes\clientesCtrl.js" />
     <Content Include="Scripts\App\Clientes\clientesDataFactory.js" />
@@ -353,8 +355,8 @@
     <Content Include="Scripts\App\copisteriaFenixApp.js" />
     <Content Include="Scripts\App\CuentasCorrientes\Partials\tables_simple.html" />
     <Content Include="Scripts\App\Deudas\deudasDataFactory.js" />
-    <Content Include="Scripts\App\Insumos\insumosFilter.js" />
     <Content Include="Scripts\App\Deudas\Partials\Deuda_DetalleDeuda.html" />
+    <Content Include="Scripts\App\Insumos\altaModalCtrl.js" />
     <Content Include="Scripts\App\Insumos\Partials\Insumos_Add.html" />
     <Content Include="Scripts\App\Insumos\Partials\Insumos_Detail.html" />
     <Content Include="Scripts\App\Deudas\deudasCtrl.js" />
@@ -366,7 +368,6 @@
     <Content Include="Scripts\App\Venta\Partials\Venta_DetalleFactura.html" />
     <Content Include="Scripts\App\Insumos\Partials\Insumos_Mod.html" />
     <Content Include="Scripts\App\Insumos\Partials\ListInsumos.html" />
-    <Content Include="Scripts\App\Insumos\Partials\AltaInsumo.html" />
     <Content Include="Scripts\App\Notificaciones\Partials\page_messages.html" />
     <Content Include="Scripts\App\Trabajos\Partials\ListTrabajos.html" />
     <Content Include="Scripts\App\Partials\Dashboard.html" />

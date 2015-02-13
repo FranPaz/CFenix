@@ -1,5 +1,4 @@
-﻿
-    <!-- class="row" -->
+﻿    <!-- class="row" -->
     <div class="row"> <!-- class="col-xs-12 col-sm-12" -->
         <div> <!--  class="box" -->
             <div class="box-header">
@@ -7,7 +6,6 @@
                     <!--<i class="fa fa-search"></i>-->
                     <!--<span>Carga de Producto</span>-->
                 </div>
-
                 <div class="no-move"></div>
             </div>
             <!-- Zona de Tabs -->
@@ -31,6 +29,12 @@
                                 <option value="2">Proveedor 2</option>
                                 <option value="3">Proveedor 3</option>
                             </select>
+                        </div>
+                        <div class="col-sm-4">
+                            <!--iafar: agregar un ng-click para un nuevo proveedor -->
+                            <button>
+                                Nuevo Proveedor
+                            </button>
                         </div>
                     </div>
                     <div class="form-group has-success has-feedback">
@@ -70,17 +74,26 @@
                             </div>
                         </div>
                     </div>
-                    <!--{{insumo}}-->
                     <div class="clearfix"></div>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-2">
-
                         </div>
-
-                        <div class="col-sm-2">
+                        <div class="col-sm-2" ng-show="!edit">
                             <button type="submit" ng-click="altaInsumo(insumo)" class="btn btn-primary btn-label-left">
                                 <span><i class="fa fa-clock-o"></i></span>
                                 Guardar
+                            </button>
+                        </div>
+                        <div class="col-sm-2" ng-show="edit">
+                            <button type="submit" ng-click="modInsumo(insumo)" class="btn btn-primary btn-label-left">
+                                <span><i class="fa fa-clock-o"></i></span>
+                                Modficar
+                            </button>
+                        </div>
+                        <div class="col-sm-2">
+                            <button ng-click="cancel()" class="btn btn-primary btn-label-left">
+                                <span><i class="fa fa-clock-o"></i></span>
+                                Cancelar
                             </button>
                         </div>
                     </div>
