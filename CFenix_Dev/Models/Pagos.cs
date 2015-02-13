@@ -21,9 +21,7 @@ namespace CFenix_Dev.Models
 
         public virtual ICollection<DetallePago> DetallesPagos { get; set; } // relacion 1 a M con DetallePagos (muchos)
 
-        // 1 a M con Caja (uno)
-        //public int CajaId { get; set; }
-        //public virtual Caja Caja { get; set; }
+        
     }
     #endregion
 
@@ -35,11 +33,15 @@ namespace CFenix_Dev.Models
 
         //relacion 1 a M con Pagos (uno)
         public int PagoId { get; set; }
-        public virtual Pago Pago { get; set; }        
+        public virtual Pago Pago { get; set; }
 
-        // 1 a M con TiposMovCaja (uno)
-        public int TipoMovCajaId { get; set; }
-        public virtual TipoMovCaja TipoMovCaja { get; set; }
+        // 1 a M con Caja (uno)
+        public int CajaId { get; set; }
+        public virtual Caja Caja { get; set; }
+
+        //1 a M con TipoFormaPago (uno)
+        public int TipoFormaPagoId { get; set; }
+        public virtual TipoFormaPago TipoFormaPago { get; set; }
 
     }
 
@@ -57,8 +59,9 @@ namespace CFenix_Dev.Models
 
     [Table("PagosEfectivo")]
     public class PagoEfectivo : DetallePago
-    {
-
+    {   
+        // 1 a M con MovimientosCaja (muchos)               
+        public virtual ICollection<MovimientosCaja> MovimientosCaja { get; set; }
     }
 
     [Table("PagosCC")]
@@ -71,7 +74,6 @@ namespace CFenix_Dev.Models
         //1 a M con CuentaCorriente
         public int CuentaCorrienteId { get; set; }
         public virtual CuentaCorriente CuentaCorriente { get; set; }     
-
 
     }
     #endregion

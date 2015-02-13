@@ -1,0 +1,40 @@
+﻿<!--Area Historial de Compras-->
+<div class="row-fluid">
+    <div class="col-xs-12 col-sm-5 pull-left">
+        <div class="box-content no-padding">
+            <table class="table table-bordered table-striped table-hover table-heading table-datatable" id="datatable-1">
+                <thead>
+                    <tr>
+                        <th>Numero de Remito</th>
+                        <th>Fecha de Remito</th>
+                        <th>Monto</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat=" compra in comprasClientes">
+                        <td>{{compra.Id}}</td>
+                        <td>{{compra.Fecha}}</td>
+                        <td>{{compra.MontoVta}}</td>
+                        <td><a ui-sref="cliente_detail.historial.detalleCompra({ventaId:compra.Id})" class="tab-link">Ver Detalle</a></td>
+                        <td><a ui-sref="cliente_detail.historial.detallePagosCompra({ventaId:compra.Id})" class="tab-link">Ver Pagos</a></td>
+                    </tr>
+                </tbody>
+                <tfoot>
+
+                </tfoot>
+            </table>
+        </div>
+    </div>    
+    <div class="col-xs-12 col-sm-7">
+        <!-- Area para el detalle de la compra-->
+        <div ui-view="detalleCompra"></div>
+        <!--Fin - Area para el detalle de la compra-->
+        <!-- Area para el detalle de pagos efectuados por la compra-->
+        <div ui-view="detallePagosCompra"></div>
+        <div class="clearfix"></div>
+        <!-- Area para el detalle de pagos efectuados por la compra-->
+    </div>
+    
+</div>
+<!--Fin: Area Historial de Compras-->

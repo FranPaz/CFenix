@@ -1,0 +1,42 @@
+﻿<div class="row">
+    <div class="col-xs-12 col-sm-12">
+        <div class="box">
+            <div class="box-header">
+                <div class="box-name">
+                    <!--<i class="fa fa-table"></i>-->
+                    <span>Listado de Pagos Realizados</span>
+                </div>
+                <div class="no-move"></div>
+            </div>
+            <div class="box-content">
+                <table ng-table="tableParams" class="table">
+                    <tbody ng-repeat="pago in pagosRealizados">
+                        <tr class="ng-table-group">
+                            <td colspan="{{$columns.length}}">
+                                <a href="" ng-click="group.$hideRows = !group.$hideRows">
+                                    <span class="glyphicon" ng-class="{ 'glyphicon-chevron-right': group.$hideRows, 'glyphicon-chevron-down': !group.$hideRows }"></span>
+                                    Cod. Pago: <strong>{{pago.Id }}</strong>
+                                    Monto Pagado Total: <strong>${{pago.MontoPago }}</strong>
+                                    <!--<strong>Fecha de Pago: {{pago.Fecha}}</strong>-->
+                                </a>
+                            </td>
+                        </tr>
+                        <tr ng-hide="group.$hideRows" ng-repeat="detalle in pago.DetallesPagos">
+                            <td data-title="'Id Detalle'">
+                                {{detalle.Id}}
+                            </td>
+                            <td data-title="'Monto Pagado'">
+                                ${{detalle.Monto}}
+                            </td>
+                            <td data-title="'Tipo de Pago'">
+                                {{detalle.TipoFormaPago.Descripcion}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+

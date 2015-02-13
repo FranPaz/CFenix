@@ -13,26 +13,31 @@
     <div class="col-xs-12 col-sm-12">
         <div class="box">
             <div class="box-header">
-                <div class="box-name">
-                    <!--<i class="fa fa-table"></i>-->
+                <div class="box-name">                    
                     <span>Detalle de Cliente</span>
                 </div>
                 <div class="no-move"></div>
-            </div>
+            </div>            
 
             <div class="box-content">
-                <tabset justified="true">
-                    <tab heading="Informacion de Cuenta" select="infoCuenta()">                        
-                        <div ui-view="infoCuenta"></div>
-                    </tab>
-                    <tab heading="Ultimos Movimientos" select="movCuenta()">                        
-                        <div ui-view="movCuenta"></div>
-                    </tab>
-                    <tab heading="Pagos Pendientes" select="pagosCuenta()">                        
-                        <div ui-view="pagosCuenta"></div>
-                    </tab>                    
-                </tabset>
+                <div class="row">
+                    <div ui-view="infoCuenta"></div>
+                </div>
+                <div class="row">
+                    <tabset justified="true">                        
+                        <tab heading="Ultimos Movimientos" ui-sref="cliente_detail.movimientos">
+                            <div ui-view="movCuenta"></div>
+                        </tab>
+                        <tab heading="Historial de Compras" ui-sref="cliente_detail.historial">
+                            <div ui-view="historial"></div>
+                        </tab>
+                        <tab heading="Pagos Pendientes" ui-sref="cliente_detail.pagos">
+                            <div ui-view="pagosCuenta"></div>
+                        </tab>                        
+                    </tabset>
+                </div>
             </div>
+
         </div>
     </div>
 </div>

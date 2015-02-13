@@ -17,23 +17,7 @@
         detalles.push($scope.productoVta);
 
         $scope.productoVta = null;
-    };
-    $scope.addVenta = function () { // registra la venta
-        ventaSvc.addDetallesFacturaVta(detalles);        
-        var venta = new Object;
-        venta.Cliente = ventaSvc.getCliente();
-        venta.DetallesVta = ventaSvc.listaDetallesFacturaVta();
-        ventasDataFactory.save(venta).$promise.then(
-            function () {
-                ventaSvc.limpiarVta();
-                $scope.detallesFactura = detalles = [];
-                alert("Venta Registrada Correctamente");
-            },
-            function (response) {
-                //$scope.errors = response.data;
-                alert("Error al Registrar la Venta");
-            });
-    };
+    };    
     //#endregion
 
     //#region Date picker de Seleccion de producto en pantalla de venta

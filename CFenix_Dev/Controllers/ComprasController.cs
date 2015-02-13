@@ -12,37 +12,36 @@ using CFenix_Dev.Models;
 
 namespace CFenix_Dev.Controllers
 {
-    public class VentasController : ApiController
+    public class ComprasController : ApiController
     {
         private CFenix_Context db = new CFenix_Context();
 
-        // GET: api/Ventas
-        public IHttpActionResult GetVentas()
+        // GET: api/Compras
+        public IQueryable<Venta> GetCompras()
         {
-            var ventas = db.Ventas.ToList();
-            if (ventas == null)
-            {
-                return BadRequest("No Existen Ventas");
-            }
-            return Ok(ventas);
+            return db.Ventas;
         }
 
-        // GET: api/Ventas/5
+        // GET: api/Compras/5
         [ResponseType(typeof(Venta))]
-        public IHttpActionResult GetVenta(int id) 
+        public IHttpActionResult GetCompra(int id)
         {
-            Venta venta = db.Ventas.Find(id);
-            if (venta == null)
+            var listaCompras = (from v in db.Ventas
+                               where v.ClienteId == id 
+                               select v
+                               ).ToList();
+
+            if (listaCompras == null)
             {
                 return NotFound();
             }
 
-            return Ok(venta);
+            return Ok(listaCompras);
         }
 
-        // PUT: api/Ventas/5
+        // PUT: api/Compras/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutVenta(int id, Venta venta)
+        public IHttpActionResult PutCompra(int id, Venta venta)
         {
             if (!ModelState.IsValid)
             {
@@ -62,7 +61,7 @@ namespace CFenix_Dev.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!VentaExists(id))
+                if (!CompraExists(id))
                 {
                     return NotFound();
                 }
@@ -75,36 +74,24 @@ namespace CFenix_Dev.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Ventas
+        // POST: api/Compras
         [ResponseType(typeof(Venta))]
-        public IHttpActionResult PostVenta(Venta prmVenta)
+        public IHttpActionResult PostCompra(Venta venta)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            try
-            {   
-                prmVenta.Fecha = DateTime.Now;
-                prmVenta.MontoVta = prmVenta.DetallesVta
-                                .Sum(x => x.Subtotal);
+            db.Ventas.Add(venta);
+            db.SaveChanges();
 
-                db.Ventas.Add(prmVenta);
-                db.SaveChanges();
-
-                return Ok(prmVenta);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message.ToString());
-            }
-            
+            return CreatedAtRoute("DefaultApi", new { id = venta.Id }, venta);
         }
 
-        // DELETE: api/Ventas/5
+        // DELETE: api/Compras/5
         [ResponseType(typeof(Venta))]
-        public IHttpActionResult DeleteVenta(int id)
+        public IHttpActionResult DeleteCompra(int id)
         {
             Venta venta = db.Ventas.Find(id);
             if (venta == null)
@@ -127,7 +114,7 @@ namespace CFenix_Dev.Controllers
             base.Dispose(disposing);
         }
 
-        private bool VentaExists(int id)
+        private bool CompraExists(int id)
         {
             return db.Ventas.Count(e => e.Id == id) > 0;
         }

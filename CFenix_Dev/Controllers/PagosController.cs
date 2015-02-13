@@ -25,17 +25,11 @@ namespace CFenix_Dev.Controllers
         // GET: api/Pagos/5
         [ResponseType(typeof(Pago))]
         public IHttpActionResult GetPago(int id)
-        {
-            //Pago pago = db.Pagos.Find(id);
-            //if (pago == null)
-            //{
-            //    return NotFound();
-            //}
-
-            //return Ok(pago);
+        {            
             var pago = db.Pagos
-                .Where(cc => cc.VentaId == id) //fpaz: filtro por el id de cliente
-                .Include(cc => cc.DetallesPagos)//incluyo la info del cliente asociado                
+                .Where(cc => cc.VentaId == id)
+                .Include(cc => cc.DetallesPagos)
+                .Include(cc => cc.DetallesPagos.Select(t => t.TipoFormaPago))
                 .ToList();
             return Ok(pago);
         }
@@ -89,25 +83,47 @@ namespace CFenix_Dev.Controllers
                 pago = pagoCustom.pago;
                 pago.Fecha = DateTime.Now;
 
+                var idCajaActiva = (from c in db.Cajas // variable donde voy a guardar el id de la caja que actualmente esta abierta
+                                    where c.Abierto == true
+                                    select c.Id).FirstOrDefault();
+
                 if (pagoCustom.pagoEfectivo != null)
                 {
+                    // alta de Pago en efectivo
                     PagoEfectivo pagoEfect = new PagoEfectivo();
                     pagoEfect = pagoCustom.pagoEfectivo;
-                    pagoEfect.Pago = pago;
-                    pagoEfect.TipoMovCaja = db.TipoMovCajas.Find(1);
-                    db.PagosEfectivo.Add(pagoEfect);                    
+                    pagoEfect.PagoId = pago.Id;
+                    pagoEfect.CajaId = idCajaActiva;
+                    pagoEfect.TipoFormaPagoId = (from tp in db.TiposFormasPago
+                                                 where tp.Descripcion.Contains("Efectivo")
+                                                 select tp.Id).FirstOrDefault();
+                    //db.PagosEfectivo.Add(pagoEfect);
+
+                    // alta del movimientoCaja
+                    MovimientosCaja movCaja = new MovimientosCaja();
+                    movCaja.Monto = pagoCustom.pagoEfectivo.Monto;
+                    movCaja.Descripcion = "Pago por compra en efectivo";
+                    movCaja.TipoMovCaja = db.TipoMovCajas.Find(1);
+                    movCaja.CajaId = idCajaActiva;
+                    //movCaja.PagoEfectivoId = pagoEfect.Id;
+                    movCaja.PagoEfectivo = pagoEfect;
+                    db.MovimientosCajas.Add(movCaja);
                 }
 
                 if (pagoCustom.pagoCC != null)
                 {
                     PagoCC pagoCuenta = new PagoCC();
                     pagoCuenta = pagoCustom.pagoCC;
-                    pagoCuenta.Pago = pago;
-                    pagoCuenta.TipoMovCC = db.TipoMovCCs.Find(1);
-                    pagoCuenta.TipoMovCaja = db.TipoMovCajas.Find(2);
+                    pagoCuenta.PagoId = pago.Id;
+                    pagoCuenta.TipoMovCC = db.TipoMovCCs.Find(1);                    
                     pagoCuenta.CuentaCorriente = (from cc in db.Cuentas
                                                   where cc.ClienteId == pagoCustom.pago.Venta.ClienteId
                                                   select cc).FirstOrDefault();
+
+                    pagoCuenta.CajaId = idCajaActiva;                    
+                    pagoCuenta.TipoFormaPagoId = (from tp in db.TiposFormasPago
+                                                 where tp.Descripcion.Contains("Cuenta")
+                                                 select tp.Id).FirstOrDefault();
                     db.PagosCC.Add(pagoCuenta);
                 }
 
@@ -115,12 +131,18 @@ namespace CFenix_Dev.Controllers
                 {
                     Cheque pagoCheque = new Cheque();
                     pagoCheque = pagoCustom.pagoCheque;
-                    pagoCheque.Pago = pago;
-                    pagoCheque.TipoMovCaja = db.TipoMovCajas.Find(3);
-                    pagoCheque.FechaEmision = DateTime.Now;
-                    pagoCheque.FechaPago = DateTime.Now;
+                    pagoCheque.PagoId = pago.Id;
+                    pagoCheque.FechaEmision = pagoCustom.pagoCheque.FechaEmision;
+                    pagoCheque.FechaPago = pagoCustom.pagoCheque.FechaPago;
+                    pagoCheque.CajaId = idCajaActiva;
+                    pagoCheque.TipoFormaPagoId = (from tp in db.TiposFormasPago
+                                                 where tp.Descripcion.Contains("Cheque")
+                                                 select tp.Id).FirstOrDefault();
                     db.Cheques.Add(pagoCheque);
                 }
+
+                pago.VentaId = pagoCustom.pago.Venta.Id;
+                pago.Venta = null;
 
                 db.Pagos.Add(pago);
                 db.SaveChanges();
@@ -130,8 +152,6 @@ namespace CFenix_Dev.Controllers
             {
                 return BadRequest(ex.Message.ToString());
             }
-                
-            
         }
 
         // DELETE: api/Pagos/5
