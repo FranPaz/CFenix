@@ -107,7 +107,7 @@ namespace CFenix_Dev.Controllers
                 
                 venta.DetallesVta.Add(detalle);
             }
-
+            
             db.Ventas.Add(venta);
             db.SaveChanges();
 

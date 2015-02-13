@@ -6,14 +6,13 @@
             </ol>
         </div>
 </div>
-
 <!-- Area de Busqueda de Cliente-->
 <div ui-view="busquedaCliente"></div>
 <!-- end -->
 
 <div class="row"> <!-- este no debe ser de clase box sino siempre estara encima de todo -->
     <div class="col-xs-12 col-lg-12">
-        <div > <!-- class="box" -->
+        <div> <!-- class="box" -->
             <!-- Este si puede ser de esta clase, xq solo se sobrepondria a los elementos dentro de su div -->
             <div class="box-header">
                 <div class="box-name">
@@ -76,8 +75,6 @@
                                     <div class="col-sm-4">
                                         <input type="text" name="txtAlto" ng-model="producto.medida.alto" class="form-control" placeholder="mts" data-placement="bottom" title="mts">
                                     </div>
-
-
                                     <label class="col-sm-2 control-label">Ancho:</label>
                                     <div class="col-sm-4">
                                         <input type="text" name="txtAncho" ng-model="producto.medida.ancho" class="form-control" placeholder="mts" data-placement="bottom" title="mts">
@@ -116,10 +113,12 @@
                                         </div>
                                         <!-- Calendario -->
                                         <!-- fila 1 -->
+                                        <input type="date">
                                         <div class="col-sm-8" style="height:30px">
                                             <div class="col-md-12">
                                                 <p class="input-group">
                                                     <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                                                    
                                                     <span class="input-group-btn">
                                                         <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
 

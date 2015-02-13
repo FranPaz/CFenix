@@ -42,13 +42,18 @@ namespace CFenix_Dev.Controllers
 
         // PUT: api/Trabajos/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutTrabajo(int id, Trabajo trabajo)
+        public IHttpActionResult PutTrabajo(int id, Trabajo trabajo, ICollection<Insumo> listAddInsumo, ICollection<Insumo> listDelInsumo)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
+            //para eliminar los insumos debo hacer un foreach removiendo los insumos de una lista
+            //trabajo.Insumos.Remove();
+            
+            //para agregar un nuevo insumo debo hacer un foreach haciendo un add
+            
             if (id != trabajo.Id)
             {
                 return BadRequest();

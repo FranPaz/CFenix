@@ -32,6 +32,7 @@ namespace CFenix_Dev.Controllers
         public IHttpActionResult GetInsumo(int id)
         {
             Insumo insumo = db.Insumos.Find(id);
+
             if (insumo == null)
             {
                 return NotFound();
@@ -44,6 +45,8 @@ namespace CFenix_Dev.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult PutInsumo(int id, Insumo insumo)
         {
+
+            
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -54,10 +57,34 @@ namespace CFenix_Dev.Controllers
                 return BadRequest();
             }
 
+            //FAQ: No se puede usar este tipo de busqueda porque define un model insumo y al modificar la entrada
+            //a la base de datos, da error de uso de entidad duplicada
+            //var insumoOld = db.Insumos.Find(id).Nombre;
+
+            //Expresion LinQ
+            //iafar: almaceno el nombre anterior del insumo para buscar el trabajo del mismo nombre y modificarlo
+            var nomViejo = (from i in db.Insumos
+                            where i.Id == id
+                            select i.Nombre)
+                            .First();
+
+            //iafar: modifica el estado del insumo de la base de datos
+            //no se debe usar esto antes de guardarlo porque modifica todos los model del tipo insumo
             db.Entry(insumo).State = EntityState.Modified;
 
             try
             {
+               
+
+                var trabajo = db.Trabajos
+                    .Where(t => t.Nombre == nomViejo)
+                    .FirstOrDefault();
+
+                trabajo.Nombre = insumo.Nombre;
+
+                db.Entry(trabajo).State = EntityState.Modified;
+
+
                 db.SaveChanges();
             }
             catch (DbUpdateConcurrencyException)
@@ -77,7 +104,8 @@ namespace CFenix_Dev.Controllers
 
         // POST: api/Insumos
         //[ResponseType(typeof(Insumo))]
-        public IHttpActionResult PostInsumo(Insumo insumo)
+        //public IHttpActionResult PostInsumo(Insumo insumo)
+        public IHttpActionResult PostInsumo(Trabajo trabajo)
         {
             if (!ModelState.IsValid)
             {
@@ -85,13 +113,35 @@ namespace CFenix_Dev.Controllers
             }
             try
             {
-                db.Insumos.Add(insumo);
+                
+                //cargo un objeto trabajo con todos los datos
+                //Trabajo trabajo = new Trabajo();
+                //trabajo = prmTrabajo;
+                
+
+                trabajo.TipoTrabajo = db.TipoTrabajos.Find(1);
+
+                
+                //foreach (var item in prmTrabajo.Insumos)
+                //{
+                //    Insumo insumo = new Insumo();
+
+                //    insumo.Nombre = item.Nombre;
+                //    insumo.UMedida = item.UMedida;
+                //    insumo.PrecioCompra = item.PrecioCompra;
+                //    insumo.PrecioVenta = item.PrecioVenta;
+                //    insumo.CantStock = item.CantStock;
+                //    insumo.PtoRepo = item.PtoRepo;
+
+                //    trabajo.Insumos.Add(insumo);
+                //}
+               
+                db.Trabajos.Add(trabajo);
                 db.SaveChanges();
                 return Ok();
             }
             catch (Exception ex)
             {
-                
                 ex.Message.ToString();
                 return BadRequest();
 
