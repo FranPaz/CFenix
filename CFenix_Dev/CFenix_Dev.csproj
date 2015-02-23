@@ -263,6 +263,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Insumo.cs" />
     <Compile Include="Models\Pagos.cs" />
+    <Compile Include="Models\TipoFormaPago.cs" />
     <Compile Include="Models\Trabajo.cs" />
     <Compile Include="Models\Venta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
