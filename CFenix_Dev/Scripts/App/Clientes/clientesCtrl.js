@@ -1,4 +1,4 @@
-﻿copisteriaFenixApp.controller('clientesCtrl', function ($scope, clientesDataFactory, $modal, $stateParams, $state, listadoClientes, cuentaCliente, ventaSvc, listdeudascliente) {
+﻿copisteriaFenixApp.controller('clientesCtrl', function ($scope, clientesDataFactory, $modal, $stateParams, $state, listadoClientes, cuentaCliente, ventaSvc, listdeudascliente, ngTableParams, $filter) {
 
     $scope.deudasClientes = listdeudascliente;
     //fpaz: trae todos los clientes
@@ -17,8 +17,8 @@
 
     //funcion para agregar un nuevo Cliente y mostrarlo en el listado
     $scope.addCliente = function (cliente) {
-        $scope.clientes.push(cliente);
-        $scope.cliente = null;
+        $scope.clientes = clientesDataFactory.query(); // lleno la tabla con el nuevo cliente agregado
+        $scope.cliente = {};
     };
 
     $scope.altaCliente = function (cliente) {        
@@ -33,6 +33,12 @@
             });
     };
     //#endregion    
+
+    //#region Limpieza de campos
+    $scope.clean = function () { //funcion para limpiar los campos de los datos del cliente en el alta de cliente
+        $scope.cliente = {};
+    }
+    //#endregion
     
     //#region Busqueda Cliente Venta
 
@@ -42,6 +48,32 @@
     $scope.addClienteVta = function (item, model) { // fpaz: agrega el cliente al que se le va a hacer la venta al servicio compartido ventaSvc se activa con el evento on-select="addClienteVta($item, $model)"               
         ventaSvc.addClienteVta(model);
     };
+    //#endregion
+
+    //#region Paginacion y llenado y filtrado de la tabla dinamica de Clientes
+
+    var data = $scope.clientes;
+
+    $scope.tableParams = new ngTableParams({
+        page: 1,            // show first page
+        count: 10,          // count per page
+        filter: {
+            // filtros de la tabla, 
+            Id: '', //por Id de Cliente
+            Nombre_RazonSocial: ''// por nombre de Escuela
+        }
+    }, {
+        total: data.length, // saco el Total de registros del listado de escuelas
+        getData: function ($defer, params) {            
+            var orderedData = params.filter() ?
+                   $filter('filter')(data, params.filter()) :
+                   data;
+            $scope.clientes = orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count());
+
+            params.total(orderedData.length); // set total for recalc pagination
+            $defer.resolve($scope.clientes);
+        }
+    });
     //#endregion
 
     
