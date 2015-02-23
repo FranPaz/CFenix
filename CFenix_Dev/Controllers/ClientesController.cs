@@ -46,7 +46,7 @@ namespace CFenix_Dev.Controllers
             {
                 return NotFound();
             }
-
+            
             return Ok(cuentaClientes);
         }
 

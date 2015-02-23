@@ -63,7 +63,7 @@
                             </button>
                         </div>
                         <div class="col-sm-2">
-                            <button type="submit" class="btn btn-primary btn-label-left">
+                            <button type="submit" class="btn btn-primary btn-label-left" ng-click="clean()">
                                 <span><i class="fa fancybox-error"></i></span>
                                 Limpiar
                             </button>
@@ -81,9 +81,8 @@
     <div class="col-xs-12">
         <div class="box">
             <div class="box-header">
-                <div class="box-name">
-                    <i class="fa fa-usd"></i>
-                    <span>Listado de Cliente</span>
+                <div class="box-name">                    
+                    <span>Listado de Clientes</span>
                 </div>
                 <div class="box-icons">
                     <a class="collapse-link">
@@ -99,42 +98,30 @@
                 <div class="no-move"></div>
             </div>           
             <div class="box-content no-padding">
-                <table class="table table-bordered table-striped table-hover table-heading table-datatable" id="datatable-1">
-                    <thead>
-                        <tr>
-                            <th>Id Cliente</th>
-                            <th>Nombre o Razon Social</th>
-                            <th>CUIT/CUIL</th>
-                            <th>Direccion</th>
-                            <th>Telefono</th>
-                            <th>Email</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Start: list_row -->
-                        <tr ng-repeat="cliente in clientes">
-                            <td>{{cliente.Id}}</td>
-                            <td><img class="img-rounded" src="http://i.forbesimg.com/media/lists/people/carlos-slim-helu_50x50.jpg" alt="">{{cliente.Nombre_RazonSocial}}</td>
-                            <td>{{cliente.Cuit_Cuil}}</td>
-                            <td>{{cliente.Direccion}}</td>
-                            <td>{{cliente.Telefono}}</td>
-                            <td>{{cliente.Mail}}</td>
-                            <td><a ui-sref="cliente_detail.info({clienteId:cliente.Id})">Ver Detalle</a></td>
-                        </tr>                        
-                        <!-- End: list_row -->
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <th>Id Cliente</th>
-                            <th>Nombre o Razon Social</th>
-                            <th>CUIT/CUIL</th>
-                            <th>Direccion</th>
-                            <th>Telefono</th>
-                            <th>Email</th>
-                            <th></th>
-                        </tr>
-                    </tfoot>
+                <table ng-table="tableParams" class="table ng-table-responsive table-bordered table-striped table-hover table-heading table-datatable" show-filter="true">                    
+                    <tr ng-repeat="cliente in clientes">                        
+                        <td data-title="'Id de Cliente'" filter="{ 'Id': 'text' }">
+                            {{cliente.Id}}
+                        </td>
+                        <td data-title="'Nombre o Razon Social'" filter="{ 'Nombre_RazonSocial': 'text' }">
+                            <img class="img-rounded" src="http://i.forbesimg.com/media/lists/people/carlos-slim-helu_50x50.jpg" alt="">{{cliente.Nombre_RazonSocial}}
+                        </td>
+                        <td data-title="'CUIT/CUIL'">
+                            {{cliente.Cuit_Cuil}}
+                        </td>
+                        <td data-title="'Direccion'">
+                            {{cliente.Direccion}}
+                        </td>
+                        <td data-title="'Telefono'">
+                            {{cliente.Telefono}}
+                        </td>
+                        <td data-title="'Email'">
+                            {{cliente.Mail}}
+                        </td>
+                        <td>
+                            <a ui-sref="cliente_detail.info({clienteId:cliente.Id})">Ver Detalle</a>
+                        </td>
+                    </tr>
                 </table>
             </div>
         </div>
