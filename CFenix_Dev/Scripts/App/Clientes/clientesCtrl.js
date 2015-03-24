@@ -34,6 +34,47 @@
     };
     //#endregion    
 
+    //#region Modificacion de Escuelas
+
+    $scope.editValue = false; // variable que voya usarpara activar y desactivar los modos de edicion para hacer el update de la info de la escuela
+
+    $scope.edit = function () {// activa el modo de edicion de los campos        
+        $scope.editValue = true;
+    };
+
+    $scope.save = function (cuentaCliente) {// guarda los cambios y llama a la funcion put de la api        
+        clientesDataFactory.update({ id: cuentaCliente.Id }, cuentaCliente).$promise.then(
+                function () {
+                    $scope.editValue = false;
+                    alert("Modificacion de Datos Exitosa");
+                    $scope.cuentaCliente = clientesDataFactory.get({ id: $scope.cuentaCliente.Id });
+                },
+                function (response) {                    
+                    alert("Error en la Modificacion de Datos", response.data);
+                });
+    };
+
+    $scope.cancel = function () {
+        $scope.cuentaCliente = clientesDataFactory.get({ id: $scope.cuentaCliente.Id });
+        $scope.editValue = false;
+    };
+
+    //#endregion
+
+    //#region Eliminacion de Clientes
+    $scope.delete = function (cuentaCliente) {
+        clientesDataFactory.delete(cuentaCliente).$promise.then(
+            function () {
+                alert("Eliminacion Exitosa");
+                $state.go('clientes');
+            },
+            function (response) {
+                alert("Eliminacion Fallida", response.data);
+                //$scope.resultado = 'Error Eliminacion';
+            });
+    };
+    //#endregion
+
     //#region Limpieza de campos
     $scope.clean = function () { //funcion para limpiar los campos de los datos del cliente en el alta de cliente
         $scope.cliente = {};

@@ -4,7 +4,12 @@
         <div class="col-lg-11">
             <div class="panel panel-info">
                 <div class="panel-heading">
-                    <h3 class="panel-title">{{cuentaCliente.Cliente.Nombre_RazonSocial}}</h3>
+                    <div ng-show="!editValue">
+                        <h3 class="panel-title">{{cuentaCliente.Cliente.Nombre_RazonSocial}}</h3>
+                    </div>
+                    <div ng-show="editValue">
+                        <input ng-model="cuentaCliente.Cliente.Nombre_RazonSocial" class="form-control" type="text" required>
+                    </div>                                        
                 </div>
                 <div class="panel-body">
                     <div class="row">
@@ -12,27 +17,59 @@
                         <div class=" col-md-9 col-lg-9 ">
                             <table class="table table-user-information">
                                 <tbody>
-                                    <tr>
+                                    <tr>                                        
                                         <td>Cuit/Cuil:</td>
-                                        <td>{{cuentaCliente.Cliente.Cuit_Cuil}}</td>
+                                        <td>
+                                            <div ng-show="!editValue">
+                                                {{cuentaCliente.Cliente.Cuit_Cuil}}                                                
+                                            </div>
+                                            <div ng-show="editValue">
+                                                <input ng-model="cuentaCliente.Cliente.Cuit_Cuil" class="form-control" type="text" required>
+                                            </div>                                            
+                                        </td>
                                         <td>Direccion:</td>
-                                        <td>{{cuentaCliente.Cliente.Direccion}}</td>
+                                        <td>                                            
+                                            <div ng-show="!editValue">
+                                                {{cuentaCliente.Cliente.Direccion}}                                                
+                                            </div>
+                                            <div ng-show="editValue">
+                                                <input ng-model="cuentaCliente.Cliente.Direccion" class="form-control" type="text" required>
+                                            </div>                    
+                                        </td>
                                     </tr>                                    
                                     <tr>
                                         <td>Telefono</td>
-                                        <td>{{cuentaCliente.Cliente.Telefono}}</td>
+                                        <td>                                            
+                                            <div ng-show="!editValue">
+                                                {{cuentaCliente.Cliente.Telefono}}
+                                            </div>
+                                            <div ng-show="editValue">
+                                                <input ng-model="cuentaCliente.Cliente.Telefono" class="form-control" type="text" required>
+                                            </div>                    
+                                        </td>
                                         <td>Email</td>
-                                        <td><a href="mailto:{{cliente.Mail}}">{{cuentaCliente.Cliente.Mail}}</a></td>
+                                        <td>
+                                            <div ng-show="!editValue">
+                                                <a href="mailto:{{cliente.Mail}}">{{cuentaCliente.Cliente.Mail}}</a>                                                
+                                            </div>
+                                            <div ng-show="editValue">
+                                                <input ng-model="cuentaCliente.Cliente.Mail" class="form-control" type="text" required>
+                                            </div>                                                                
+                                        </td>
                                     </tr>                                    
                                     <tr>
                                         <td>Numero de Cuenta Corriente</td>
                                         <td>{{cuentaCliente.Id}}</td>
                                         <td>Fecha de Alta de Cuenta Corriente</td>
-                                        <td>{{cuentaCliente.FechaAlta}}</td>
+                                        <td>                                            
+                                            {{cuentaCliente.FechaAlta}}
+                                        </td>
                                     </tr>                                    
                                     <tr>
                                         <td>Estado de Cuenta Corriente</td>
-                                        <td>{{cuentaCliente.TipoEstado.Descripcion}}</td>
+                                        <td>
+                                            {{cuentaCliente.TipoEstado.Descripcion}}                                            
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>                            
@@ -42,8 +79,10 @@
                 <div class="panel-footer">
                     <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
                     <span class="pull-right">
-                        <a href="edit.html" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
-                        <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
+                        <a ng-click="edit()" ng-if="!editValue" data-original-title="Editar" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+                        <a ng-click="save(cuentaCliente.Cliente)" ng-if="editValue" data-original-title="Guardar" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-save"></i></a>
+                        <a ng-click="cancel()" ng-if="editValue" data-original-title="Cancelar" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-floppy-remove"></i></a>
+                        <a ng-click="delete(cuentaCliente)" ng-if="!editValue" data-original-title="Eliminar" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>                        
                     </span>
                 </div>
             </div>

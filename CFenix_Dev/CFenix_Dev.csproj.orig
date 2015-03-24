@@ -242,10 +242,14 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
+    <Compile Include="Controllers\ComprasController.cs" />
     <Compile Include="Controllers\CuentasCorrientesController.cs" />
     <Compile Include="Controllers\DeudasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InsumosController.cs" />
+    <Compile Include="Controllers\PagosCCController.cs" />
+    <Compile Include="Controllers\PagosController.cs" />
+    <Compile Include="Controllers\PagosEfectivoController.cs" />
     <Compile Include="Controllers\TrabajosController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -256,11 +260,17 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Caja.cs" />
     <Compile Include="Models\CFenix_Context.cs" />
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\CuentaCorriente.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Insumo.cs" />
+    <Compile Include="Models\Pagos.cs" />
+<<<<<<< HEAD
+    <Compile Include="Models\TipoFormaPago.cs" />
+=======
+>>>>>>> 47c94acb118c01280777d1808ca0c0a9aa6540cd
     <Compile Include="Models\Trabajo.cs" />
     <Compile Include="Models\Venta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -328,6 +338,8 @@
     <Content Include="Scripts\angular-ui\ui-bootstrap.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\App\Cajas\cajasCtrl.js" />
+    <Content Include="Scripts\App\Cajas\Partials\Cajas_List.html" />
     <Content Include="Scripts\App\Clientes\basicSearchClienteFilter.js" />
     <Content Include="Scripts\App\Clientes\clientesCtrl.js" />
     <Content Include="Scripts\App\Clientes\clientesDataFactory.js" />
@@ -339,21 +351,31 @@
     <Content Include="Scripts\App\Clientes\Partials\Clientes_PagosCuenta.html" />
     <Content Include="Scripts\App\Clientes\Partials\Cliente_Busqueda.html" />
     <Content Include="Scripts\App\Clientes\Partials\Cliente_BusquedaAvanzada.html" />
+    <Content Include="Scripts\App\Clientes\Partials\Cliente_HistorialCompras.html" />
+    <Content Include="Scripts\App\Compras\compraCtrl.js" />
+    <Content Include="Scripts\App\Compras\comprasDataFactory.js" />
+    <Content Include="Scripts\App\Compras\Partials\Compra_DetallePagos.html" />
     <Content Include="Scripts\App\copisteriaFenixApp.js" />
     <Content Include="Scripts\App\CuentasCorrientes\Partials\tables_simple.html" />
     <Content Include="Scripts\App\Deudas\deudasDataFactory.js" />
-<<<<<<< HEAD
-    <Content Include="Scripts\App\Insumos\insumosFilter.js" />
-=======
     <Content Include="Scripts\App\Deudas\Partials\Deuda_DetalleDeuda.html" />
->>>>>>> CFenix/master
+    <Content Include="Scripts\App\Insumos\altaModalCtrl.js" />
     <Content Include="Scripts\App\Insumos\Partials\Insumos_Add.html" />
     <Content Include="Scripts\App\Insumos\Partials\Insumos_Detail.html" />
     <Content Include="Scripts\App\Deudas\deudasCtrl.js" />
+<<<<<<< HEAD
+    <Content Include="Scripts\App\Pagos\pagosCtrl.js" />
+    <Content Include="Scripts\App\Pagos\pagosDataFactory.js" />
+    <Content Include="Scripts\App\Pagos\Partials\Pagos_FormaPago.html" />
+    <Content Include="Scripts\App\Pagos\Partials\Pagos_InfoCliente.html" />
+    <Content Include="Scripts\App\Pagos\Partials\Pagos_ProcVenta.html" />
+=======
+    <Content Include="Scripts\App\Insumos\Partials\Insumos_Seek.html" />
+    <Content Include="Scripts\App\Insumos\seekCtrl.js" />
+>>>>>>> 47c94acb118c01280777d1808ca0c0a9aa6540cd
     <Content Include="Scripts\App\Venta\Partials\Venta_DetalleFactura.html" />
     <Content Include="Scripts\App\Insumos\Partials\Insumos_Mod.html" />
     <Content Include="Scripts\App\Insumos\Partials\ListInsumos.html" />
-    <Content Include="Scripts\App\Insumos\Partials\AltaInsumo.html" />
     <Content Include="Scripts\App\Notificaciones\Partials\page_messages.html" />
     <Content Include="Scripts\App\Trabajos\Partials\ListTrabajos.html" />
     <Content Include="Scripts\App\Partials\Dashboard.html" />
@@ -376,14 +398,6 @@
     <Content Include="Scripts\App\Usuarios\usuariosFilters.js" />
     <Content Include="Scripts\App\Usuarios\usuariosSvc.js" />
     <Content Include="Scripts\App\Venta\Partials\Venta_Main.html" />
-    <Content Include="Scripts\angular-animate.min.js.map" />
-    <Content Include="Scripts\angular-cookies.min.js.map" />
-    <Content Include="Scripts\angular-loader.min.js.map" />
-    <Content Include="Scripts\angular-resource.min.js.map" />
-    <Content Include="Scripts\angular-route.min.js.map" />
-    <Content Include="Scripts\angular-sanitize.min.js.map" />
-    <Content Include="Scripts\angular-touch.min.js.map" />
-    <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Scripts\App\Venta\ventaCtrl.js" />
     <Content Include="Scripts\App\Venta\ventaDataFactory.js" />
     <Content Include="Scripts\App\Venta\ventaSvc.js" />
@@ -391,7 +405,6 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\devoops.js" />
     <Content Include="Scripts\devoops.min.js" />
-    <Content Include="Scripts\errors.json" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
     <Content Include="Areas\HelpPage\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\ResourceModel.cshtml" />
@@ -419,6 +432,14 @@
     <None Include="Properties\PublishProfiles\cfenix.pubxml" />
     <None Include="Properties\PublishProfiles\remote.pubxml" />
     <Content Include="Scripts\angular-cookies.min.js.map" />
+    <Content Include="Scripts\errors.json" />
+    <Content Include="Scripts\angular-touch.min.js.map" />
+    <Content Include="Scripts\angular-sanitize.min.js.map" />
+    <Content Include="Scripts\angular-route.min.js.map" />
+    <Content Include="Scripts\angular-resource.min.js.map" />
+    <Content Include="Scripts\angular-loader.min.js.map" />
+    <Content Include="Scripts\angular-animate.min.js.map" />
+    <Content Include="Scripts\angular.min.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\i18n\angular-locale_af-na.js" />
     <Content Include="Scripts\i18n\angular-locale_af-za.js" />
@@ -718,6 +739,8 @@
     <Content Include="Scripts\loading-bar.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\ngTable\ng-table.css" />
+    <Content Include="Scripts\ngTable\ng-table.js" />
     <Content Include="Scripts\plugins\bootstrapvalidator\bootstrapValidator.css" />
     <Content Include="Scripts\plugins\bootstrapvalidator\bootstrapValidator.js" />
     <Content Include="Scripts\plugins\bootstrapvalidator\bootstrapValidator.min.css" />
@@ -1098,7 +1121,6 @@
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Scripts\version.json" />
     <Content Include="Scripts\plugins\bootstrapvalidator\bootstrapValidator.scss" />
     <Content Include="Scripts\plugins\d3\LICENSE" />
     <Content Include="Scripts\plugins\fineuploader\LICENSE" />
@@ -1122,6 +1144,7 @@
     <Content Include="Scripts\plugins\tinymce\skins\lightgray\fonts\tinymce.woff" />
     <Content Include="Scripts\plugins\xcharts\LICENSE" />
     <Content Include="Scripts\plugins\xcharts\README.md" />
+    <Content Include="Scripts\version.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
